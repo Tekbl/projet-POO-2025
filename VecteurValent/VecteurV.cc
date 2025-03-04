@@ -124,16 +124,19 @@ private:
 
        
     Vecteur unitaire() const{
+        Vecteur A;
+        A.vecteur = vecteur;
         Vecteur B;
-        double n = vecteur.norme();
+        double n = A.norme();
         try{
             if (n==0){
                 throw("division par zero");
             }
+            for (int i(0); i<dim; i++){
+                B.augmente(vecteur[i]/n);
+            }
         }
-        for (int i(0); i<dim; i++){
-            B.augmente(vecteur[i]/n);
-        }
+        
         catch(string txt) {cout << "Erreur :" << txt << endl;}
         return B;
     }
