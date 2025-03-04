@@ -10,10 +10,10 @@ CXXFLAGS += -pedantic -Wall         # pour les pur(e)s et dur(e)s
 # CXXFLAGS += -g                    # pour debugger
 # CXXFLAGS += -O2                   # pour optimiser la vitesse
 
-all: testVecteur
+all: testVecteurV
 
-Vecteur.o: Vecteur.cc Vecteur.h
+Vecteur.o: VecteurV.cc VecteurV.h
 
-testVecteur.o: testVecteur.cc Vecteur.h
+testVecteur.o: testVecteurV.cc VecteurV.h
 
-testVecteur: testVecteur.o Vecteur.o
+testVecteur: testVecteurV.o VecteurV.o
