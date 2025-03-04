@@ -122,5 +122,19 @@ private:
         return norme;
     }
 
-
+       
+    Vecteur unitaire() const{
+        Vecteur B;
+        double n = vecteur.norme();
+        try{
+            if (n==0){
+                throw("division par zero");
+            }
+        }
+        for (int i(0); i<dim; i++){
+            B.augmente(vecteur[i]/n);
+        }
+        catch(string txt) {cout << "Erreur :" << txt << endl;}
+        return B;
+    }
 };
