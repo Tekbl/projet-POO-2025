@@ -7,22 +7,22 @@ using namespace std;
 class Vecteur{
 
 public:
-    void affiche();
+    void affiche() const;
     void set_coord(int i,double v);
-    double get_coord(int i);
+    double get_coord(int i) const;
     void augmente(double v);
-    bool compare(Vecteur B, int precision=1e-10);
+    bool compare(Vecteur B, int precision=1e-10) const;
 
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
     void affiche() const{for(auto element:vecteur){cout << element << " ";}; cout << endl;}
     void set_coord(int i,double v){vecteur[i] = v;}
-    double get_coord(int i){return vecteur[i];}
+    double get_coord(int i)const {return vecteur[i];}
     void augmente(double v){vecteur.push_back(v);}
     int dim = vecteur.size(); // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
 
-    bool compare(Vecteur B,int precision=1e-10){ //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
+    bool compare(Vecteur B,int precision=1e-10) const{ //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
         if (dim==B.vecteur.size()){
             for (int i(0); i<=dim ; i++){
 
