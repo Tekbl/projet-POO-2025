@@ -12,8 +12,8 @@ CXXFLAGS += -pedantic -Wall         # pour les pur(e)s et dur(e)s
 
 all: testVecteurV
 
-Vecteur.o: VecteurV.cc VecteurV.h
+VecteurV.o: VecteurV.cc VecteurV.h
 
-testVecteur.o: testVecteurV.cc VecteurV.h
+testVecteurV.o: testVecteurV.cc VecteurV.h
 
-testVecteur: testVecteurV.o VecteurV.o
+testVecteurV: testVecteurV.o VecteurV.o
