@@ -108,7 +108,19 @@ private:
         return Produit;
     }
 
-    
+    double norme() const{
+        Vecteur B;
+        B.vecteur = vecteur;
+        return sqrt(B.norme2());
+    }
+
+    double norme2() const{
+        double norme(0);
+        for(int i = 0; i < dim;i++){
+            norme += (vecteur[i]*vecteur[i]);
+        }
+        return norme;
+    }
 
 
 };
