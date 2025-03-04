@@ -50,6 +50,7 @@ private:
     }
 
     Vecteur soustraction(Vecteur X) const{
+        //attention si dim A < dim B on se retrouve à faire B-A plutôt que A-B à voir s'il faut changer la méthode
         return addition(X.oppose());
     }
 
@@ -63,6 +64,13 @@ private:
         return inverse;
     }
 
+    Vecteur mult(double scalaire) const{
+        Vecteur multiplie;
+        for(int i = 0; i <= dim;i++){
+            multiplie.vecteur[i] = vecteur[i];
+        }
+        return multiplie;
+    }
 
 
 };
