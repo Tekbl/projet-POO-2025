@@ -1,19 +1,32 @@
+# Compiler
 CXX = g++
-CC  = $(CXX)
+# Flags
+CXXFLAGS = -Wall -Wextra -std=c++11 -O2
+# Nom de l'exécutable
+EXEC = main
+# Tous les fichiers sources
+SRCS = $(wildcard *.cc)
+# Générer les fichiers objets correspondants
+OBJS = $(SRCS:.cc=.o)
+DEPS = $(OBJS:.o=.d)
 
-CXXFLAGS = -std=c++11  # C++11, ou autre suivant vos préférences
+# Règle principale
+all: $(EXEC)
 
-# Partie commentée : choisissez les options que vous voulez avoir
-#                    en décommentant la/les lignes correspondantes
-#
-CXXFLAGS += -pedantic -Wall         # pour les pur(e)s et dur(e)s
-# CXXFLAGS += -g                    # pour debugger
-# CXXFLAGS += -O2                   # pour optimiser la vitesse
+# Compilation de l'exécutable
+$(EXEC): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-all: testVecteurV
+# Compilation des fichiers sources
+%.o: %.cc
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-VecteurV.o: VecteurV.cc VecteurV.h
+-include $(DEPS)
 
-testVecteurV.o: testVecteurV.cc VecteurV.h
+# Nettoyage
+clean:
+	rm -f $(OBJS) $(EXEC)
 
-testVecteurV: testVecteurV.o VecteurV.o
+# Nettoyage complet
+cleanall: clean
+	rm -f *~

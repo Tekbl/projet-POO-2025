@@ -37,7 +37,7 @@ if (vect1.compare(vect2)) {
     cout << "différent du";
 }
 cout << " vecteur 2," << endl << "et est ";
-if (not vect1.compare(vect3)) {
+if (!vect1.compare(vect3)) {
     cout << "différent du";
 } else {
     cout << "égal au";
