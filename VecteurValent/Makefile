@@ -1,5 +1,5 @@
 # Compiler
-CXX = g++
+CXX = g++	
 # Flags
 CXXFLAGS = -Wall -Wextra -std=c++11 -O2
 # Nom de l'exécutable

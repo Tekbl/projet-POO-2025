@@ -11,7 +11,7 @@ public:
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
-    bool compare(Vecteur B, int precision=1e-10) const;
+    bool compare(Vecteur B, double precision=1e-10) const; //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
     Vecteur addition(Vecteur X) const;
     Vecteur soustraction(Vecteur X) const;
     Vecteur oppose() const;
@@ -24,21 +24,26 @@ public:
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
-    int dim = vecteur.size(); // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
+    unsigned int dim = vecteur.size(); // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
 };
 
 void Vecteur::affiche() const{for(auto element:vecteur){cout << element << " ";}; cout << endl;}
-void Vecteur::set_coord(int i,double v){vecteur[i] = v;}
+
 double Vecteur::get_coord(int i)const {return vecteur[i];}
-void Vecteur::augmente(double v){vecteur.push_back(v);}
+void Vecteur::augmente(double v){
+    vecteur.push_back(v);
+    dim +=1;}
 
+void Vecteur::set_coord(int i,double v){
+    vecteur[i] = v;
+    dim = vecteur.size();
+}
 
-bool Vecteur::compare(Vecteur B,int precision=1e-10) const{ //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
+bool Vecteur::compare(Vecteur B,double precision) const{ 
     if (dim==B.vecteur.size()){
-        for (int i(0); i<dim ; i++){
-
-            if ( abs(vecteur[i] - B.vecteur[i]) > precision ){return false;} 
-            else {return true;}}}
+        for (unsigned int i(0); i<dim ; i++){
+            if ( abs(vecteur[i] - B.vecteur[i]) > precision ){return false;} }
+        return true;}
 
     else {return false;}
 }
@@ -67,7 +72,7 @@ Vecteur Vecteur::soustraction(Vecteur X) const{
 
 Vecteur Vecteur::oppose() const{
     vector <double> coord_oppose = vecteur;
-    for(int i(0); i<dim;i++){
+    for(unsigned int i(0); i<dim;i++){
         coord_oppose[i] = 0 - coord_oppose[i];
     }
     Vecteur inverse;
@@ -77,8 +82,8 @@ Vecteur Vecteur::oppose() const{
 
 Vecteur Vecteur::mult(double scalaire) const{
     Vecteur multiplie;
-    for(int i = 0; i < dim;i++){
-        multiplie.vecteur[i] = vecteur[i];
+    for(unsigned int i = 0; i < dim;i++){
+        multiplie.vecteur[i] = scalaire*vecteur[i];
     }
     return multiplie;
 }
@@ -94,7 +99,7 @@ double Vecteur::prod_scalaire(Vecteur B) const{
         }
     }while(dim != B.vecteur.size());
     double produit(0);
-    for(int i = 0; i < dim;i++){
+    for(unsigned int i = 0; i < dim;i++){
         produit += (vect_temp[i]*B.vecteur[i]);
     }
     return produit;
@@ -127,7 +132,7 @@ double Vecteur::norme() const{
 
 double Vecteur::norme2() const{
     double norme(0);
-    for(int i = 0; i < dim;i++){
+    for(unsigned int i = 0; i < dim;i++){
         norme += (vecteur[i]*vecteur[i]);
     }
     return norme;
@@ -143,7 +148,7 @@ Vecteur Vecteur::unitaire() const{
         if (n==0){
             throw("division par zero");
         }
-        for (int i(0); i<dim; i++){
+        for (unsigned int i(0); i<dim; i++){
             B.augmente(vecteur[i]/n);
         }
     }

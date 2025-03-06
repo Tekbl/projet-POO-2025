@@ -7,17 +7,17 @@ int main(){
 Vecteur vect1;
 Vecteur vect2;
 Vecteur vect3;
-
+cout << "hello world" << endl;
 /* Cette partie
  * (1) pourrait être écrite autrement, par exemple avec des
  *     manipulateurs (set_coord()) ;
  * (2) sera revue dans 2 semaines (constructeurs, surcharge des opérateurs).
  */
-// v1 = (1.0, 2.0, -0.1)
+//v1 = (1.0, 2.0, -0.1)
 vect1.augmente(1.0); vect1.augmente(0.0); vect1.augmente(-0.1);
 vect1.set_coord(1, 2.0); // pour tester set_coord()
 
-// v2 = (2.6, 3.5,  4.1)
+//v2 = (2.6, 3.5,  4.1)
 vect2.augmente(2.6); vect2.augmente(3.5); vect2.augmente(4.1);
 
 vect3 = vect1;

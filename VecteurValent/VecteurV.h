@@ -10,7 +10,7 @@ public:
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
-    bool compare(Vecteur B, int precision=1e-10) const;
+    bool compare(Vecteur B, double precision=1e-10) const;
     Vecteur addition(Vecteur X) const;
     Vecteur soustraction(Vecteur X) const;
     Vecteur oppose() const;
