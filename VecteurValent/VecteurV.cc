@@ -8,8 +8,10 @@ class Vecteur{
 
 public:
 
-    Vecteur(int dimension):dim(dimension),vecteur(dimension,0){}
+    Vecteur(int dimension):dim(dimension),vecteur(dimension,0.0){}
     Vecteur(double x, double y, double z):vecteur{x,y,z},dim(3){}
+    Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit),dim(liste_dinit.size()){}//initialise vecteur avec un vector de double de dimension quelconque, 
+                                                                    //on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
 
     void affiche() const;
     void set_coord(int i,double v);
@@ -28,7 +30,7 @@ public:
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
-    unsigned int dim = 0; // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
+    unsigned int dim; // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
 };
 
 void Vecteur::affiche() const{for(auto element:vecteur){cout << element << " ";}; cout << endl;}
@@ -39,8 +41,12 @@ void Vecteur::augmente(double v){
     dim +=1;}
 
 void Vecteur::set_coord(int i,double v){
+    if(i>dim){
+        //éviter d'avoir un vecteur avec un "trou" i.e {1,2,3,NAN (ou un nombre aléatoire créé par le compilateur),4}
+        i = dim;
+    }
     vecteur[i] = v;
-    dim = vecteur.size();
+    dim = vecteur.size(); // pour prendre en compte le cas ou la dimension est augmenté
 }
 
 bool Vecteur::compare(Vecteur B,double precision) const{ 
@@ -61,14 +67,10 @@ Vecteur Vecteur::addition(Vecteur X) const{
         vector<double> C = B;
         B = A;
         A = C;
-        int dim = dim_A;
-        dim_A = dim_B;
-        dim_B = dim_A;
     }
-    for (int i(0); i < dim_A-dim_B ; i++){B.push_back(0);} // on complète la dimension de B en la dimension de A en lui rajoutant des 0. La copie de A et B permet aussi de ne pas modifier les vecteurs originaux
-    for(int i(0); i<dim_A ;i++){A[i]= A[i]+B[i];}
-    Vecteur D;
-    D.vecteur = A;
+    for (int i(0); i < abs(dim_A-dim_B) ; i++){B.push_back(0);} // on complète la dimension de B en la dimension de A en lui rajoutant des 0. La copie de A et B permet aussi de ne pas modifier les vecteurs originaux
+    for(int i(0); i<max(dim_A,dim_B) ;i++){A[i]= A[i]+B[i];}
+    Vecteur D(A);
     return D; //je suis vrm pas sur de ces 2 dernières lignes, parce qu'il faut retourner un Vecteur sauf que je dois manipuler les vecteurs (V majuscule = classe et v minuscule = vector contenant les éléments du Vecteur)
 }
 
@@ -82,13 +84,12 @@ Vecteur Vecteur::oppose() const{
     for(unsigned int i(0); i<dim;i++){
         coord_oppose[i] = 0 - coord_oppose[i];
     }
-    Vecteur inverse;
-    inverse.vecteur = coord_oppose;
+    Vecteur inverse(coord_oppose);
     return inverse;
 }
 
 Vecteur Vecteur::mult(double scalaire) const{
-    Vecteur multiplie;
+    Vecteur multiplie(vecteur);
     for(unsigned int i = 0; i < dim;i++){
         multiplie.vecteur[i] = scalaire*vecteur[i];
     }
