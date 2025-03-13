@@ -10,8 +10,9 @@ public:
 
     Vecteur(unsigned int dimension):vecteur(dimension,0.0),dim(dimension){}
     Vecteur(double x, double y, double z):vecteur{x,y,z},dim(3){}
-    Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit),dim(liste_dinit.size()){}//initialise vecteur avec un vector de double de dimension quelconque, 
-                                                                    //on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
+    //initialise vecteur avec un vector de double de dimension quelconque,on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
+    Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit),dim(liste_dinit.size()){}
+    
 
     void affiche() const;
     void set_coord(int i,double v);
@@ -27,13 +28,18 @@ public:
     double norme() const;
     double norme2() const;
     Vecteur unitaire() const;
+    friend ostream& operator<<(ostream& sortie,const Vecteur& v); //on met friend pour accéder aux éléments de vecteur
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
     unsigned int dim; // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
 };
 
-void Vecteur::affiche() const{for(auto element:vecteur){cout << element << " ";}; cout << endl;}
+void Vecteur::affiche() const{
+    for(auto element:vecteur){
+        cout << element << " ";
+    }; cout << endl;
+}
 
 double Vecteur::get_coord(int i)const {return vecteur[i];}
 void Vecteur::augmente(double v){
@@ -59,11 +65,13 @@ bool Vecteur::compare(Vecteur B,double precision) const{
 }
 
 Vecteur Vecteur::addition(Vecteur X) const{
-    vector <double> A = vecteur; // on fait des copies parce que je veux echanger A et B si dim(B)>Dim(A) pour faire l'addition sauf que ça va également échanger les vecteurs instanciés pour le reste du programme
+    // on fait des copies pour échanger A et B si dim(B)>Dim(A) pour faire l'addition afin d'éviter d'échanger les vecteurs instanciés pour le reste du programme
+    vector <double> A = vecteur;
     vector <double> B = X.vecteur; 
     int dim_A = A.size();
     int dim_B = B.size();
-    if (dim_A < dim_B){ //echange les vecteur si dim(B)>Dim(A) pour eviter de faire copier coller le meme code dans un if(dim_A>=dim_B) et if(dim_A<dim_B) pour l'addition des deux vecteurs.
+    //echange les vecteur si dim(B)>Dim(A) pour eviter de faire copier coller le meme code dans un if(dim_A>=dim_B) et if(dim_A<dim_B) pour l'addition des deux vecteurs.
+    if (dim_A < dim_B){ 
         vector<double> C = B;
         B = A;
         A = C;
@@ -157,4 +165,12 @@ Vecteur Vecteur::unitaire() const{
     
     catch(string txt) {cout << "Erreur :" << txt << endl;}
     return B;
+}
+
+//on retourne un ostream& afin de pouvoir écrire cout << v1 << endl; ou cout << v1 << v2;
+ostream& operator<<(ostream& sortie, const Vecteur& v){
+    for(int i = 0;i < v.vecteur.size(); i++){
+        sortie << v.vecteur[i] << " ";
+    }
+    return sortie;
 }
