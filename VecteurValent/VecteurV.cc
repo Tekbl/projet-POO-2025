@@ -124,17 +124,12 @@ Vecteur Vecteur::prod_vect(Vecteur B) const{
             B.vecteur.push_back(0);
         }
     }while(dim != 3 && B.vecteur.size() != 3);
-    Vecteur Produit;
-    Produit.vecteur[0] = (vect_temp[2]*B.vecteur[3])-(vect_temp[3]*B.vecteur[2]);
-    Produit.vecteur[1] = (vect_temp[3]*B.vecteur[1])-(vect_temp[1]*B.vecteur[3]);
-    Produit.vecteur[2] = (vect_temp[1]*B.vecteur[2])-(vect_temp[2]*B.vecteur[1]);
-
+    Vecteur Produit((vect_temp[2]*B.vecteur[3])-(vect_temp[3]*B.vecteur[2]),(vect_temp[3]*B.vecteur[1])-(vect_temp[1]*B.vecteur[3]),(vect_temp[1]*B.vecteur[2])-(vect_temp[2]*B.vecteur[1]));
     return Produit;
 }
 
 double Vecteur::norme() const{
-    Vecteur B;
-    B.vecteur = vecteur;
+    Vecteur B(vecteur);
     return sqrt(B.norme2());
 }
 
@@ -148,9 +143,8 @@ double Vecteur::norme2() const{
 
     
 Vecteur Vecteur::unitaire() const{
-    Vecteur A;
-    A.vecteur = vecteur;
-    Vecteur B;
+    Vecteur A(vecteur);
+    Vecteur B(dim);
     double n = A.norme();
     try{
         if (n==0){
