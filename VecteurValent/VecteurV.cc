@@ -29,6 +29,7 @@ public:
     double norme2() const;
     Vecteur unitaire() const;
     friend ostream& operator<<(ostream& sortie,const Vecteur& v); //on met friend pour accéder aux éléments de vecteur
+    bool operator==(Vecteur B) const;
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
@@ -58,10 +59,14 @@ void Vecteur::set_coord(int i,double v){
 bool Vecteur::compare(Vecteur B,double precision) const{ 
     if (dim==B.vecteur.size()){
         for (unsigned int i(0); i<dim ; i++){
-            if ( abs(vecteur[i] - B.vecteur[i]) > precision ){return false;} }
-        return true;}
-
-    else {return false;}
+            if ( abs(vecteur[i] - B.vecteur[i]) > precision ){
+                return false;
+            } 
+        }
+        return true;
+    }else{
+        return false;
+    }
 }
 
 Vecteur Vecteur::addition(Vecteur X) const{
@@ -173,4 +178,17 @@ ostream& operator<<(ostream& sortie, const Vecteur& v){
         sortie << v.vecteur[i] << " ";
     }
     return sortie;
+}
+
+bool Vecteur::operator==(Vecteur B) const{
+    if (dim==B.vecteur.size()){
+        for (unsigned int i(0); i<dim ; i++){
+            if (vecteur[i] != B.vecteur[i]){
+                return false;
+            } 
+        }
+        return true;
+    }else{
+        return false;
+    }
 }
