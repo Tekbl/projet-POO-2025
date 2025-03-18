@@ -30,6 +30,8 @@ public:
     Vecteur unitaire() const;
     friend ostream& operator<<(ostream& sortie,const Vecteur& v); //on met friend pour accéder aux éléments de vecteur
     bool operator==(Vecteur B) const;
+    void operator+=(const Vecteur& B);
+    void operator-=(const Vecteur& B);
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
@@ -81,8 +83,12 @@ Vecteur Vecteur::addition(Vecteur X) const{
         B = A;
         A = C;
     }
-    for (int i(0); i < abs(dim_A-dim_B) ; i++){B.push_back(0);} // on complète la dimension de B en la dimension de A en lui rajoutant des 0. La copie de A et B permet aussi de ne pas modifier les vecteurs originaux
-    for(int i(0); i<max(dim_A,dim_B) ;i++){A[i]= A[i]+B[i];}
+    for (int i(0); i < abs(dim_A-dim_B) ; i++){
+        B.push_back(0);
+    } // on complète la dimension de B en la dimension de A en lui rajoutant des 0. La copie de A et B permet aussi de ne pas modifier les vecteurs originaux
+    for(int i(0); i<max(dim_A,dim_B) ;i++){
+        A[i]= A[i]+B[i];
+    }
     Vecteur D(A);
     return D; //je suis vrm pas sur de ces 2 dernières lignes, parce qu'il faut retourner un Vecteur sauf que je dois manipuler les vecteurs (V majuscule = classe et v minuscule = vector contenant les éléments du Vecteur)
 }
@@ -188,4 +194,32 @@ ostream& operator<<(ostream& sortie, const Vecteur& v){
 
 bool Vecteur::operator==(Vecteur B) const{
     return compare(B);
+}
+
+void Vecteur::operator+=(const Vecteur& B){
+    //on augmente le vecteur B si dim B < dimA ou on les échanges si dimA<dimB pour garder les mêmes convention que pour la méthode addition
+    int dim_A = vecteur.size();
+    int dim_B = B.vecteur.size();
+    vector<double> B_vect = B.vecteur;
+    if(dim_A>dim_B){
+        for(int i = 0;i<(dim_A-dim_B);i++){
+            B_vect.push_back(0);
+        }
+    }else if(dim_B>dim_A){
+        vector<double> C = vecteur;
+        vecteur = B_vect;
+        B_vect = C;
+        for(int i = 0;i<(dim_B-dim_A);i++){
+            B_vect.push_back(0);
+        }
+    }
+    for(int i = 0;i<max(dim_A,dim_B);i++){
+        vecteur[i] += B_vect[i];
+    }
+}
+
+void Vecteur::operator-=(const Vecteur& B){
+    Vecteur C(B);
+    C.oppose();
+    *this += C;
 }
