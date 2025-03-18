@@ -20,7 +20,8 @@ public:
     double norme() const;
     double norme2() const;
     Vecteur unitaire() const;
-
+    friend ostream& operator<<(ostream& sortie,const Vecteur& v);
+    bool operator==(Vecteur B) const;
 
 private:
    
