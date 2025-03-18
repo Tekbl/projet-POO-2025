@@ -8,10 +8,10 @@ class Vecteur{
 
 public:
 
-    Vecteur(unsigned int dimension):vecteur(dimension,0.0),dim(dimension){}
-    Vecteur(double x, double y, double z):vecteur{x,y,z},dim(3){}
+    Vecteur(unsigned int dimension):vecteur(dimension,0.0){}
+    Vecteur(double x, double y, double z):vecteur{x,y,z}{}
     //initialise vecteur avec un vector de double de dimension quelconque,on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
-    Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit),dim(liste_dinit.size()){}
+    Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit){}
     
 
     void affiche() const;
@@ -33,7 +33,6 @@ public:
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
-    unsigned int dim; // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
 };
 
 void Vecteur::affiche() const{
@@ -45,18 +44,19 @@ void Vecteur::affiche() const{
 double Vecteur::get_coord(int i)const {return vecteur[i];}
 void Vecteur::augmente(double v){
     vecteur.push_back(v);
-    dim +=1;}
+    }
 
 void Vecteur::set_coord(int i,double v){
+    int dim = vecteur.size();
     if(i>dim){
         //éviter d'avoir un vecteur avec un "trou" i.e {1,2,3,NAN (ou un nombre aléatoire créé par le compilateur),4}
         i = dim;
     }
     vecteur[i] = v;
-    dim = vecteur.size(); // pour prendre en compte le cas ou la dimension est augmenté
 }
 
 bool Vecteur::compare(Vecteur B,double precision) const{ 
+    int dim = vecteur.size();
     if (dim==B.vecteur.size()){
         for (unsigned int i(0); i<dim ; i++){
             if ( abs(vecteur[i] - B.vecteur[i]) > precision ){
@@ -93,6 +93,7 @@ Vecteur Vecteur::soustraction(Vecteur X) const{
 }
 
 Vecteur Vecteur::oppose() const{
+    int dim = vecteur.size();
     vector <double> coord_oppose = vecteur;
     for(unsigned int i(0); i<dim;i++){
         coord_oppose[i] = 0 - coord_oppose[i];
@@ -102,6 +103,7 @@ Vecteur Vecteur::oppose() const{
 }
 
 Vecteur Vecteur::mult(double scalaire) const{
+    int dim = vecteur.size();
     Vecteur multiplie(vecteur);
     for(unsigned int i = 0; i < dim;i++){
         multiplie.vecteur[i] = scalaire*vecteur[i];
@@ -110,6 +112,7 @@ Vecteur Vecteur::mult(double scalaire) const{
 }
 
 double Vecteur::prod_scalaire(Vecteur B) const{
+    int dim = vecteur.size();
     //création d'un vecteur temporaire pour ne pas modifier les coords du vecteur de cette classe
     vector <double> vect_temp = vecteur;
     do{
@@ -127,6 +130,7 @@ double Vecteur::prod_scalaire(Vecteur B) const{
 }
 
 Vecteur Vecteur::prod_vect(Vecteur B) const{
+    int dim = vecteur.size();
     // si les vecteurs sont de dimension 2 ou moins on les complètes en vecteurs de dimension trois avec des 0 
     //dans les coords manquantes. Si les dimension sont > 3 ont ne prends que les 3 premières coords
     vector <double> vect_temp = vecteur;
@@ -147,6 +151,7 @@ double Vecteur::norme() const{
 }
 
 double Vecteur::norme2() const{
+    int dim = vecteur.size();
     double norme(0);
     for(unsigned int i = 0; i < dim;i++){
         norme += (vecteur[i]*vecteur[i]);
@@ -156,6 +161,7 @@ double Vecteur::norme2() const{
 
     
 Vecteur Vecteur::unitaire() const{
+    int dim = vecteur.size();
     Vecteur A(vecteur);
     Vecteur B(dim);
     double n = A.norme();
@@ -181,6 +187,7 @@ ostream& operator<<(ostream& sortie, const Vecteur& v){
 }
 
 bool Vecteur::operator==(Vecteur B) const{
+    int dim = vecteur.size();
     if (dim==B.vecteur.size()){
         for (unsigned int i(0); i<dim ; i++){
             if (vecteur[i] != B.vecteur[i]){
