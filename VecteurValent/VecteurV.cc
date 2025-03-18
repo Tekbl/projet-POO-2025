@@ -7,6 +7,10 @@ using namespace std;
 class Vecteur{
 
 public:
+
+    Vecteur(int dimension):dim(dimension),vecteur(dimension,0){}
+    Vecteur(double x, double y, double z):vecteur{x,y,z},dim(3){}
+
     void affiche() const;
     void set_coord(int i,double v);
     double get_coord(int i) const;
@@ -24,7 +28,7 @@ public:
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
-    unsigned int dim = vecteur.size(); // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
+    unsigned int dim = 0; // on fixe n pour eviter de refaire appel à la fonction size() pour chaque opération
 };
 
 void Vecteur::affiche() const{for(auto element:vecteur){cout << element << " ";}; cout << endl;}
@@ -57,6 +61,9 @@ Vecteur Vecteur::addition(Vecteur X) const{
         vector<double> C = B;
         B = A;
         A = C;
+        int dim = dim_A;
+        dim_A = dim_B;
+        dim_B = dim_A;
     }
     for (int i(0); i < dim_A-dim_B ; i++){B.push_back(0);} // on complète la dimension de B en la dimension de A en lui rajoutant des 0. La copie de A et B permet aussi de ne pas modifier les vecteurs originaux
     for(int i(0); i<dim_A ;i++){A[i]= A[i]+B[i];}
