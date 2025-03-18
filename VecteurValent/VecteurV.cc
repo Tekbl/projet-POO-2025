@@ -187,15 +187,5 @@ ostream& operator<<(ostream& sortie, const Vecteur& v){
 }
 
 bool Vecteur::operator==(Vecteur B) const{
-    int dim = vecteur.size();
-    if (dim==B.vecteur.size()){
-        for (unsigned int i(0); i<dim ; i++){
-            if (vecteur[i] != B.vecteur[i]){
-                return false;
-            } 
-        }
-        return true;
-    }else{
-        return false;
-    }
+    return compare(B);
 }
