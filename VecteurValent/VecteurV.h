@@ -24,7 +24,7 @@ public:
     Vecteur soustraction(Vecteur X) const;
     Vecteur oppose() const;
     Vecteur mult(double scalaire) const;
-    double prod_scalaire(Vecteur B) const;
+    double prod_scalaire(const Vecteur& B) const;
     Vecteur prod_vect(Vecteur B) const;
     double norme() const;
     double norme2() const;
@@ -35,6 +35,7 @@ public:
     bool operator==(Vecteur B) const;
     void operator+=(const Vecteur& B);
     void operator-=(const Vecteur& B);
+    Vecteur operator^(const Vecteur& B);
 
 private:
    

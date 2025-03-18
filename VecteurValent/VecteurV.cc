@@ -26,7 +26,7 @@ public:
     Vecteur soustraction(Vecteur X) const;
     Vecteur oppose() const;
     Vecteur mult(double scalaire) const;
-    double prod_scalaire(Vecteur B) const;
+    double prod_scalaire(const Vecteur& B) const;
     Vecteur prod_vect(Vecteur B) const;
     double norme() const;
     double norme2() const;
@@ -37,6 +37,7 @@ public:
     bool operator==(Vecteur B) const;
     void operator+=(const Vecteur& B);
     void operator-=(const Vecteur& B);
+    Vecteur operator^(const Vecteur& B);
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
@@ -48,10 +49,13 @@ void Vecteur::affiche() const{
     }; cout << endl;
 }
 
-double Vecteur::get_coord(int i)const {return vecteur[i];}
+double Vecteur::get_coord(int i)const {
+    return vecteur[i];
+}
+
 void Vecteur::augmente(double v){
     vecteur.push_back(v);
-    }
+}
 
 void Vecteur::set_coord(int i,double v){
     int dim = vecteur.size();
@@ -122,20 +126,21 @@ Vecteur Vecteur::mult(double scalaire) const{
     return multiplie;
 }
 
-double Vecteur::prod_scalaire(Vecteur B) const{
+double Vecteur::prod_scalaire(const Vecteur& B) const{
+    Vecteur copie_B = B;
     int dim = vecteur.size();
     //création d'un vecteur temporaire pour ne pas modifier les coords du vecteur de cette classe
     vector <double> vect_temp = vecteur;
     do{
-        if(dim > B.vecteur.size()){
-            B.vecteur.push_back(0);
-        }else if(dim < B.vecteur.size()){ 
+        if(dim > copie_B.vecteur.size()){
+            copie_B.vecteur.push_back(0);
+        }else if(dim < copie_B.vecteur.size()){ 
             vect_temp.push_back(0);
         }
-    }while(dim != B.vecteur.size());
+    }while(dim != copie_B.vecteur.size());
     double produit(0);
     for(unsigned int i = 0; i < dim;i++){
-        produit += (vect_temp[i]*B.vecteur[i]);
+        produit += (vect_temp[i]*copie_B.vecteur[i]);
     }
     return produit;
 }
@@ -198,7 +203,7 @@ ostream& operator<<(ostream& sortie, const Vecteur& v){
 }
 
 bool Vecteur::operator==(Vecteur B) const{
-    return compare(B);
+    return this->compare(B);
 }
 
 void Vecteur::operator+=(const Vecteur& B){
@@ -227,4 +232,8 @@ void Vecteur::operator-=(const Vecteur& B){
     Vecteur C(B);
     C.oppose();
     *this += C;
+}
+
+Vecteur Vecteur::operator^(const Vecteur& B){
+    return this->prod_scalaire(B);
 }
