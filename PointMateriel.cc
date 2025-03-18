@@ -27,11 +27,11 @@ class PointMateriel{
 
     
     private:
-        Vecteur vecteur_position; //3D pour l'instant 
-        Vecteur vecteur_vitesse; //3D et dérivée du vecteur position
+        Vecteur vecteur_position; //3D pour l'instant (vecteur etat dans l'exercice P5)
+        Vecteur vecteur_vitesse; //3D et dérivée du vecteur position (vecteur dérivé du vecteur etat dans l'exercice P5)
         Vecteur position(){} // pas capté la diff avec set/get_pos/vit
         Vecteur vitesse(){} // pas capté la diff avec set/get_pos/vit
-        double ChampForces;
+        double ChampForces(9.81);
         double evolution(double t){return ChampForces/masse;} //représente l'accéleration (pour l'instant on utilise une version simplifiée)
 
 
