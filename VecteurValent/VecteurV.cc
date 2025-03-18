@@ -8,16 +8,19 @@ class Vecteur{
 
 public:
 
+    //constructeurs
     Vecteur(unsigned int dimension):vecteur(dimension,0.0){}
     Vecteur(double x, double y, double z):vecteur{x,y,z}{}
     //initialise vecteur avec un vector de double de dimension quelconque,on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
     Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit){}
     
-
+    //mise en place et affichage des vecteurs
     void affiche() const;
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
+
+    //opérations sur les vecteurs
     bool compare(Vecteur B, double precision=1e-10) const; //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
     Vecteur addition(Vecteur X) const;
     Vecteur soustraction(Vecteur X) const;
@@ -28,6 +31,8 @@ public:
     double norme() const;
     double norme2() const;
     Vecteur unitaire() const;
+    
+    //opérateurs
     friend ostream& operator<<(ostream& sortie,const Vecteur& v); //on met friend pour accéder aux éléments de vecteur
     bool operator==(Vecteur B) const;
     void operator+=(const Vecteur& B);
