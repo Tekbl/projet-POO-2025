@@ -15,8 +15,9 @@ class PointMateriel{
         Vecteur get_vit() const {return vecteur_vitesse.vecteur;};
         void set_pos(vector<double> a);
         void set_vit(vector<double> a);
-        ostream& operator<<(ostream& sortie, Vecteur v){}
-        Vecteur ChampForces(g);
+        ostream& operator<<(ostream& sortie,const Vecteur& v){};
+        Vecteur evolution(double t) const{};
+        Vecteur ChampForces(g); // emploie le constructeur de la classe Vecteur
 
     
     private:
@@ -24,11 +25,14 @@ class PointMateriel{
         Vecteur vecteur_vitesse; //3D et dérivée du vecteur position (vecteur dérivé du vecteur etat dans l'exercice P5)
         Vecteur position(){} // pas capté la diff avec set/get_pos/vit
         Vecteur vitesse(){} // pas capté la diff avec set/get_pos/vit
-        double evolution(double t) const{return ChampForces/masse;} //représente l'accéleration (pour l'instant on utilise une version simplifiée)
-
 
 };
 
+Vecteur PointMateriel::evolution(double t) const{
+    Vecteur A = ChampForces;
+    for (int i(0); i < int(A.vecteur.size()) ;i++){A.vecteur = A.vecteur.mult(masse);}
+    return A;} //représente l'accéleration (pour l'instant on utilise une version simplifiée)
+}
 
 void PointMateriel::set_pos(vector<double> a){
     for (int i(0); i<unsigned int(a.size());i++){
@@ -41,3 +45,10 @@ void PointMateriel::set_vit(vector<double> a){
         vecteur_vitesse.vecteur[i]=a[i];
     } 
 };//comme cela, get_pos/vit fonctionnent pour des vecteurs de n'importe quelle dimension
+
+ostream& operator<<(ostream& sortie, const Vecteur& v){
+    for(int i = 0;i < v.vecteur.size(); i++){
+        sortie << v.vecteur[i] << " ";
+    }
+    return sortie;
+}
