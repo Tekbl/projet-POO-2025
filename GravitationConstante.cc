@@ -2,6 +2,7 @@
 #include <vector>
 #include <cmath>
 #include "constantes.h"
+#include "PointMateriel.h"
 #include "VecteurV.h"
 using namespace std;
 
@@ -9,7 +10,7 @@ using namespace std;
 class GravitationConstante{
 
     public :
-        GravitationConstante():ggravitation.vecteur=g{}
+        GravitationConstante():gravitation.vecteur=g{}
         Vecteur force(PointMateriel p, double t) const;
 
     private :

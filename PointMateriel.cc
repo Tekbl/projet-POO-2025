@@ -15,7 +15,7 @@ class PointMateriel{
         Vecteur get_vit() const {return vecteur_vitesse.vecteur;};
         void set_pos(vector<double> a);
         void set_vit(vector<double> a);
-        ostream& operator<<(ostream& sortie, vec){}
+        ostream& operator<<(ostream& sortie, Vecteur v){}
         Vecteur ChampForces(g);
 
     
