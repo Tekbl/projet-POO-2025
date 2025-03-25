@@ -1,10 +1,26 @@
 #pragma once
+#include <iostream>
+#include <vector>
+#include <cmath>
 #include "VecteurV.h"
 #include "constantes.h"
 
-double masse;
-Vecteur get_pos() const {return vecteur_position.vecteur;};
-Vecteur get_vit() const {return vecteur_vitesse.vecteur;};
-void set_pos(vector<double> a);
-void set_vit(vector<double> a);
-Vecteur ChampForces(g);
+class PointMateriel {
+public:
+    double masse;
+    Vecteur get_pos(int i) const { return vecteur_position.get_coord(i); }
+    Vecteur get_vit(int i) const { return vecteur_vitesse.get_coord(i); }
+    void set_pos(std::vector<double> a);
+    void set_vit(std::vector<double> a);
+    Vecteur evolution(double t) const;
+    Vecteur ChampForces = g; 
+    friend std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p);
+    
+    // Method declarations
+    Vecteur position(); 
+    Vecteur vitesse();
+
+private:
+    Vecteur vecteur_position; 
+    Vecteur vecteur_vitesse; 
+};
