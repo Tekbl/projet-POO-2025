@@ -21,9 +21,9 @@ public:
     void augmente(double v);
 
     //opérations sur les vecteurs
-    bool compare(Vecteur B, double precision=1e-10) const; //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
-    Vecteur addition(Vecteur X) const;
-    Vecteur soustraction(Vecteur X) const;
+    bool compare(const Vecteur& B, double precision=1e-10) const; //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
+    Vecteur addition(const Vecteur& X) const;
+    Vecteur soustraction(const Vecteur& X) const;
     Vecteur oppose() const;
     Vecteur mult(double scalaire) const;
     double prod_scalaire(const Vecteur& B) const;
@@ -34,10 +34,16 @@ public:
     
     //opérateurs
     friend ostream& operator<<(ostream& sortie,const Vecteur& v); //on met friend pour accéder aux éléments de vecteur
-    bool operator==(Vecteur B) const;
+    bool operator==(const Vecteur& B) const;
+    bool operator!=(const Vecteur& B) const;
     void operator+=(const Vecteur& B);
     void operator-=(const Vecteur& B);
+    void operator*=(double d);
+    Vecteur operator*(double d);
     Vecteur operator^(const Vecteur& B);
+    friend const Vecteur operator+(Vecteur A, const Vecteur& B);
+    friend const Vecteur operator-(Vecteur A, const Vecteur& B);
+    Vecteur operator~() const;
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
@@ -66,7 +72,7 @@ void Vecteur::set_coord(int i,double v){
     vecteur[i] = v;
 }
 
-bool Vecteur::compare(Vecteur B,double precision) const{ 
+bool Vecteur::compare(const Vecteur& B,double precision) const{ 
     int dim = vecteur.size();
     if (dim==B.vecteur.size()){
         for (unsigned int i(0); i<dim ; i++){
@@ -80,7 +86,7 @@ bool Vecteur::compare(Vecteur B,double precision) const{
     }
 }
 
-Vecteur Vecteur::addition(Vecteur X) const{
+Vecteur Vecteur::addition(const Vecteur& X) const{
     // on fait des copies pour échanger A et B si dim(B)>Dim(A) pour faire l'addition afin d'éviter d'échanger les vecteurs instanciés pour le reste du programme
     vector <double> A = vecteur;
     vector <double> B = X.vecteur; 
@@ -102,7 +108,7 @@ Vecteur Vecteur::addition(Vecteur X) const{
     return D; //je suis vrm pas sur de ces 2 dernières lignes, parce qu'il faut retourner un Vecteur sauf que je dois manipuler les vecteurs (V majuscule = classe et v minuscule = vector contenant les éléments du Vecteur)
 }
 
-Vecteur Vecteur::soustraction(Vecteur X) const{
+Vecteur Vecteur::soustraction(const Vecteur& X) const{
     //attention si dim A < dim B on se retrouve à faire B-A plutôt que A-B à voir s'il faut changer la méthode
     return addition(X.oppose());
 }
@@ -202,8 +208,12 @@ ostream& operator<<(ostream& sortie, const Vecteur& v){
     return sortie;
 }
 
-bool Vecteur::operator==(Vecteur B) const{
+bool Vecteur::operator==(const Vecteur& B) const{
     return this->compare(B);
+}
+
+bool Vecteur::operator!=(const Vecteur& B) const{
+    return !(*this == B);
 }
 
 void Vecteur::operator+=(const Vecteur& B){
@@ -236,4 +246,26 @@ void Vecteur::operator-=(const Vecteur& B){
 
 Vecteur Vecteur::operator^(const Vecteur& B){
     return this->prod_scalaire(B);
+}
+
+const Vecteur operator+(Vecteur A, const Vecteur& B){
+    A += B;
+    return A;
+}
+
+const Vecteur operator-(Vecteur A, const Vecteur& B){
+    A-=B;
+    return A;
+}
+
+void Vecteur::operator*=(double d){
+    this->mult(d);
+}
+
+Vecteur Vecteur::operator*(double d){
+    return mult(d);
+}
+
+Vecteur Vecteur::operator~() const{
+    return unitaire();
 }

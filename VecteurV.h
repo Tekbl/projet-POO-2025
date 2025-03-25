@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <cmath>
+#include <iostream>
 
 
 class Vecteur{
@@ -19,9 +20,9 @@ public:
     void augmente(double v);
     
     //opérations sur les vecteurs
-    bool compare(Vecteur B, double precision=1e-10) const;
-    Vecteur addition(Vecteur X) const;
-    Vecteur soustraction(Vecteur X) const;
+    bool compare(const Vecteur& B, double precision=1e-10) const;
+    Vecteur addition(const Vecteur& X) const;
+    Vecteur soustraction(const Vecteur& X) const;
     Vecteur oppose() const;
     Vecteur mult(double scalaire) const;
     double prod_scalaire(const Vecteur& B) const;
@@ -32,10 +33,16 @@ public:
 
     //opérateurs
     friend ostream& operator<<(ostream& sortie,const Vecteur& v);
-    bool operator==(Vecteur B) const;
+    bool operator==(const Vecteur& B) const;
+    bool operator!=(const Vecteur& B) const;
     void operator+=(const Vecteur& B);
     void operator-=(const Vecteur& B);
+    void operator*=(double d);
+    Vecteur operator*(double d);
     Vecteur operator^(const Vecteur& B);
+    friend const Vecteur operator+(Vecteur A, const Vecteur& B);
+    friend const Vecteur operator-(Vecteur A, const Vecteur& B);
+    Vecteur operator~() const;
 
 private:
    
