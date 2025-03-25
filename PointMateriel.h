@@ -15,8 +15,6 @@ public:
     Vecteur evolution(double t) const;
     Vecteur ChampForces = g; 
     friend std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p);
-    
-    // Method declarations
     Vecteur position(); 
     Vecteur vitesse();
 
