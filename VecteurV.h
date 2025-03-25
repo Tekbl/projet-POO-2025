@@ -11,7 +11,7 @@ public:
     //constructeurs
     Vecteur(unsigned int dimension);
     Vecteur(double x, double y, double z);
-    Vecteur(const vector<double>& liste_dinit);
+    Vecteur(const std::vector<double>& liste_dinit);
 
     //mise en place et affichage des vecteurs
     void affiche() const;
@@ -32,7 +32,7 @@ public:
     Vecteur unitaire() const;
 
     //opérateurs
-    friend ostream& operator<<(ostream& sortie,const Vecteur& v);
+    friend std::ostream& operator<<(std::ostream& sortie,const Vecteur& v);
     bool operator==(const Vecteur& B) const;
     bool operator!=(const Vecteur& B) const;
     void operator+=(const Vecteur& B);
