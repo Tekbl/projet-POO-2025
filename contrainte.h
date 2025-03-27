@@ -3,8 +3,6 @@
 #include <cmath>
 #include "VecteurV.h"
 #include "ObjetIntegrable.h"
-using namespace std;
-
 
 class Contrainte{
     public:
@@ -18,19 +16,3 @@ class Libre:public Contrainte{
     Vecteur position(const ObjetPhysique& obj) override;
     Vecteur vitesse(const ObjetPhysique& obj) override;
 };
-
-Vecteur Libre::applique_force(const ObjetPhysique& obj, Vecteur force, double t){
-    if(obj.get_masse()>0){
-        return force * (1/obj.get_masse());
-    }else{
-        return force;
-    }
-}
-
-Vecteur Libre::position(const ObjetPhysique& obj){
-    return obj.get_E();
-}
-
-Vecteur Libre::vitesse(const ObjetPhysique& obj){
-    return obj.get_E_pr();
-}

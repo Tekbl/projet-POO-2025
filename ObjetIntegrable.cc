@@ -1,5 +1,7 @@
 #include <vector>
+#include <cmath>
 #include "VecteurV.h"
+#include "contrainte.h"
 
 using namespace std;
 
@@ -36,17 +38,22 @@ void ObjetMobile::set_E_pr(Vecteur nE_pr){
 
 class ObjetPhysique:public ObjetMobile{
     public: 
-        ObjetPhysique(Vecteur E, Vecteur E_pr, unsigned int dim, double masse)
-            :ObjetMobile(E,E_pr),dim_evo(dim),masse_(masse){};
+        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, unsigned int dim = 3, double masse = 0)
+            :ObjetMobile(E,E_pr),dim_evo(dim),masse_(abs(masse)){};
         Vecteur force(double t) const;
-        Vecteur position() const;
+        Vecteur position(Contrainte *c) const;
         Vecteur vitesse() const;
         double get_masse() const;
     private:
         unsigned int dim_evo;
         double masse_;
+        //possibilité de rajouter setter et getter pour dim et masse si besoin
 };
 
 double ObjetPhysique::get_masse() const{
     return masse_;
+}
+
+Vecteur ObjetPhysique::position(Contrainte *c) const{
+    return c->position(*this);
 }
