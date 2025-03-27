@@ -2,19 +2,23 @@
 #include <vector>
 #include <cmath>
 #include "VecteurV.h"
-#include "PointMateriel.h"
+#include "ObjetIntegrable.h"
 using namespace std;
 
 
 class Contrainte{
     public:
-        Vecteur applique_force(const PointMateriel& obj, Vecteur force, double temps);//à remplacer par un objet physique, pas sûr pour temps
-        Vecteur position();
+        Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps);//pas sûr pour temps
+        Vecteur position(const ObjetPhysique&);
     private:
 };
 
 
 
-Vecteur Contrainte::applique_force(const PointMateriel& obj, Vecteur force, double temps){
+Vecteur Contrainte::applique_force(const ObjetPhysique& obj, Vecteur force, double temps){
+
+}
+
+Vecteur Contrainte::position(const ObjetPhysique&){
 
 }
