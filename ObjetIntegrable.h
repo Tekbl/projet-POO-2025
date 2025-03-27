@@ -4,7 +4,7 @@
 class ObjetMobile{
     public:
         ObjetMobile(Vecteur E, Vecteur E_pr);
-        void evolution(double t);
+        virtual Vecteur evolution(double t) = 0;
         Vecteur get_E() const;
         Vecteur get_E_pr() const;
         void set_E(Vecteur nE);
@@ -17,10 +17,12 @@ class ObjetMobile{
 
 class ObjetPhysique:public ObjetMobile{
     public: 
-        ObjetPhysique(Vecteur E, Vecteur E_pr, unsigned int dim);
+        ObjetPhysique(Vecteur E, Vecteur E_pr, unsigned int dim, double masse);
         Vecteur force(double t) const;
         Vecteur position() const;
         Vecteur vitesse() const;
+        double get_masse() const;
     private:
         unsigned int dim_evo;
+        double masse_;
 };

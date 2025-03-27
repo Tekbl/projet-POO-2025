@@ -6,7 +6,7 @@ using namespace std;
 class ObjetMobile{
     public:
         ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
-        virtual void evolution(double t) = 0;
+        virtual Vecteur evolution(double t) = 0;
         Vecteur get_E() const;
         Vecteur get_E_pr() const;
         void set_E(Vecteur nE);
@@ -36,10 +36,17 @@ void ObjetMobile::set_E_pr(Vecteur nE_pr){
 
 class ObjetPhysique:public ObjetMobile{
     public: 
-        ObjetPhysique(Vecteur E, Vecteur E_pr, unsigned int dim):ObjetMobile(E,E_pr),dim_evo(dim){};
+        ObjetPhysique(Vecteur E, Vecteur E_pr, unsigned int dim, double masse)
+            :ObjetMobile(E,E_pr),dim_evo(dim),masse_(masse){};
         Vecteur force(double t) const;
         Vecteur position() const;
         Vecteur vitesse() const;
+        double get_masse() const;
     private:
         unsigned int dim_evo;
+        double masse_;
 };
+
+double ObjetPhysique::get_masse() const{
+    return masse_;
+}
