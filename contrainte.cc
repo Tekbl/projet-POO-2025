@@ -14,9 +14,23 @@ class Contrainte{
 };
 
 class Libre:public Contrainte{
-    Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps) override;
+    Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double t) override;
+    Vecteur position(const ObjetPhysique& obj) override;
+    Vecteur vitesse(const ObjetPhysique& obj) override;
 };
 
-Vecteur Libre::applique_force(const ObjetPhysique& obj, Vecteur force, double temps){
-    
+Vecteur Libre::applique_force(const ObjetPhysique& obj, Vecteur force, double t){
+    if(obj.get_masse()>0){
+        return force * (1/obj.get_masse());
+    }else{
+        return force;
+    }
+}
+
+Vecteur Libre::position(const ObjetPhysique& obj){
+    return obj.get_E();
+}
+
+Vecteur Libre::vitesse(const ObjetPhysique& obj){
+    return obj.get_E_pr();
 }

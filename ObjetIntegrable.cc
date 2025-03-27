@@ -1,4 +1,5 @@
 #include <vector>
+#include <cmath>
 #include "VecteurV.h"
 
 using namespace std;
@@ -37,7 +38,7 @@ void ObjetMobile::set_E_pr(Vecteur nE_pr){
 class ObjetPhysique:public ObjetMobile{
     public: 
         ObjetPhysique(Vecteur E, Vecteur E_pr, unsigned int dim, double masse)
-            :ObjetMobile(E,E_pr),dim_evo(dim),masse_(masse){};
+            :ObjetMobile(E,E_pr),dim_evo(dim),masse_(abs(masse)){};
         Vecteur force(double t) const;
         Vecteur position() const;
         Vecteur vitesse() const;

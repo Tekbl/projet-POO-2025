@@ -1,4 +1,6 @@
+#pragma once
 #include <vector>
+#include <cmath>
 #include "VecteurV.h"
 
 class ObjetMobile{
