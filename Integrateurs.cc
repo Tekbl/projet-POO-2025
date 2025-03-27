@@ -17,9 +17,6 @@ class integrateurEulerCromer : public integrateur{
         virtual void evolue(ObjetMobile *obj, double t, double dt) override;
             
 };
-//comment on fait la diff entre premier ordre et deuxième ordre ??
-//nom des méthodes a changer
-//pointeurs et ou références à implémenter 
 
 void integrateurEulerCromer::evolue(ObjetMobile *obj, double t, double dt) {
     obj->set_E_pr(obj->get_E_pr() + obj->evolution((abs(t))*abs(dt))); //évolue E_pr
