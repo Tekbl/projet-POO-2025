@@ -8,17 +8,15 @@ using namespace std;
 
 class Contrainte{
     public:
-        Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps);//pas sûr pour temps
-        Vecteur position(const ObjetPhysique&);
-    private:
+        virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps) = 0;
+        virtual Vecteur position(const ObjetPhysique& obj) = 0;
+        virtual Vecteur vitesse(const ObjetPhysique& obj) = 0;
 };
 
+class Libre:public Contrainte{
+    Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps) override;
+};
 
-
-Vecteur Contrainte::applique_force(const ObjetPhysique& obj, Vecteur force, double temps){
-
-}
-
-Vecteur Contrainte::position(const ObjetPhysique&){
-
+Vecteur Libre::applique_force(const ObjetPhysique& obj, Vecteur force, double temps){
+    
 }
