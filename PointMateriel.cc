@@ -3,14 +3,14 @@
 #include <cmath>
 #include "VecteurV.h"
 #include "constantes.h"
+#include "ObjetIntegrable.h"    
 using namespace std;
 
 
 
-class PointMateriel{
+class PointMateriel:public ObjetPhysique{
 
     public: 
-        double masse;
         double get_pos(int i) const {return vecteur_position.get_coord(i);};
         double get_vit(int i) const {return vecteur_vitesse.get_coord(i);};
         void set_pos(vector<double> a);
@@ -32,10 +32,7 @@ Vecteur PointMateriel::position(){return vecteur_position;}
 Vecteur PointMateriel::vitesse(){return vecteur_vitesse;}
 
 Vecteur PointMateriel::evolution(double t) const{
-    Vecteur A=ChampForces;
-    A = A.mult(masse);
-    return A;} //représente l'accéleration (pour l'instant on utilise une version simplifiée)
- 
+    return ChampForces.mult(get_masse()) ;} //représente l'accéleration 
 
 void PointMateriel::set_pos(vector<double> a){
     for (size_t i = 0; i< a.size(); i++){
