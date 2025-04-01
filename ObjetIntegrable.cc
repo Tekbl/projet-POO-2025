@@ -44,6 +44,7 @@ class ObjetPhysique:public ObjetMobile{
             :ObjetMobile(E,E_pr),dim_evo(dim),masse_(abs(masse),champ = g){};
         Vecteur force(double t) const;
         Vecteur position(Contrainte *c) const;
+        Vecteur position(Contrainte *c) const;
         Vecteur vitesse() const;
         double get_masse() const;
     protected:
@@ -56,6 +57,7 @@ class ObjetPhysique:public ObjetMobile{
 double ObjetPhysique::get_masse() const{
     return masse_;
 }
+
 
 Vecteur ObjetPhysique::position(Contrainte *c) const{
     return c->position(*this);
