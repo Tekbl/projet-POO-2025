@@ -63,5 +63,4 @@ Vecteur ObjetPhysique::position(Contrainte *c) const{
     return c->position(*this);
 }
 
-Vecteur ObjetPhysique::evolution(double t) const{
-    return champ.mult(get_masse()) ;} //représente l'accéleration 
+
