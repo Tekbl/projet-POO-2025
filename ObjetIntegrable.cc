@@ -69,6 +69,3 @@ Vecteur ObjetPhysique::vitesse(Contrainte *c) const{
 Vecteur ObjetPhysique::force(ChampForces *c ,double t) const{
     return c->force(*this,t);
 }
-
-Vecteur ObjetPhysique::evolution(double t) const{
-    return champ.mult(get_masse()) ;} //représente l'accéleration 
