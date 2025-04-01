@@ -2,7 +2,7 @@
 #include <vector>
 #include <cmath>
 #include "VecteurV.h"
-#include "contrainte.h"
+class Contrainte;
 
 class ObjetMobile{
     public:
@@ -22,7 +22,7 @@ class ObjetPhysique:public ObjetMobile{
     public: 
         ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, unsigned int dim = 3, double masse = 0);
         Vecteur force(double t) const;
-        Vecteur position(Contrainte *c) const;
+        Vecteur position(/*Contrainte *c*/) const;
         Vecteur vitesse() const;
         double get_masse() const;
     private:

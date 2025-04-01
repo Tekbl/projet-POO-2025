@@ -14,9 +14,9 @@ class Contrainte{
 };
 
 class Libre:public Contrainte{
-    Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double t) override;
-    Vecteur position(const ObjetPhysique& obj) override;
-    Vecteur vitesse(const ObjetPhysique& obj) override;
+    virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double t) override;
+    virtual Vecteur position(const ObjetPhysique& obj) override;
+    virtual Vecteur vitesse(const ObjetPhysique& obj) override;
 };
 
 Vecteur Libre::applique_force(const ObjetPhysique& obj, Vecteur force, double t){
