@@ -5,13 +5,14 @@
 #include "VecteurV.h"
 #include "PointMateriel.h"
 #include "constantes.h"
+#include "ObjetIntegrable.h"
+#include "Champforces.h"
 
-
-class GravitationConstante{
+class GravitationConstante : public ChampForces{
 
     public :
         GravitationConstante(); 
-        Vecteur force(PointMateriel p, double t) const;
+        virtual Vecteur force(ObjetPhysique const& p, double t) const override;
     
 
     private :

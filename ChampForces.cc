@@ -8,7 +8,7 @@
 class ChampForces{
     public :
         
-    virtual Vecteur force(const ObjetPhysique& obj, double t) = 0;
+    virtual Vecteur force(const ObjetPhysique& obj, double t) const = 0;
 
     private :
 
