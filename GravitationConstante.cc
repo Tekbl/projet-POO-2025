@@ -18,5 +18,3 @@ class GravitationConstante : ChampForces {
     private :
         Vecteur gravitation;
 };
-
-
