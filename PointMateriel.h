@@ -19,7 +19,7 @@ public:
     friend std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p);
     Vecteur position(); 
     Vecteur vitesse();
-    void ecrit_sur(ostream& sortie){}
+    void ecrit_sur(ostream& sortie) const{}
     void affiche(){}
     void affiche(double t){}
 

@@ -18,12 +18,12 @@ class PointMateriel:public Dessinable{
         void set_pos(vector<double> a);
         void set_vit(vector<double> a);
         Vecteur evolution(double t) const;
-        Vecteur ChampForces = g; //instruction de la W4, à changer dans le futur 
+        //Vecteur ChampForces = g; //instruction de la W4, à changer dans le futur 
         friend ostream& operator<<(ostream& sortie, const PointMateriel& p);
         Vecteur position();
         Vecteur vitesse();
 
-        void ecrit_sur(ostream& sortie){}
+        void ecrit_sur(ostream& sortie)const {}
         void affiche(){}
         void affiche(double t){}
 
@@ -37,8 +37,11 @@ class PointMateriel:public Dessinable{
 Vecteur PointMateriel::position(){return vecteur_position;}
 Vecteur PointMateriel::vitesse(){return vecteur_vitesse;}
 
+
+/*===============================A_CHANGER==================================
 Vecteur PointMateriel::evolution(double t) const{
     return ChampForces.mult(get_masse()) ;} //représente l'accéleration 
+*/
 
 void PointMateriel::set_pos(vector<double> a){
     for (size_t i = 0; i< a.size(); i++){
@@ -59,11 +62,11 @@ void PointMateriel::affiche(){
 
 void PointMateriel::affiche(double t){
     affiche();
-    cout << ChampForces << endl;
+    //cout << ChampForces << endl;
 
 }
 
-void PointMateriel::ecrit_sur(ostream& out){
+void PointMateriel::ecrit_sur(ostream& out) const{
     out << "champ de force :" << "\n" << vecteur_position << " #position" << "\n" << vecteur_vitesse << " #vitesse" <<endl;
 }
 
