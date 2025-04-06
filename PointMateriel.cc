@@ -3,27 +3,24 @@
 #include <cmath>
 #include "VecteurV.h"
 #include "constantes.h"
-#include "ObjetIntegrable.h" 
-#include "ObjetDessinable.h"    
-using namespace std;
+#include "ObjetIntegrable.h"     
 
 
 
-class PointMateriel:public Dessinable{
+class PointMateriel:public ObjetPhysique{
 
     public: 
-        virtual void dessine_sur(SupportADessin& support) override{ support.dessine(*this); }
         double get_pos(int i) const {return vecteur_position.get_coord(i);};
         double get_vit(int i) const {return vecteur_vitesse.get_coord(i);};
-        void set_pos(vector<double> a);
-        void set_vit(vector<double> a);
+        void set_pos(std::vector<double> a);
+        void set_vit(std::vector<double> a);
         Vecteur evolution(double t) const;
         //Vecteur ChampForces = g; //instruction de la W4, à changer dans le futur 
-        friend ostream& operator<<(ostream& sortie, const PointMateriel& p);
+        friend std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p);
         Vecteur position();
         Vecteur vitesse();
 
-        void ecrit_sur(ostream& sortie)const {}
+        void ecrit_sur(std::ostream& sortie)const {}
         void affiche(){}
         void affiche(double t){}
 
@@ -38,25 +35,26 @@ Vecteur PointMateriel::position(){return vecteur_position;}
 Vecteur PointMateriel::vitesse(){return vecteur_vitesse;}
 
 
-/*===============================A_CHANGER==================================
+/*
+===============================A_CHANGER==================================
 Vecteur PointMateriel::evolution(double t) const{
     return ChampForces.mult(get_masse()) ;} //représente l'accéleration 
 */
 
-void PointMateriel::set_pos(vector<double> a){
+void PointMateriel::set_pos(std::vector<double> a){
     for (size_t i = 0; i< a.size(); i++){
         vecteur_position.set_coord(i,a[i]);
     } 
 }; 
 
-void PointMateriel::set_vit(vector<double> a){
+void PointMateriel::set_vit(std::vector<double> a){
     for (int i(0); i< a.size() ; i++){
         vecteur_vitesse.set_coord(i,a[i]);
     } 
 };//comme cela, get_pos/vit fonctionnent pour des vecteurs de n'importe quelle dimension
 
 void PointMateriel::affiche(){
-    ecrit_sur(cout);
+    ecrit_sur(std::cout);
 }
 
 
@@ -66,11 +64,11 @@ void PointMateriel::affiche(double t){
 
 }
 
-void PointMateriel::ecrit_sur(ostream& out) const{
+void PointMateriel::ecrit_sur(std::ostream& out) const{
     out << "champ de force :" << "\n" << vecteur_position << " #position" << "\n" << vecteur_vitesse << " #vitesse" <<endl;
 }
 
-ostream& operator<<(ostream& sortie, const PointMateriel& p){
+std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p){
     p.ecrit_sur(sortie);
     return sortie;
 }

@@ -4,10 +4,9 @@
 #include <cmath>
 #include "VecteurV.h"
 #include "constantes.h"
-#include "ObjetDessinable.h"
 #include "ObjetIntegrable.h"
 
-class PointMateriel: public Dessinable {
+class PointMateriel: public ObjetPhysique{
 public:
     double masse;
     Vecteur get_pos(int i) const { return vecteur_position.get_coord(i); }
@@ -19,7 +18,7 @@ public:
     friend std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p);
     Vecteur position(); 
     Vecteur vitesse();
-    void ecrit_sur(ostream& sortie) const{}
+    void ecrit_sur(std::ostream& sortie) const{}
     void affiche(){}
     void affiche(double t){}
 
