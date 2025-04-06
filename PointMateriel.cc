@@ -3,14 +3,16 @@
 #include <cmath>
 #include "VecteurV.h"
 #include "constantes.h"
-#include "ObjetIntegrable.h"    
+#include "ObjetIntegrable.h" 
+#include "ObjetDessinable.h"    
 using namespace std;
 
 
 
-class PointMateriel:public ObjetPhysique{
+class PointMateriel:public Dessinable{
 
     public: 
+        virtual void dessine_sur(SupportADessin& support) override{ support.dessine(*this); }
         double get_pos(int i) const {return vecteur_position.get_coord(i);};
         double get_vit(int i) const {return vecteur_vitesse.get_coord(i);};
         void set_pos(vector<double> a);
@@ -20,6 +22,9 @@ class PointMateriel:public ObjetPhysique{
         friend ostream& operator<<(ostream& sortie, const PointMateriel& p);
         Vecteur position();
         Vecteur vitesse();
+
+        void affiche(){}
+        void affiche(double t){}
 
     private:    
         Vecteur vecteur_position; //3D pour l'instant (vecteur etat dans l'exercice P5)
@@ -46,7 +51,23 @@ void PointMateriel::set_vit(vector<double> a){
     } 
 };//comme cela, get_pos/vit fonctionnent pour des vecteurs de n'importe quelle dimension
 
+void PointMateriel::affiche(){
+    cout << "champ de force :"<< endl;
+    cout << "\n" << vecteur_position << " #position" <<endl;
+    cout << "\n" << vecteur_vitesse << " #vitesse" <<endl;
+}
+
+void PointMateriel::affiche(double t){
+    affiche();
+    cout << ChampForces << endl;
+
+}
+
+
 ostream& operator<<(ostream& sortie, const PointMateriel& p){
-    sortie << p.ChampForces << " ";
+    p.affiche();
     return sortie;
 }
+
+
+
