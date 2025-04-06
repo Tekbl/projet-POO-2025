@@ -18,5 +18,5 @@ class TextViewer : public SupportADessin{
     public :
         virtual ostream& dessine(PointMateriel const& p)override{std::cout << p.affiche() << std::endl;}
     private :
-         
+         ostream &sortie; 
 };

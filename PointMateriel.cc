@@ -23,6 +23,7 @@ class PointMateriel:public Dessinable{
         Vecteur position();
         Vecteur vitesse();
 
+        void ecrit_sur(ostream& sortie){}
         void affiche(){}
         void affiche(double t){}
 
@@ -52,10 +53,9 @@ void PointMateriel::set_vit(vector<double> a){
 };//comme cela, get_pos/vit fonctionnent pour des vecteurs de n'importe quelle dimension
 
 void PointMateriel::affiche(){
-    cout << "champ de force :"<< endl;
-    cout << "\n" << vecteur_position << " #position" <<endl;
-    cout << "\n" << vecteur_vitesse << " #vitesse" <<endl;
+    ecrit_sur(cout);
 }
+
 
 void PointMateriel::affiche(double t){
     affiche();
@@ -63,9 +63,12 @@ void PointMateriel::affiche(double t){
 
 }
 
+void PointMateriel::ecrit_sur(ostream& out){
+    out << "champ de force :" << "\n" << vecteur_position << " #position" << "\n" << vecteur_vitesse << " #vitesse" <<endl;
+}
 
 ostream& operator<<(ostream& sortie, const PointMateriel& p){
-    p.affiche();
+    p.ecrit_sur(sortie);
     return sortie;
 }
 
