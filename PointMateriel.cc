@@ -24,6 +24,9 @@ class PointMateriel:public ObjetPhysique{
         void affiche(){}
         void affiche(double t){}
 
+        //constructeur ?
+        //destructeur ?
+
     private:    
         Vecteur vecteur_position; //3D pour l'instant (vecteur etat dans l'exercice P5)
         Vecteur vecteur_vitesse; //3D et dérivée du vecteur position (vecteur dérivé du vecteur etat dans l'exercice P5)
@@ -65,7 +68,7 @@ void PointMateriel::affiche(double t){
 }
 
 void PointMateriel::ecrit_sur(std::ostream& out) const{
-    out << "champ de force :" << "\n" << vecteur_position << " #position" << "\n" << vecteur_vitesse << " #vitesse" <<endl;
+    out << "champ de force :" << "\n" << vecteur_position << " #position" << "\n" << vecteur_vitesse << " #vitesse" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p){
