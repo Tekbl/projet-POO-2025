@@ -47,6 +47,8 @@ class ObjetPhysique:public ObjetMobile{
         Vecteur vitesse(Contrainte *c) const;
         double get_masse() const;
     protected: 
+        //vector<Contrainte*> contr;
+        //vector<ChampForces*> champ;
         unsigned int dim_evo;
         double masse_;
         //possibilité de rajouter setter et getter pour dim et masse si besoin
