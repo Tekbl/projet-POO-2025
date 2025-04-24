@@ -1,10 +1,12 @@
 #pragma once
 #include <vector> 
+#include <memory>
 #include "ObjetIntegrable.h"
 #include "contrainte.h"
 #include "Integrateurs.h"
+#include "Printable.h"
 
-class Systeme{
+class Systeme: public Printable{
     
     private :
         std::vector<std::unique_ptr<ObjetPhysique>> sys_objects;
@@ -35,5 +37,5 @@ class Systeme{
         double get_time();
 
 
-        void affiche(std::ostream& sortie);
+        virtual void affiche(std::ostream& sortie)const override;
 };

@@ -5,7 +5,7 @@
 #include "Printable.h"
 #include <memory>
 
-class Systeme:: Printable{
+class Systeme : public Printable{
     
     private :
         std::vector<std::unique_ptr<ObjetPhysique>> sys_objects;
