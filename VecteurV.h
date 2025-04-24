@@ -15,7 +15,7 @@ public:
     Vecteur(const std::vector<double>& liste_dinit);
 
     //mise en place et affichage des vecteurs
-    virtual void affiche(ostream& out) const override;
+    virtual void affiche(std::ostream& out) const override;
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
