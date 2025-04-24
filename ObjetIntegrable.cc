@@ -41,8 +41,8 @@ void ObjetMobile::set_E_pr(Vecteur nE_pr){
 
 class ObjetPhysique:public ObjetMobile{
     public: 
-        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, unsigned int dim = 3, double masse = 0)
-            :ObjetMobile(E,E_pr),dim_evo(dim),masse_(abs(masse)){};
+        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3)
+            :ObjetMobile(E,E_pr),masse_(abs(masse)),dim_evo(dim){};
         Vecteur force(ChampForces *c, double t) const;
         Vecteur position(Contrainte *c) const;
         Vecteur vitesse(Contrainte *c) const;
