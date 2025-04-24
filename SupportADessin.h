@@ -1,34 +1,35 @@
 #pragma once
-#include "ObjetDessinable.h"
+#include <iostream>
 #include "PointMateriel.h"
 #include "ObjetIntegrable.h"
-
+#include "Systeme.h"
 
 class SupportADessin{
     public:
-//=============CONTRADICTION INSTRUCTIONS W7 ET COMPLEMENT DE PROG==================
-        //les supports de doivent pas être copiés
-        SupportADessin(SupportADessin const&)            = delete;
-        SupportADessin& operator=(SupportADessin const&) = delete;
-
-
-        //Par contre on a le droit de déplacer les supports
-        SupportADessin(SupportADessin&&)            = default;
-        SupportADessin& operator=(SupportADessin&&) = default;
-
-        SupportADessin() = default;
         virtual ~SupportADessin() = default; // on suppose ici que les supports ne seront ni copiés ni déplacés
-        
-        
-        virtual void dessine(PointMateriel const&) = 0;
-        //virtual void dessine(Systeme const&) = 0;
-        //virtual void dessine(Solide const&) = 0; // exemple, non abordé dans ce projet
-        // ... autres choses que vous voudriez « dessiner »...
+        virtual void dessine(PointMateriel const& p)=0;
+        virtual void dessine(Systeme const& s) = 0;
+       
+
 };
 
 class TextViewer : public SupportADessin{
 
-    public :
-        virtual void dessine(PointMateriel const& p){std::cout << p << std::endl;}
     private :
+        std::ostream& flot; 
+    public :
+        TextViewer(std::ostream& flot_):flot(flot_){}
+        virtual ~TextViewer()=default;
+
+        virtual void dessine(PointMateriel const& p);
+        virtual void dessine(Systeme const& s);
+
+
+
+        TextViewer(TextViewer const&) = delete;
+        TextViewer& operator=(TextViewer const&) = delete;
+        TextViewer(TextViewer&&) = default;
+        TextViewer& operator=(TextViewer&&) = default;
+
+
 };
