@@ -2,7 +2,7 @@
 #include "ObjetIntegrable.h"
 #include "contrainte.h"
 #include "Integrateurs.h"
-#include "Printable.h"
+#include "affichage.h"
 #include <memory>
 
 class Systeme : public Printable{

@@ -1,5 +1,4 @@
 #include <iostream>
-#include "ObjetDessinable.h"
 #include "PointMateriel.h"
 #include "ObjetIntegrable.h"
 #include "Systeme.h"
