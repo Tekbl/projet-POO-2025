@@ -2,9 +2,10 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+#include "affichage.h"
 
 
-class Vecteur{
+class Vecteur: public Printable{
 
 public:
 
@@ -14,7 +15,7 @@ public:
     Vecteur(const std::vector<double>& liste_dinit);
 
     //mise en place et affichage des vecteurs
-    void affiche() const;
+    virtual void affiche(ostream& out) const override;
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
@@ -32,7 +33,6 @@ public:
     Vecteur unitaire() const;
 
     //opérateurs
-    friend std::ostream& operator<<(std::ostream& sortie,const Vecteur& v);
     bool operator==(const Vecteur& B) const;
     bool operator!=(const Vecteur& B) const;
     void operator+=(const Vecteur& B);

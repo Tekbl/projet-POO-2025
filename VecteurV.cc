@@ -34,7 +34,6 @@ public:
     Vecteur unitaire() const;
     
     //opérateurs
-    friend ostream& operator<<(ostream& sortie,const Vecteur& v); //on met friend pour accéder aux éléments de vecteur
     bool operator==(const Vecteur& B) const;
     bool operator!=(const Vecteur& B) const;
     void operator+=(const Vecteur& B);
