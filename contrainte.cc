@@ -3,10 +3,11 @@
 #include <cmath>
 #include "VecteurV.h"
 #include "ObjetIntegrable.h"
+#include "affichage.h"
 using namespace std;
 
 
-class Contrainte{
+class Contrainte : public Printable{
     public:
         virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps) = 0;
         virtual Vecteur position(const ObjetPhysique& obj) = 0;
