@@ -17,6 +17,8 @@ class Systeme: public Printable{
         std::vector<std::unique_ptr<ChampForces>> sys_force_field;
         std::unique_ptr<integrateur> integrator;
 
+        void append_force_field(unsigned int i, unsigned int j);
+        void append_constraint(unsigned int i, unsigned int j);
 
         double time; // peut être utiliser un SHARED_PTR pour le temps, ce serait bien
         // Si pas de shared_ptr, faut que tout les bidules qui utilisent time passent par REFERENCE

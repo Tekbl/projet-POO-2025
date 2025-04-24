@@ -40,11 +40,11 @@ class Systeme : public Printable{
         }
 
         void append_constraint(unsigned int i, unsigned int j){
-            sys_objects[j];
+            sys_objects[j]->add_contr(sys_constraints[i].get());
         }
         
         void append_force_field(unsigned int i, unsigned int j){
-            sys_objects[j];
+            sys_objects[j]->add_champ(sys_force_field[i].get());
         }
         double get_time(){return time;}
 
@@ -54,14 +54,14 @@ class Systeme : public Printable{
             for (int i(0);i<sys_objects.size();i++){
                 sortie << "Objet no " << i << " : " <<std::endl;
                 sys_objects[i]->whoami(sortie);
-                sortie << sys_objects[i] << std::endl;
+                sortie << sys_objects[i].get() << std::endl;
                 sortie << "" << std::endl;
                 //contrainte relative à l'objet est gérée par l'affichage de l'objet
             }
             for (int j(0);j<sys_force_field.size();j++){
                 sortie << "Champ no " << j ;
                 sys_force_field[j]->whoami(sortie);
-                sortie << sys_force_field[j];
+                sortie << sys_force_field[j].get() << std::endl;
                 // ça s'applique aussi à sys_objects
             }
             for (int k(0);k<sys_force_field.size();k++){
