@@ -11,6 +11,7 @@ class ChampForces : public Printable{
     public :
         
     virtual Vecteur force(const ObjetPhysique& obj, double t) const;
+    virtual void affiche(std::ostream& out)const override;//blank for now since we have no use for it
 
     private :
 };
