@@ -2,8 +2,10 @@
 #include "ObjetIntegrable.h"
 #include "contrainte.h"
 #include "Integrateurs.h"
+#include "Printable.h"
+#include <memory>
 
-class Systeme{
+class Systeme:: Printable{
     
     private :
         std::vector<std::unique_ptr<ObjetPhysique>> sys_objects;
@@ -45,7 +47,7 @@ class Systeme{
 
 
 //A DEFINIR : whoami, liste de champforce et liste de contrainre dans ObjetPhysique, surcharge externe générale de << 
-        void affiche(std::ostream& sortie){
+        virtual void affiche(std::ostream& sortie)const override{
             sortie << "Systeme : à t = " << time <<" :" << std::endl;
             for (int i(0);i<sys_objects.size();i++){
                 sortie << "Objet no " << i << " : " << sys_objects[i]->whoami() <<" : " <<std::endl;

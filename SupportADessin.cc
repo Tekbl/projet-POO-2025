@@ -2,22 +2,34 @@
 #include "ObjetDessinable.h"
 #include "PointMateriel.h"
 #include "ObjetIntegrable.h"
+#include "Systeme.h"
 
 class SupportADessin{
     public:
         virtual ~SupportADessin() = default; // on suppose ici que les supports ne seront ni copiés ni déplacés
-        virtual void dessine(std::ostream& sortie, PointMateriel const&)=0;
-        //virtual void dessine(Systeme const&) = 0;
-        //virtual void dessine(Solide const&) = 0; // exemple, non abordé dans ce projet
-        // ... autres choses que vous voudriez « dessiner »...
-    private : 
-        std::ostream& flot; 
+        virtual void dessine(PointMateriel const& p)=0;
+        virtual void dessine(Systeme const& s) = 0;
+       
+
 };
 
 class TextViewer : public SupportADessin{
 
-    public :
-        virtual void dessine(PointMateriel const& p)override{std::cout << p << std::endl;}
     private :
-         
+        std::ostream& flot; 
+    public :
+        TextViewer(std::ostream& flot_):flot(flot_){}
+        virtual ~TextViewer()=default;
+
+        virtual void dessine(PointMateriel const& p)override{flot << p << std::endl;}
+        virtual void dessine(Systeme const& s)override{flot << s << std::endl;}
+
+
+
+        TextViewer(TextViewer const&) = delete;
+        TextViewer& operator=(TextViewer const&) = delete;
+        TextViewer(TextViewer&&) = default;
+        TextViewer& operator=(TextViewer&&) = default;
+
+
 };
