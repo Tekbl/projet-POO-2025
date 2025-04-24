@@ -6,8 +6,10 @@
 #include "constantes.h"
 #include "ObjetIntegrable.h"
 #include "affichage.h"
+#include "ObjetDessinable.h"
 
-class PointMateriel: public ObjetPhysique{
+
+class PointMateriel: public ObjetPhysique, public Dessinable{
 public:
     PointMateriel(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
     const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{});
@@ -17,7 +19,8 @@ public:
     void set_vit(std::vector<double> a);*/
     virtual Vecteur evolution(double t) override;
     virtual void affiche(std::ostream& sortie)const override;
-
+    virtual void dessine_sur(SupportADessin& support) { support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
+    
 private:
     /*Vecteur vecteur_position; 
     Vecteur vecteur_vitesse;*/
