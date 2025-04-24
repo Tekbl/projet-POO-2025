@@ -50,14 +50,16 @@ class Systeme : public Printable{
         virtual void affiche(std::ostream& sortie)const override{
             sortie << "Systeme : à t = " << time <<" :" << std::endl;
             for (int i(0);i<sys_objects.size();i++){
-                sortie << "Objet no " << i << " : " << sys_objects[i]->whoami() <<" : " <<std::endl;
+                sortie << "Objet no " << i << " : " <<std::endl;
+                sys_objects[i]->whoami(sortie);
                 sortie << sys_objects[i] << std::endl;
                 sortie << "" << std::endl;
                 //contrainte relative à l'objet est gérée par l'affichage de l'objet
             }
             for (int j(0);j<sys_force_field.size();j++){
-                sortie << "Champ no " << j << sys_force_field[j]->whoami() << sys_force_field[j];
-                // je dois faire <<sys_force_field[j] ou utiliser la fonction affiche de sys_force_field[j]?
+                sortie << "Champ no " << j ;
+                sys_force_field[j]->whoami(sortie);
+                sortie << sys_force_field[j];
                 // ça s'applique aussi à sys_objects
             }
             for (int k(0);k<sys_force_field.size();k++){
