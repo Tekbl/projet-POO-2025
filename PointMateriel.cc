@@ -16,7 +16,17 @@ class PointMateriel:public ObjetPhysique{
         PointMateriel(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
             const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{}):
             ObjetPhysique(E,E_pr,masse,dim){
-                
+                if(c.empty()){
+                    champ.push_back(new GravitationConstante());
+                }else{ 
+                    champ = c;
+                }
+
+                if(ctr.empty()){
+                    contr.push_back(new Libre());
+                }else{
+                    contr = ctr;
+                }
             };
         /*double get_pos(int i) const {return vecteur_position.get_coord(i);};
         double get_vit(int i) const {return vecteur_vitesse.get_coord(i);};
