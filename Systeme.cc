@@ -63,7 +63,9 @@ class Systeme : public Printable{
                 // ça s'applique aussi à sys_objects
             }
             for (int k(0);k<sys_force_field.size();k++){
-                sortie << "Contrainte no " << k << sys_constraints[k]->whoami() << std::endl;
+                sortie << "Contrainte no " << k ;
+                sys_constraints[k]->whoami(sortie);
+                sortie << std::endl;
             }
 
         }
