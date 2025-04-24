@@ -42,11 +42,13 @@ class Systeme : public Printable{
         void append_constraint(unsigned int i, unsigned int j){
             sys_objects[j];
         }
-
+        
+        void append_force_field(unsigned int i, unsigned int j){
+            sys_objects[j];
+        }
         double get_time(){return time;}
 
 
-//A DEFINIR : whoami, liste de champforce et liste de contrainre dans ObjetPhysique, surcharge externe générale de << 
         virtual void affiche(std::ostream& sortie)const override{
             sortie << "Systeme : à t = " << time <<" :" << std::endl;
             for (int i(0);i<sys_objects.size();i++){

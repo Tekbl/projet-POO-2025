@@ -48,6 +48,13 @@ class ObjetPhysique:public ObjetMobile{
         Vecteur vitesse(Contrainte *c) const;
         double get_masse() const;
         virtual void affiche(ostream& out) const override;
+
+        vector<Contrainte*> get_contr(){return contr;}
+        vector<ChampForces*> get_champ(){return champ;}
+
+        void add_contr(Contrainte* c){contr.push_back(c);}
+        void add_champ(ChampForces* c){champ.push_back(c);}
+        
     protected: 
         vector<Contrainte*> contr;
         vector<ChampForces*> champ;
