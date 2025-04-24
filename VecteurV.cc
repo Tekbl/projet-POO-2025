@@ -20,6 +20,7 @@ public:
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
+    virtual void whoami(ostream& out)const override;
 
     //opérations sur les vecteurs
     bool compare(const Vecteur& B, double precision=1e-10) const; //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
@@ -57,6 +58,10 @@ void Vecteur::affiche(ostream& out) const{
         }
     }
     out << endl;
+}
+
+void Vecteur::whoami(ostream& out) const{
+    out << "vecteur";
 }
 
 double Vecteur::get_coord(int i)const {

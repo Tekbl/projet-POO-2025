@@ -19,6 +19,7 @@ public:
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
+    virtual void whoami(std::ostream& out)const override;
     
     //opérations sur les vecteurs
     bool compare(const Vecteur& B, double precision=1e-10) const;
