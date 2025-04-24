@@ -2,10 +2,11 @@
 #include <vector>
 #include <cmath>
 #include "VecteurV.h"
+#include "affichage.h"
 class Contrainte;
 class ChampForces;
 
-class ObjetMobile{
+class ObjetMobile: public Printable{
     public:
         ObjetMobile(Vecteur E, Vecteur E_pr);
         virtual Vecteur evolution(double t) = 0;
@@ -26,6 +27,7 @@ class ObjetPhysique:public ObjetMobile{
         Vecteur position(Contrainte *c) const;
         Vecteur vitesse(Contrainte *c) const;
         double get_masse() const;
+        virtual void affiche(ostream& out) const override;
     private:
         unsigned int dim_evo;
         double masse_;
