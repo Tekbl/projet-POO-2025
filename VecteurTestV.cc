@@ -4,45 +4,59 @@ using namespace std;
 
 
 int main(){
-Vecteur vect1;
-Vecteur vect2;
-Vecteur vect3;
-cout << "hello world" << endl;
-/* Cette partie
- * (1) pourrait être écrite autrement, par exemple avec des
- *     manipulateurs (set_coord()) ;
- * (2) sera revue dans 2 semaines (constructeurs, surcharge des opérateurs).
- */
-//v1 = (1.0, 2.0, -0.1)
-vect1.augmente(1.0); vect1.augmente(0.0); vect1.augmente(-0.1);
-vect1.set_coord(1, 2.0); // pour tester set_coord()
+    // Test 1: Création de vecteurs
+    Vecteur v1(3);          // Vecteur de dimension 3, initialisé avec 0.0
+    Vecteur v2(1.0, 2.0, 3.0);  // Vecteur 3D (1, 2, 3)
+    vector<double> liste = {4.0, 5.0, 6.0};
+    Vecteur v3(liste);  // Vecteur de dimension 3 (4, 5, 6)
 
-//v2 = (2.6, 3.5,  4.1)
-vect2.augmente(2.6); vect2.augmente(3.5); vect2.augmente(4.1);
+    // Test 2: Affichage de vecteurs
+    cout << "Vecteur v1: ";
+    v1.affiche(cout);
+    cout << "Vecteur v2: ";
+    v2.affiche(cout);
+    cout << "Vecteur v3: ";
+    v3.affiche(cout);
 
-vect3 = vect1;
+    // Test 3: Addition de vecteurs
+    Vecteur v4 = v2 + v3;
+    cout << "v2 + v3 = ";
+    v4.affiche(cout);
 
-cout << "Vecteur 1 : ";
-vect1.affiche();
-cout << endl;
+    // Test 4: Soustraction de vecteurs
+    Vecteur v5 = v3 - v2;
+    cout << "v3 - v2 = ";
+    v5.affiche(cout);
 
-cout << "Vecteur 2 : ";
-vect2.affiche();
-cout << endl;
+    // Test 5: Produit scalaire
+    double prod = v2.prod_scalaire(v3);
+    cout << "Produit scalaire de v2 et v3: " << prod << endl;
 
-cout << "Le vecteur 1 est ";
-if (vect1.compare(vect2)) {
-    cout << "égal au";
-} else {
-    cout << "différent du";
-}
-cout << " vecteur 2," << endl << "et est ";
-if (!vect1.compare(vect3)) {
-    cout << "différent du";
-} else {
-    cout << "égal au";
-}
-cout << " vecteur 3." << endl;
+    // Test 6: Multiplication par un scalaire
+    Vecteur v6 = v2 * 2.0;
+    cout << "v2 * 2 = ";
+    v6.affiche(cout);
 
-return 0;
+    // Test 7: Vecteur unitaire
+    Vecteur v7 = (~v2);  // Vecteur unitaire de v2
+    cout << "Vecteur unitaire de v2: ";
+    v7.affiche(cout);
+
+    // Test 8: Comparaison de vecteurs
+    if (v2 == v3) {
+        cout << "v2 est égal à v3" << endl;
+    } else {
+        cout << "v2 est différent de v3" << endl;
+    }
+
+    // Test 9: Opposé d'un vecteur
+    Vecteur v8 = v3.oppose();
+    cout << "Opposé de v3: ";
+    v8.affiche(cout);
+
+    cout << v8;
+
+    v8.whoami(cout);
+
+    return 0;
 }
