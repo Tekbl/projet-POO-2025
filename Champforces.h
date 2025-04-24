@@ -3,6 +3,7 @@
 #include <vector>
 #include <cmath>
 #include "VecteurV.h"
+#include "ObjetIntegrable.h"
 class ObjetPhysique;
 
 class ChampForces{

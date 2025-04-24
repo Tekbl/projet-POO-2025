@@ -49,9 +49,8 @@ class ObjetPhysique:public ObjetMobile{
         double get_masse() const;
         virtual void affiche(ostream& out) const override;
     protected: 
-        //voir si on a besoin d'avoir accès au différentes contraintes et champs de forces appliquées à l'objet
-        //vector<Contrainte*> contr;
-        //vector<ChampForces*> champ;
+        vector<Contrainte*> contr;
+        vector<ChampForces*> champ;
     private:
         unsigned int dim_evo;
         double masse_;

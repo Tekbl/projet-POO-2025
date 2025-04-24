@@ -1,8 +1,12 @@
 #pragma once
 #include <vector>
 #include <cmath>
+#include <iostream>
 #include "VecteurV.h"
 #include "affichage.h"
+#include "constantes.h"
+#include "contrainte.h"
+#include "Champforces.h"
 class Contrainte;
 class ChampForces;
 
@@ -28,6 +32,9 @@ class ObjetPhysique:public ObjetMobile{
         Vecteur vitesse(Contrainte *c) const;
         double get_masse() const;
         virtual void affiche(ostream& out) const override;
+    protected: 
+        vector<Contrainte*> contr;
+        vector<ChampForces*> champ;
     private:
         unsigned int dim_evo;
         double masse_;
