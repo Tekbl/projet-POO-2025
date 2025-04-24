@@ -4,10 +4,11 @@
 #include "constantes.h"
 #include "contrainte.h"
 #include "Champforces.h"
+#include "affichage.h"
 
 using namespace std;
 
-class ObjetMobile{
+class ObjetMobile: public Printable{
     public:
         ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
         virtual Vecteur evolution(double t) = 0;
@@ -46,7 +47,11 @@ class ObjetPhysique:public ObjetMobile{
         Vecteur position(Contrainte *c) const;
         Vecteur vitesse(Contrainte *c) const;
         double get_masse() const;
+        virtual void affiche(ostream& out) const override{}
+
+        
     protected: 
+        //voir si on a besoin d'avoir accès au différentes contraintes et champs de forces appliquées à l'objet
         //vector<Contrainte*> contr;
         //vector<ChampForces*> champ;
         unsigned int dim_evo;
@@ -69,4 +74,10 @@ Vecteur ObjetPhysique::vitesse(Contrainte *c) const{
 
 Vecteur ObjetPhysique::force(ChampForces *c ,double t) const{
     return c->force(*this,t);
+}
+
+void ObjetPhysique::affiche(ostream& out) const{
+    out << "Objet physique de masse " << masse_ << ", de degré de liberté " << dim_evo << endl;
+    out << "Position : " << E_ << endl;
+    out << "Vitesse : " << E_pr_ << endl;
 }

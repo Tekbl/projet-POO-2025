@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "affichage.h"
 using namespace std;
 
 
-class Vecteur{
+class Vecteur: public Printable{
 
 public:
 
@@ -15,7 +16,7 @@ public:
     Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit){}
     
     //mise en place et affichage des vecteurs
-    void affiche() const;
+    virtual void affiche(ostream& out) const override;
     void set_coord(int i,double v);
     double get_coord(int i) const;
     void augmente(double v);
@@ -49,10 +50,14 @@ private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
 };
 
-void Vecteur::affiche() const{
-    for(auto element:vecteur){
-        cout << element << " ";
-    }; cout << endl;
+void Vecteur::affiche(ostream& out) const{
+    for(int i = 0;i < vecteur.size(); i++){
+        out << vecteur[i];
+        if(i != vecteur.size()-1){
+            out << " ";
+        }
+    }
+    out << endl;
 }
 
 double Vecteur::get_coord(int i)const {
@@ -200,13 +205,6 @@ Vecteur Vecteur::unitaire() const{
     return B;
 }
 
-//on retourne un ostream& afin de pouvoir écrire cout << v1 << endl; ou cout << v1 << v2;
-ostream& operator<<(ostream& sortie, const Vecteur& v){
-    for(int i = 0;i < v.vecteur.size(); i++){
-        sortie << v.vecteur[i] << " ";
-    }
-    return sortie;
-}
 
 bool Vecteur::operator==(const Vecteur& B) const{
     return this->compare(B);
