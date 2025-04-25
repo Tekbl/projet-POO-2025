@@ -48,6 +48,10 @@ class Systeme : public Printable{
         }
         double get_time(){return time;}
 
+        virtual void whoami(std::ostream& out) const override{
+            out << "systeme";
+        }
+
 
         virtual void affiche(std::ostream& sortie)const override{
             sortie << "Systeme : à t = " << time <<" :" << std::endl;

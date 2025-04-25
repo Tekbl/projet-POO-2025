@@ -6,6 +6,7 @@
 
 class ForceCentrale: public ChampForces{
     protected:
+        ForceCentrale(ObjetPhysique& obj): centre(obj){} 
         Vecteur quadratique_inverse(const ObjetPhysique& obj, double precis = 1e-10)const{
             Vecteur r = obj.get_E() - centre.get_E();
             double norme = r.norme();
@@ -19,6 +20,7 @@ class ForceCentrale: public ChampForces{
 
 class ChampNewtonien: public ForceCentrale{
     public:
+    using ForceCentrale::ForceCentrale;
     virtual Vecteur force(const ObjetPhysique& obj, double t) const override{
         return quadratique_inverse(obj)*((-G)*obj.get_masse()*centre.get_masse());
     }
