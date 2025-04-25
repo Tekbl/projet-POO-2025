@@ -20,7 +20,8 @@ public:
     virtual Vecteur evolution(double t) override;
     virtual void affiche(std::ostream& sortie)const override;
     virtual void dessine_sur(SupportADessin& support) { support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
-    
+    virtual void whoami(std::ostream& out)const override;
+
 private:
     /*Vecteur vecteur_position; 
     Vecteur vecteur_vitesse;*/
