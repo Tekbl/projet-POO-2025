@@ -38,6 +38,7 @@ class Systeme: public Printable{
 
         double get_time();
 
-
+        void evolve(double dt);
+        virtual void whoami(std::ostream& out) const override;
         virtual void affiche(std::ostream& sortie)const override;
 };
