@@ -18,8 +18,8 @@ class Libre:public Contrainte{
     virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double t) override;
     virtual Vecteur position(const ObjetPhysique& obj) override;
     virtual Vecteur vitesse(const ObjetPhysique& obj) override;
-    virtual void whoami(ostream& out)const override;
-    virtual void affiche(std::ostream& out)const override{}//blank for now since we have no use for it
+    virtual void whoami(ostream& out)const override{out << "contrainte libre" ;};
+    virtual void affiche(std::ostream& out)const override{whoami(out);}//blank for now since we have no use for it
 
 };
 
@@ -39,6 +39,6 @@ Vecteur Libre::vitesse(const ObjetPhysique& obj){
     return obj.get_E_pr();
 }
 
-void Libre::whoami(ostream& out)const{
+/*void Libre::whoami(ostream& out)const{
     out << "contrainte libre" ;
-}
+}*/
