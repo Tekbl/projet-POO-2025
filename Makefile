@@ -3,12 +3,12 @@ CXXFLAGS = -std=c++11 -pedantic -Wall
 
 
 #all = la première cible
-all: TestPomme
+all: exerciceP9
 
-calculCplx: calculCplx.o ##fill stuff with dependencies
+calculCplx: exerciceP9.o ##fill stuff with dependencies
 
 # Ces lignes ont été recopiées de la commande g++ -MM *.cc
-
+# Ces lignes sont les dépendances de compilation 
 affichage.o: affichage.cc
 ChampForces.o: ChampForces.cc VecteurV.h affichage.h ObjetIntegrable.h constantes.h contrainte.h Champforces.h
 constantes.o: constantes.cc VecteurV.h affichage.h
