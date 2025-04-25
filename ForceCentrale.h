@@ -13,7 +13,7 @@ class ForceCentrale: public ChampForces{
 
 class ChampNewtonien: public ForceCentrale{
     public:
-    using ForceCentrale::ForceCentrale;
+    ChampNewtonien(ObjetPhysique& obj);
     virtual Vecteur force(const ObjetPhysique& obj, double t) const override;
     virtual void whoami(std::ostream& out) const override;
     virtual void affiche(std::ostream& out) const override;
