@@ -8,6 +8,7 @@
 class Systeme : public Printable{
     
     private :
+        //modif unique_ptr en ptr car ne fonctionne pas avec c++11
         std::vector<std::unique_ptr<ObjetPhysique>> sys_objects;
         // j'utilise des unique ptr pour simplifier l'utilisation
         // j'utilise des objets physiques car j'ai besoin d'objets qui ont des contraintes/champforces en attribut
@@ -23,7 +24,7 @@ class Systeme : public Printable{
         
     public :
 
-        Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list={},std::vector<std::unique_ptr<Contrainte>> constraints_={}, std::vector<std::unique_ptr<ChampForces>> force_field_={}, std::unique_ptr<integrateur> integrator_):
+        Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list={},std::vector<std::unique_ptr<Contrainte>> constraints_={}, std::vector<std::unique_ptr<ChampForces>> force_field_={}, std::unique_ptr<integrateur> integrator_ = nullptr /*std::make_unique<integrateurEulerCromer>(), ne fonctionne qu'avec c++14*/):
         sys_objects(object_list),sys_constraints(constraints_),sys_force_field(force_field_),integrator(std::move(integrator_)){time = 0;}
     
         void add_object(std::unique_ptr<ObjetPhysique> o){

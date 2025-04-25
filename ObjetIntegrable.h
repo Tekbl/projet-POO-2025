@@ -31,17 +31,17 @@ class ObjetPhysique:public ObjetMobile{
         Vecteur position(Contrainte *c) const;
         Vecteur vitesse(Contrainte *c) const;
         double get_masse() const;
-        virtual void affiche(ostream& out) const override;
+        virtual void affiche(std::ostream& out) const override;
 
-        vector<Contrainte*> get_contr();
-        vector<ChampForces*> get_champ();
+        std::vector<Contrainte*> get_contr();
+        std::vector<ChampForces*> get_champ();
 
         void add_contr(Contrainte* c);
         void add_champ(ChampForces* c);
         
     protected: 
-        vector<Contrainte*> contr;
-        vector<ChampForces*> champ;
+        std::vector<Contrainte*> contr;
+        std::vector<ChampForces*> champ;
     private:
         unsigned int dim_evo;
         double masse_;

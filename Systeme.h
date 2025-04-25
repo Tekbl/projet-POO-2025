@@ -17,8 +17,6 @@ class Systeme: public Printable{
         std::vector<std::unique_ptr<ChampForces>> sys_force_field;
         std::unique_ptr<integrateur> integrator;
 
-        void append_force_field(unsigned int i, unsigned int j);
-        void append_constraint(unsigned int i, unsigned int j);
 
         double time; // peut être utiliser un SHARED_PTR pour le temps, ce serait bien
         // Si pas de shared_ptr, faut que tout les bidules qui utilisent time passent par REFERENCE
@@ -26,7 +24,7 @@ class Systeme: public Printable{
         
     public :
 
-        Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list={},std::vector<std::unique_ptr<Contrainte>> constraints_={}, std::vector<std::unique_ptr<ChampForces>> force_field_={}, std::unique_ptr<integrateur> integrator_):
+        Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list={},std::vector<std::unique_ptr<Contrainte>> constraints_={}, std::vector<std::unique_ptr<ChampForces>> force_field_={}, std::unique_ptr<integrateur> integrator_ = nullptr):
         sys_objects(object_list),sys_constraints(constraints_),sys_force_field(force_field_),integrator(std::move(integrator_)){time = 0;}
     
         void add_object(std::unique_ptr<ObjetPhysique> o);
@@ -35,7 +33,7 @@ class Systeme: public Printable{
         void change_integrator(std::unique_ptr<integrateur> new_f);
 
         void append_constraint(unsigned int i, unsigned int j);
-
+        void append_force_field(unsigned int i, unsigned int j);
         double get_time();
 
         void evolve(double dt);

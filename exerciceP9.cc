@@ -5,6 +5,7 @@
 #include "ForceCentrale.h"
 #include "systeme.h"
 #include "PointMateriel.h"
+//modif unique_ptr en ptr 
 
 int main(){
     PointMateriel pomme({0,0,0},{0,0,0},0.1);
