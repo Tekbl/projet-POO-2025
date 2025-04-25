@@ -71,4 +71,11 @@ class Systeme : public Printable{
             }
 
         }
+
+        void evolue(double dt){
+            for(int i(0);i<sys_objects.size();i++){
+                integrator->evolue(sys_objects[i].get(),time,dt);
+            }
+            time += dt;
+        }
 };
