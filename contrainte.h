@@ -12,7 +12,7 @@ class Contrainte : public Printable{
         virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps) = 0;
         virtual Vecteur position(const ObjetPhysique& obj) = 0;
         virtual Vecteur vitesse(const ObjetPhysique& obj) = 0;
-        virtual void whoami(ostream& out)const override;
+        virtual void whoami(std::ostream& out)const override;
         virtual void affiche(std::ostream& out)const override{}; //blank for now since we have no use for it
 
 };
