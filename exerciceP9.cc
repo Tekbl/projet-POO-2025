@@ -5,6 +5,7 @@
 #include "ForceCentrale.h"
 #include "systeme.h"
 #include "PointMateriel.h"
+#include "ObjetDessinable.h"
 //modif unique_ptr en ptr 
 
 int main(){
@@ -16,4 +17,7 @@ int main(){
     sys.affiche(std::cout);
     sys.evolve(1e-3);
     sys.affiche(std::cout);
+
+    //TextViewer txt(std::cout);
+    //sys.dessine_sur(txt);
 }

@@ -6,7 +6,7 @@
 #include "Integrateurs.h"
 #include "affichage.h"
 
-class Systeme: public Printable{
+class Systeme: public Printable, public Dessinable{
     
     private :
         std::vector<std::unique_ptr<ObjetPhysique>> sys_objects;
@@ -27,6 +27,9 @@ class Systeme: public Printable{
         Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list={},std::vector<std::unique_ptr<Contrainte>> constraints_={}, std::vector<std::unique_ptr<ChampForces>> force_field_={}, std::unique_ptr<integrateur> integrator_ = nullptr):
         sys_objects(object_list),sys_constraints(constraints_),sys_force_field(force_field_),integrator(std::move(integrator_)){time = 0;}
     
+        virtual void dessine_sur(SupportADessin& support) { support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
+
+
         void add_object(std::unique_ptr<ObjetPhysique> o);
         void add_constraint(std::unique_ptr<Contrainte> c);
         void add_force_field(std::unique_ptr<ChampForces> f);

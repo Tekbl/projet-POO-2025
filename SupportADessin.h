@@ -18,6 +18,7 @@ class TextViewer : public SupportADessin{
     private :
         std::ostream& flot; 
     public :
+    
         TextViewer(std::ostream& flot_):flot(flot_){}
         virtual ~TextViewer()=default;
 
