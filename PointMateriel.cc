@@ -9,7 +9,7 @@
 #include "contrainte.h"
 #include "GravitationConstante.h"
 #include "ObjetDessinable.h"
-
+    
 
 class PointMateriel:public ObjetPhysique, public Dessinable{
 

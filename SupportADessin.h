@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
-#include "PointMateriel.h"
 #include "ObjetIntegrable.h"
+#include "PointMateriel.h"
 #include "Systeme.h"
+class PointMateriel;
 
 class SupportADessin{
     public:
@@ -22,8 +23,8 @@ class TextViewer : public SupportADessin{
         TextViewer(std::ostream& flot_):flot(flot_){}
         virtual ~TextViewer()=default;
 
-        virtual void dessine(PointMateriel const& p);
-        virtual void dessine(Systeme const& s);
+        virtual void dessine(PointMateriel const& p) override;
+        virtual void dessine(Systeme const& s)override;
 
 
 

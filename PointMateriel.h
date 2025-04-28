@@ -7,7 +7,7 @@
 #include "ObjetIntegrable.h"
 #include "affichage.h"
 #include "ObjetDessinable.h"
-
+class Dessinable;
 
 class PointMateriel: public ObjetPhysique, public Dessinable{
 public:
