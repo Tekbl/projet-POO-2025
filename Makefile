@@ -15,19 +15,17 @@ affichage.o: affichage.cc
 ChampForces.o: ChampForces.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h Champforces.h
 constantes.o: constantes.cc VecteurV.h affichage.h
-contenu.o: contenu.cc ObjetDessinable.h SupportADessin.h \
- ObjetIntegrable.h VecteurV.h affichage.h constantes.h contrainte.h \
- Champforces.h PointMateriel.h Systeme.h Integrateurs.h
+contenu.o: contenu.cc ObjetDessinable.h
 contrainte.o: contrainte.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h Champforces.h
 exerciceP9.o: exerciceP9.cc VecteurV.h affichage.h ChampForces.h \
  ObjetIntegrable.h constantes.h contrainte.h ForceCentrale.h systeme.h \
- Integrateurs.h ObjetDessinable.h SupportADessin.h PointMateriel.h
+ Integrateurs.h ObjetDessinable.h PointMateriel.h
 ForceCentrale.o: ForceCentrale.cc ChampForces.h VecteurV.h affichage.h \
  ObjetIntegrable.h constantes.h contrainte.h
 GravitationConstante.o: GravitationConstante.cc constantes.h VecteurV.h \
  affichage.h PointMateriel.h ObjetIntegrable.h contrainte.h Champforces.h \
- ObjetDessinable.h SupportADessin.h Systeme.h Integrateurs.h
+ ObjetDessinable.h
 Integrateurs.o: Integrateurs.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h Champforces.h
 ObjetDessinable.o: ObjetDessinable.cc SupportADessin.h ObjetIntegrable.h \
@@ -40,11 +38,10 @@ PointMateriel.o: PointMateriel.cc VecteurV.h affichage.h constantes.h \
  PointMateriel.h ObjetDessinable.h SupportADessin.h Systeme.h \
  Integrateurs.h
 Pomme.o: Pomme.cc VecteurV.h affichage.h ObjetIntegrable.h constantes.h \
- contrainte.h Champforces.h PointMateriel.h ObjetDessinable.h \
- SupportADessin.h Systeme.h Integrateurs.h
+ contrainte.h Champforces.h PointMateriel.h ObjetDessinable.h
 SupportADessin.o: SupportADessin.cc PointMateriel.h VecteurV.h \
  affichage.h constantes.h ObjetIntegrable.h contrainte.h Champforces.h \
- ObjetDessinable.h SupportADessin.h Systeme.h Integrateurs.h
+ ObjetDessinable.h Systeme.h Integrateurs.h
 Systeme.o: Systeme.cc ObjetIntegrable.h VecteurV.h affichage.h \
  constantes.h contrainte.h Champforces.h SupportADessin.h PointMateriel.h \
  ObjetDessinable.h Systeme.h Integrateurs.h

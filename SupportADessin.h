@@ -2,7 +2,7 @@
 #include <iostream>
 #include "ObjetIntegrable.h"
 #include "PointMateriel.h"
-#include "Systeme.h"
+class Systeme;
 
 class SupportADessin{
     public:
