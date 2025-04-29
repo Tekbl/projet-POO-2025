@@ -2,10 +2,11 @@
 #include <vector> 
 #include <memory>
 #include "ObjetIntegrable.h"
-#include "SupportADessin.h"
 #include "contrainte.h"
 #include "Integrateurs.h"
 #include "affichage.h"
+#include "ObjetDessinable.h"
+class SupportADessin;
 
 class Systeme: public Printable, public Dessinable{
     

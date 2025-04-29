@@ -1,5 +1,5 @@
 #pragma once
-#include "SupportADessin.h"
+class SupportADessin;
 
 class Dessinable {
 

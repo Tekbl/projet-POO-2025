@@ -7,8 +7,9 @@
 #include "ObjetIntegrable.h"
 #include "affichage.h"
 #include "ObjetDessinable.h"
-class Dessinable;
+class SupportADessin;
 
+ 
 class PointMateriel: public ObjetPhysique, public Dessinable{
 public:
     PointMateriel(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},

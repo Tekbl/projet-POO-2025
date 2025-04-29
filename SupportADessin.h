@@ -3,7 +3,6 @@
 #include "ObjetIntegrable.h"
 #include "PointMateriel.h"
 #include "Systeme.h"
-class PointMateriel;
 
 class SupportADessin{
     public:
