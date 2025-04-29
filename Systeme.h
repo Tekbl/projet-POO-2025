@@ -2,6 +2,7 @@
 #include <vector> 
 #include <memory>
 #include "ObjetIntegrable.h"
+#include "SupportADessin.h"
 #include "contrainte.h"
 #include "Integrateurs.h"
 #include "affichage.h"
