@@ -37,7 +37,7 @@ class PointMateriel:public ObjetPhysique, public Dessinable{
         //Vecteur ChampForces = g; //instruction de la W4, à changer dans le futur 
 
         virtual void affiche(std::ostream& sortie)const override;
-        virtual void dessine_sur(SupportADessin& support) { support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
+        virtual void dessine_sur(SupportADessin& support) override{ support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
         
         virtual void whoami(std::ostream& out)const override{out << "point materiel" ;};
 
