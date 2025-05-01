@@ -5,6 +5,7 @@
 #include "Integrateurs.h"
 #include "affichage.h"
 #include "ObjetDessinable.h"
+#include "Champforces.h"
 #include <memory>
 
 class Systeme : public Printable, public Dessinable{

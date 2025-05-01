@@ -41,9 +41,10 @@ Pomme.o: Pomme.cc VecteurV.h affichage.h ObjetIntegrable.h constantes.h \
  SupportADessin.h
 SupportADessin.o: SupportADessin.cc PointMateriel.h VecteurV.h \
  affichage.h constantes.h ObjetIntegrable.h contrainte.h \
- ObjetDessinable.h SupportADessin.h Systeme.h Integrateurs.h
+ ObjetDessinable.h SupportADessin.h Systeme.h Integrateurs.h \
+ Champforces.h
 Systeme.o: Systeme.cc ObjetIntegrable.h VecteurV.h affichage.h \
  constantes.h contrainte.h SupportADessin.h Integrateurs.h \
- ObjetDessinable.h
+ ObjetDessinable.h Champforces.h
 VecteurTestV.o: VecteurTestV.cc VecteurV.h affichage.h
 VecteurV.o: VecteurV.cc affichage.h

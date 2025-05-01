@@ -6,7 +6,9 @@
 #include "Integrateurs.h"
 #include "affichage.h"
 #include "ObjetDessinable.h"
-#include "SupportADessin.h" 
+#include "SupportADessin.h"
+#include "Champforces.h"
+
 
 class Systeme: public Printable, public Dessinable{
     
