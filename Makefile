@@ -28,13 +28,12 @@ contenu.o: contenu.cc ObjetDessinable.h SupportADessin.h \
 contrainte.o: contrainte.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h
 exerciceP9.o: exerciceP9.cc VecteurV.h affichage.h ChampForces.h \
- ForceCentrale.h constantes.h ObjetIntegrable.h contrainte.h systeme.h \
+ ForceCentrale.h constantes.h ObjetIntegrable.h contrainte.h Systeme.h \
  Integrateurs.h ObjetDessinable.h SupportADessin.h PointMateriel.h
 ForceCentrale.o: ForceCentrale.cc ChampForces.h VecteurV.h affichage.h \
  constantes.h ObjetIntegrable.h contrainte.h
 GravitationConstante.o: GravitationConstante.cc constantes.h VecteurV.h \
- affichage.h PointMateriel.h ObjetIntegrable.h contrainte.h \
- ObjetDessinable.h SupportADessin.h Champforces.h
+ affichage.h ObjetIntegrable.h contrainte.h Champforces.h
 Integrateurs.o: Integrateurs.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h
 ObjetDessinable.o: ObjetDessinable.cc SupportADessin.h ObjetIntegrable.h \
@@ -43,7 +42,7 @@ ObjetIntegrable.o: ObjetIntegrable.cc VecteurV.h affichage.h constantes.h \
  contrainte.h ObjetIntegrable.h Champforces.h
 PointMateriel.o: PointMateriel.cc VecteurV.h affichage.h constantes.h \
  ObjetIntegrable.h contrainte.h Champforces.h GravitationConstante.h \
- PointMateriel.h ObjetDessinable.h SupportADessin.h
+ ObjetDessinable.h SupportADessin.h
 Pomme.o: Pomme.cc VecteurV.h affichage.h ObjetIntegrable.h constantes.h \
  contrainte.h Champforces.h PointMateriel.h ObjetDessinable.h \
  SupportADessin.h

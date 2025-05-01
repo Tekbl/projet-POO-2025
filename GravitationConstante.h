@@ -3,7 +3,6 @@
 #include <vector>
 #include <cmath>
 #include "VecteurV.h"
-#include "PointMateriel.h"
 #include "constantes.h"
 #include "ObjetIntegrable.h"
 #include "Champforces.h"
