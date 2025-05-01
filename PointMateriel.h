@@ -7,8 +7,7 @@
 #include "ObjetIntegrable.h"
 #include "affichage.h"
 #include "ObjetDessinable.h"
-class SupportADessin;
-
+#include "SupportADessin.h"
  
 class PointMateriel: public ObjetPhysique, public Dessinable{
 public:
