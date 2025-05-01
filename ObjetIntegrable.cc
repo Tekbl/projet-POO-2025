@@ -8,6 +8,7 @@
 
 using namespace std;
 
+/*
 class ObjetMobile: public Printable{
     public:
         ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
@@ -21,6 +22,9 @@ class ObjetMobile: public Printable{
         Vecteur E_pr_;
 
 };
+*/
+
+ObjetMobile:: ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
 
 Vecteur ObjetMobile::get_E() const{
     return E_;
@@ -38,7 +42,7 @@ void ObjetMobile::set_E_pr(Vecteur nE_pr){
 }
 
 
-
+/*
 class ObjetPhysique:public ObjetMobile{
     public: 
         ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3)
@@ -63,6 +67,10 @@ class ObjetPhysique:public ObjetMobile{
         double masse_;
         //possibilité de rajouter setter et getter pour dim et masse si besoin
 };
+*/
+
+ObjetPhysique::ObjetPhysique(Vecteur E, Vecteur E_pr, double masse, unsigned int dim)
+    : ObjetMobile(E, E_pr), masse_(std::abs(masse)), dim_evo(dim) {}
 
 double ObjetPhysique::get_masse() const{
     return masse_;
@@ -80,6 +88,12 @@ Vecteur ObjetPhysique::vitesse(Contrainte *c) const{
 Vecteur ObjetPhysique::force(ChampForces *c ,double t) const{
     return c->force(*this,t);
 }
+
+
+vector<Contrainte*> ObjetPhysique::get_contr(){return contr;}
+vector<ChampForces*> ObjetPhysique::get_champ(){return champ;}
+void ObjetPhysique::add_contr(Contrainte* c){contr.push_back(c);}
+void ObjetPhysique::add_champ(ChampForces* c){champ.push_back(c);}
 
 void ObjetPhysique::affiche(ostream& out) const{
     out << "Objet physique de masse " << masse_ << ", de degré de liberté " << dim_evo << endl;
