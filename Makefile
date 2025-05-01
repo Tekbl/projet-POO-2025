@@ -6,8 +6,16 @@ CXXFLAGS = -std=c++11 -pedantic -Wall
 all: exerciceP9
 
 
+#include <vector>
+#include <iostream>
+#include "VecteurV.h"
+#include "ChampForces.h"
+#include "ForceCentrale.h"
+#include "Systeme.h"
+#include "PointMateriel.h"
+#include "ObjetDessinable.h"
 
-exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o##fill stuff with dependencies
+exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o##fill stuff with dependencies
 
 # Ces lignes ont été recopiées de la commande g++ -MM *.cc
 # Ces lignes sont les dépendances de compilation 

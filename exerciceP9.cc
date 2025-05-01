@@ -3,7 +3,7 @@
 #include "VecteurV.h"
 #include "ChampForces.h"
 #include "ForceCentrale.h"
-#include "systeme.h"
+#include "Systeme.h"
 #include "PointMateriel.h"
 #include "ObjetDessinable.h"
 

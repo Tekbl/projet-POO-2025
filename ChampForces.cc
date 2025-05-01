@@ -10,7 +10,7 @@ class ChampForces : public Printable{
     public :
         
     virtual Vecteur force(const ObjetPhysique& obj, double t) const = 0;
-    virtual void affiche(std::ostream& out)const override{}//blank for now since we have no use for it
+    virtual void affiche(std::ostream& out)const override{out <<" ";}//blank for now since we have no use for it
     
     private :
     
