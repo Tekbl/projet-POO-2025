@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "ObjetIntegrable.h"
-#include "PointMateriel.h"
+class PointMateriel;
 class Systeme;
 
 class SupportADessin{

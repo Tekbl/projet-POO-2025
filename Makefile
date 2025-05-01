@@ -17,7 +17,7 @@ ChampForces.o: ChampForces.cc VecteurV.h affichage.h ObjetIntegrable.h \
 constantes.o: constantes.cc VecteurV.h affichage.h
 contenu.o: contenu.cc ObjetDessinable.h SupportADessin.h \
  ObjetIntegrable.h VecteurV.h affichage.h constantes.h contrainte.h \
- Champforces.h PointMateriel.h
+ Champforces.h
 contrainte.o: contrainte.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h Champforces.h
 exerciceP9.o: exerciceP9.cc VecteurV.h affichage.h ChampForces.h \
@@ -31,8 +31,7 @@ GravitationConstante.o: GravitationConstante.cc constantes.h VecteurV.h \
 Integrateurs.o: Integrateurs.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h Champforces.h
 ObjetDessinable.o: ObjetDessinable.cc SupportADessin.h ObjetIntegrable.h \
- VecteurV.h affichage.h constantes.h contrainte.h Champforces.h \
- PointMateriel.h ObjetDessinable.h
+ VecteurV.h affichage.h constantes.h contrainte.h Champforces.h
 ObjetIntegrable.o: ObjetIntegrable.cc VecteurV.h affichage.h constantes.h \
  contrainte.h ObjetIntegrable.h Champforces.h
 PointMateriel.o: PointMateriel.cc VecteurV.h affichage.h constantes.h \
@@ -45,7 +44,7 @@ SupportADessin.o: SupportADessin.cc PointMateriel.h VecteurV.h \
  affichage.h constantes.h ObjetIntegrable.h contrainte.h Champforces.h \
  ObjetDessinable.h SupportADessin.h Systeme.h Integrateurs.h
 Systeme.o: Systeme.cc ObjetIntegrable.h VecteurV.h affichage.h \
- constantes.h contrainte.h Champforces.h SupportADessin.h PointMateriel.h \
- ObjetDessinable.h Integrateurs.h
+ constantes.h contrainte.h Champforces.h SupportADessin.h Integrateurs.h \
+ ObjetDessinable.h
 VecteurTestV.o: VecteurTestV.cc VecteurV.h affichage.h
 VecteurV.o: VecteurV.cc affichage.h
