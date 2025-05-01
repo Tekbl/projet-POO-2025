@@ -26,18 +26,18 @@ class Systeme : public Printable, public Dessinable{
         
     public :
         Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list={},std::vector<std::unique_ptr<Contrainte>> constraints_={}, std::vector<std::unique_ptr<ChampForces>> force_field_={}, std::unique_ptr<integrateur> integrator_ = std::unique_ptr<integrateur>(new integrateurEulerCromer())/*std::make_unique<integrateurEulerCromer>(), ne fonctionne qu'avec c++14*/):
-        sys_objects(object_list),sys_constraints(constraints_),sys_force_field(force_field_),integrator(std::move(integrator_)){time = 0;}
+        sys_objects(std::move(object_list)),sys_constraints(std::move(constraints_)),sys_force_field(std::move(force_field_)),integrator(std::move(integrator_)){time = 0;}
 
         virtual void dessine_sur(SupportADessin& support) override { support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
 
         void add_object(std::unique_ptr<ObjetPhysique> o){
-            sys_objects.push_back(o);
+            sys_objects.push_back(std::move(o));
         }
         void add_constraint(std::unique_ptr<Contrainte> c){
-            sys_constraints.push_back(c);
+            sys_constraints.push_back(std::move(c));
         }
         void add_force_field(std::unique_ptr<ChampForces> f){
-            sys_force_field.push_back(f);
+            sys_force_field.push_back(std::move(f));
         }
         void change_integrator(std::unique_ptr<integrateur> new_f){
             integrator = move(new_f);

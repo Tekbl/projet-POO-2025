@@ -14,7 +14,7 @@ void simulation(double temps, double interval_temps, unsigned int nb_affiche /*p
     double masse_terre = 5.972e24;
     double masse_pomme = 0.1;
     //double g = (G * masse_terre) / (rayon_terre * rayon_terre);
-    double altitude_initiale = 10;
+    //double altitude_initiale = altitude;
     Vecteur position_terre(3);
     Vecteur vitesse_terre(3);
     Vecteur position_pomme(rayon_terre+altitude, 0, 0);
