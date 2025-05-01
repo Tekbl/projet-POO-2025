@@ -17,7 +17,7 @@ all: exerciceP9
 
 exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
             ObjetIntegrable.o Contrainte.o Integrateurs.o constantes.o \
-            SupportADessin.o Printable.o affichage.o ##fill stuff with dependencies
+            SupportADessin.o affichage.o ##fill stuff with dependencies
 
 # Ces lignes ont été recopiées de la commande g++ -MM *.cc
 # Ces lignes sont les dépendances de compilation 
