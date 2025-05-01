@@ -7,7 +7,7 @@ all: exerciceP9
 
 
 
-exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o systeme.o##fill stuff with dependencies
+exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o##fill stuff with dependencies
 
 # Ces lignes ont été recopiées de la commande g++ -MM *.cc
 # Ces lignes sont les dépendances de compilation 
