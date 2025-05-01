@@ -6,7 +6,6 @@
 #include "affichage.h"
 #include "constantes.h"
 #include "contrainte.h"
-#include "Champforces.h"
 class Contrainte;
 class ChampForces;
 
