@@ -1,3 +1,4 @@
+#pragma once
 #include "ChampForces.h"
 #include "VecteurV.h"
 #include "constantes.h"
