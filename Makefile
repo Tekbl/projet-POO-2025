@@ -20,10 +20,10 @@ contenu.o: contenu.cc ObjetDessinable.h SupportADessin.h \
 contrainte.o: contrainte.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h
 exerciceP9.o: exerciceP9.cc VecteurV.h affichage.h ChampForces.h \
- ForceCentrale.h constantes.h systeme.h ObjetIntegrable.h contrainte.h \
+ ForceCentrale.h constantes.h ObjetIntegrable.h contrainte.h systeme.h \
  Integrateurs.h ObjetDessinable.h SupportADessin.h PointMateriel.h
 ForceCentrale.o: ForceCentrale.cc ChampForces.h VecteurV.h affichage.h \
- constantes.h
+ constantes.h ObjetIntegrable.h contrainte.h
 GravitationConstante.o: GravitationConstante.cc constantes.h VecteurV.h \
  affichage.h PointMateriel.h ObjetIntegrable.h contrainte.h \
  ObjetDessinable.h SupportADessin.h Champforces.h

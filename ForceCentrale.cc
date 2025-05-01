@@ -3,6 +3,7 @@
 #include "constantes.h"
 #include <vector>
 #include <iostream>
+#include "ObjetIntegrable.h"
 
 class ForceCentrale: public ChampForces{
     protected:
