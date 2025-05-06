@@ -13,6 +13,8 @@
 class Systeme: public Printable, public Dessinable{
     
     private :
+
+        //modif unique_ptr en ptr car ne fonctionne pas avec c++11
         std::vector<std::unique_ptr<ObjetPhysique>> sys_objects;
         // j'utilise des unique ptr pour simplifier l'utilisation
         // j'utilise des objets physiques car j'ai besoin d'objets qui ont des contraintes/champforces en attribut
@@ -42,7 +44,7 @@ class Systeme: public Printable, public Dessinable{
         void append_force_field(unsigned int i, unsigned int j);
         double get_time();
 
-        void evolve(double dt);
+        void evolue(double dt);
         virtual void whoami(std::ostream& out) const override;
         virtual void affiche(std::ostream& sortie)const override;
 };
