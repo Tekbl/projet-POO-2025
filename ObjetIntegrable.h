@@ -11,7 +11,7 @@ class ChampForces;
 
 class ObjetMobile: public Printable{
     public:
-        ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
+        ObjetMobile(Vecteur E, Vecteur E_pr);
         virtual Vecteur evolution(double t) = 0;
         Vecteur get_E() const;
         Vecteur get_E_pr() const;
@@ -25,8 +25,7 @@ class ObjetMobile: public Printable{
 
 class ObjetPhysique:public ObjetMobile{
     public: 
-        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3)
-            :ObjetMobile(E,E_pr),masse_(abs(masse)),dim_evo(dim){};
+        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3);
         Vecteur force(ChampForces *c ,double t) const;
         Vecteur position(Contrainte *c) const;
         Vecteur vitesse(Contrainte *c) const;
