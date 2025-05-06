@@ -1,2 +1,3 @@
 #include "ObjetDessinable.h"
-class contenu : public Dessinable{};
+#include "contenu.h"
+/*class contenu : public Dessinable{};*/

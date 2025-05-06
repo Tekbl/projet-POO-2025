@@ -12,13 +12,13 @@ class Contrainte : public Printable{
         virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double temps) = 0;
         virtual Vecteur position(const ObjetPhysique& obj) = 0;
         virtual Vecteur vitesse(const ObjetPhysique& obj) = 0;
-        virtual void whoami(std::ostream& out)const override;
-        virtual void affiche(std::ostream& out)const override{}; //blank for now since we have no use for it
 
 };
 
 class Libre:public Contrainte{
-    Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double t) override;
-    Vecteur position(const ObjetPhysique& obj) override;
-    Vecteur vitesse(const ObjetPhysique& obj) override;
+    virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double t) override;
+    virtual Vecteur position(const ObjetPhysique& obj) override;
+    virtual Vecteur vitesse(const ObjetPhysique& obj) override;
+    virtual void whoami(ostream& out)const override{out << "contrainte libre" ;};
+    virtual void affiche(std::ostream& out)const override{whoami(out);}//blank for now since we have no use for it
 };
