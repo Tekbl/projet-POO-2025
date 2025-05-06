@@ -10,9 +10,10 @@ class Vecteur: public Printable{
 public:
 
     //constructeurs
-    Vecteur(unsigned int dimension);
-    Vecteur(double x, double y, double z);
-    Vecteur(const std::vector<double>& liste_dinit);
+    Vecteur(unsigned int dimension):vecteur(dimension,0.0){}
+    Vecteur(double x, double y, double z):vecteur{x,y,z}{}
+    //initialise vecteur avec un vector de double de dimension quelconque,on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
+    Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit){}
 
     //mise en place et affichage des vecteurs
     virtual void affiche(std::ostream& out) const override;
@@ -46,5 +47,5 @@ public:
     Vecteur operator~() const;
 
 private:
-   
+vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
 };

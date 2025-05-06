@@ -1,11 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "VecteurV.h"
 #include "affichage.h"
 using namespace std;
 
 
-class Vecteur: public Printable{
+/*class Vecteur: public Printable{
 
 public:
 
@@ -48,7 +49,7 @@ public:
 
 private:
     vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
-};
+};*/
 
 void Vecteur::affiche(ostream& out) const{
     for(int i = 0;i < vecteur.size(); i++){

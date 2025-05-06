@@ -1,5 +1,6 @@
 #include <vector>
-#include <cmath>
+#include <cmath>7
+#include "ObjetIntegrable.h"
 #include "VecteurV.h"
 #include "constantes.h"
 #include "contrainte.h"
