@@ -1,38 +1,22 @@
 #include <iostream>
+#include "SupportADessin.h"
 #include "PointMateriel.h"
 #include "ObjetIntegrable.h"
 #include "Systeme.h"
 
-class SupportADessin{
-    public:
-        virtual ~SupportADessin() = default; // on suppose ici que les supports ne seront ni copiés ni déplacés
-        //virtual void dessine(SupportADessin const& s)=0;
-        virtual void dessine(PointMateriel const& p)=0;
-        virtual void dessine(Systeme const& s) = 0;
-       
 
-};
+TextViewer::TextViewer(std::ostream& flot_):flot(flot_){}
+TextViewer::~TextViewer()=default;
+
+void TextViewer::dessine(PointMateriel const& p){flot << p << std::endl;}
+void TextViewer::dessine(Systeme const& s){flot << s << std::endl;}
 
 
 
-
-class TextViewer : public SupportADessin{
-
-    private :
-        std::ostream& flot; 
-    public :
-        TextViewer(std::ostream& flot_):flot(flot_){}
-        virtual ~TextViewer()=default;
-
-        virtual void dessine(PointMateriel const& p)override{flot << p << std::endl;}
-        virtual void dessine(Systeme const& s)override{flot << s << std::endl;}
+TextViewer::TextViewer(TextViewer const&) = delete;
+TextViewer& TextViewer::operator=(TextViewer const&) = delete;
+TextViewer::TextViewer(TextViewer&&) = default;
+TextViewer& TextViewer::operator=(TextViewer&&) = default;
 
 
 
-        TextViewer(TextViewer const&) = delete;
-        TextViewer& operator=(TextViewer const&) = delete;
-        TextViewer(TextViewer&&) = default;
-        TextViewer& operator=(TextViewer&&) = default;
-
-
-};

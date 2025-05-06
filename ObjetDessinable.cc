@@ -1,5 +1,6 @@
+#include "ObjetDessinable.h"
 #include "SupportADessin.h"
-
+/*
 class Dessinable {
 
     public :
@@ -8,4 +9,4 @@ class Dessinable {
     
 };
 
-
+*/
