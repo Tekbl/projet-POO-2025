@@ -10,8 +10,9 @@
 #include "GravitationConstante.h"
 #include "ObjetDessinable.h"
 #include "SupportADessin.h"
+#include "PointMateriel.h"
 
-class PointMateriel:public ObjetPhysique, public Dessinable{
+/*class PointMateriel:public ObjetPhysique, public Dessinable{
 
     public: 
         PointMateriel(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
@@ -29,10 +30,10 @@ class PointMateriel:public ObjetPhysique, public Dessinable{
                     contr = ctr;
                 }
             };
-        /*double get_pos(int i) const {return vecteur_position.get_coord(i);};
+        double get_pos(int i) const {return vecteur_position.get_coord(i);};
         double get_vit(int i) const {return vecteur_vitesse.get_coord(i);};
         void set_pos(std::vector<double> a);
-        void set_vit(std::vector<double> a);*/
+        void set_vit(std::vector<double> a);
         virtual Vecteur evolution(double t) override;
         //Vecteur ChampForces = g; //instruction de la W4, à changer dans le futur 
 
@@ -49,7 +50,7 @@ class PointMateriel:public ObjetPhysique, public Dessinable{
         //Vecteur vecteur_vitesse; //3D et dérivée du vecteur position (vecteur dérivé du vecteur etat dans l'exercice P5)
        
 
-};
+};*/
 
 
 
@@ -80,6 +81,21 @@ void PointMateriel::set_vit(std::vector<double> a){
 void PointMateriel::affiche(std::ostream& out) const{
     out << "champ de force :" << "\n" << this->position(contr[0]) << " #position" << "\n" << this->vitesse(contr[0]) << " #vitesse" << std::endl;
 }
+
+PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, unsigned int dim, const std::vector<ChampForces*>& c,
+    const std::vector<Contrainte*>& ctr):ObjetPhysique(E,E_pr,masse,dim){
+        if(c.empty()){
+            champ.push_back(new GravitationConstante());
+        }else{ 
+            champ = c;
+        }
+
+        if(ctr.empty()){
+            contr.push_back(new Libre());
+        }else{
+            contr = ctr;
+        }
+    };
 
 
 
