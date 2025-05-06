@@ -44,7 +44,7 @@ class Systeme: public Printable, public Dessinable{
         void append_force_field(unsigned int i, unsigned int j);
         double get_time();
 
-        void evolue(double dt);
+        void evolve(double dt);
         virtual void whoami(std::ostream& out) const override;
         virtual void affiche(std::ostream& sortie)const override;
 };
