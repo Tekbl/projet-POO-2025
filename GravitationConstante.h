@@ -14,6 +14,7 @@ class GravitationConstante : public ChampForces{
     
         virtual Vecteur force(ObjetPhysique const& p, double t) const override;
         virtual void whoami(std::ostream& out)const override{out << "gravitation constante";}
+        virtual void affiche(std::ostream& out)const override{whoami(out);}
 
     private :
         Vecteur gravitation;
