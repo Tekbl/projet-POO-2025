@@ -18,7 +18,7 @@ class TextViewer : public SupportADessin{
         std::ostream& flot; 
     public :
     
-        TextViewer(std::ostream& flot_):flot(flot_){}
+        TextViewer(std::ostream& flot_);
         virtual ~TextViewer()=default;
 
         virtual void dessine(PointMateriel const& p) override;
