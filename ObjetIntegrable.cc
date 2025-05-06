@@ -24,7 +24,7 @@ class ObjetMobile: public Printable{
 };
 */
 
-ObjetMobile:: ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
+ObjetMobile::ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
 
 Vecteur ObjetMobile::get_E() const{
     return E_;

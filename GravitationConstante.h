@@ -10,7 +10,8 @@
 class GravitationConstante : public ChampForces{
 
     public :
-        GravitationConstante(); 
+        GravitationConstante():gravitation(g){}//constructeur par defaut qui utilise g
+    
         virtual Vecteur force(ObjetPhysique const& p, double t) const override;
         virtual void whoami(std::ostream& out)const override{out << "gravitation constante";}
 
