@@ -4,8 +4,9 @@
 #include <vector>
 #include <iostream>
 #include "ObjetIntegrable.h"
+#include "ForceCentrale.h"
 
-class ForceCentrale: public ChampForces{
+/*class ForceCentrale: public ChampForces{
     protected:
         ForceCentrale(ObjetPhysique& obj): centre(obj){} 
         Vecteur quadratique_inverse(const ObjetPhysique& obj, double precis = 1e-10)const{
@@ -17,9 +18,18 @@ class ForceCentrale: public ChampForces{
             return (~r) * (1/ (norme * norme));
         }
         ObjetPhysique& centre;
-};
+};*/
 
-class ChampNewtonien: public ForceCentrale{
+Vecteur ForceCentrale::quadratique_inverse(const ObjetPhysique& obj, double precis = 1e-10) const{
+    Vecteur r = obj.get_E() - centre.get_E();
+    double norme = r.norme();
+    if (norme < precis){
+         return Vecteur(0,0,0);
+    }
+    return (~r) * (1/ (norme * norme));
+}
+
+/*class ChampNewtonien: public ForceCentrale{
     public:
     ChampNewtonien(ObjetPhysique& obj): ForceCentrale(obj){}
     virtual Vecteur force(const ObjetPhysique& obj, double t) const override{
@@ -31,4 +41,4 @@ class ChampNewtonien: public ForceCentrale{
     virtual void affiche(std::ostream& out) const override{
         whoami(out);
     }
-};
+};*/
