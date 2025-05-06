@@ -27,7 +27,7 @@ double Systeme::get_time(){return time;}
 void Systeme::whoami(std::ostream& out) const{out << "systeme";}
 
 
-void Systeme::evolue(double dt){
+void Systeme::evolve(double dt){
     for(int i(0);i<sys_objects.size();i++){
         integrator->evolue(sys_objects[i].get(),time,dt);
     }
