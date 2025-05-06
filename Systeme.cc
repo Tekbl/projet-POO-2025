@@ -12,7 +12,7 @@
 
 
         
-Systeme::Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list,std::vector<std::unique_ptr<Contrainte>> constraints_, std::vector<std::unique_ptr<ChampForces>> force_field_, std::unique_ptr<integrateur> integrator_ )/*std::make_unique<integrateurEulerCromer>(), ne fonctionne qu'avec c++14*/):
+Systeme::Systeme(std::vector<std::unique_ptr<ObjetPhysique>> object_list,std::vector<std::unique_ptr<Contrainte>> constraints_, std::vector<std::unique_ptr<ChampForces>> force_field_, std::unique_ptr<integrateur> integrator_ ):
 sys_objects(std::move(object_list)),sys_constraints(std::move(constraints_)),sys_force_field(std::move(force_field_)),integrator(std::move(integrator_)){time = 0;}
 
 void Systeme::dessine_sur(SupportADessin& support) { support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
