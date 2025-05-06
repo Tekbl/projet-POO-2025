@@ -95,7 +95,7 @@ PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, unsigned int
         }else{
             contr = ctr;
         }
-    };
+    }
 
 
 
