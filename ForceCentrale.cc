@@ -20,7 +20,7 @@
         ObjetPhysique& centre;
 };*/
 
-Vecteur ForceCentrale::quadratique_inverse(const ObjetPhysique& obj, double precis = 1e-10) const{
+Vecteur ForceCentrale::quadratique_inverse(const ObjetPhysique& obj, double precis) const{
     Vecteur r = obj.get_E() - centre.get_E();
     double norme = r.norme();
     if (norme < precis){
