@@ -79,7 +79,7 @@ void PointMateriel::set_vit(std::vector<double> a){
 };//comme cela, get_pos/vit fonctionnent pour des vecteurs de n'importe quelle dimension*/
 
 void PointMateriel::affiche(std::ostream& out) const{
-    out << "champ de force :" << "\n" << this->position(contr[0]) << " #position" << "\n" << this->vitesse(contr[0]) << " #vitesse" << std::endl;
+    out << this->position(contr[0]) << " #position" << "\n" << this->vitesse(contr[0]) << " #vitesse" << std::endl;
 }
 
 PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, unsigned int dim, const std::vector<ChampForces*>& c,

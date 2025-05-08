@@ -39,18 +39,20 @@ void Systeme::affiche(std::ostream& sortie)const {
     for (int i(0);i<sys_objects.size();i++){
         sortie << "Objet no " << i << " : " <<std::endl;
         sys_objects[i]->whoami(sortie);
-        sortie << sys_objects[i].get() << std::endl;
+        sortie << std::endl;
+        sortie << *sys_objects[i].get() << std::endl;
         sortie << "" << std::endl;
         //contrainte relative à l'objet est gérée par l'affichage de l'objet
     }
     for (int j(0);j<sys_force_field.size();j++){
-        sortie << "Champ no " << j ;
+        sortie << "Champ no " << j << ": ";
         sys_force_field[j]->whoami(sortie);
-        sortie << sys_force_field[j].get() << std::endl;
+        sortie << std::endl;
+        //sortie << *sys_force_field[j].get() << std::endl;
         // ça s'applique aussi à sys_objects
     }
-    for (int k(0);k<sys_force_field.size();k++){
-        sortie << "Contrainte no " << k ;
+    for (int k(0);k<sys_constraints.size();k++){
+        sortie << "Contrainte no " << k << ": ";
         sys_constraints[k]->whoami(sortie);
         sortie << std::endl;
     }

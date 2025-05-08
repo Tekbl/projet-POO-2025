@@ -7,7 +7,7 @@
 #include "PointMateriel.h"
 #include "ObjetDessinable.h"
 
-void simulation(double temps, double interval_temps, unsigned int nb_affiche /*pour ne pas faire trop d'affichage*/){    
+void simulation(double temps, double interval_temps, unsigned int nb_iter){    
     Systeme sys;
     double rayon_terre = 6371e3;
     double altitude = 10;
@@ -16,9 +16,9 @@ void simulation(double temps, double interval_temps, unsigned int nb_affiche /*p
     //si on veut comparer aux valeurs théoriques
     //double g = (G * masse_terre) / (rayon_terre * rayon_terre);
     //double altitude_initiale = altitude;
-    Vecteur position_terre(3);
+    Vecteur position_terre(-rayon_terre, 0, 0);
     Vecteur vitesse_terre(3);
-    Vecteur position_pomme(rayon_terre+altitude, 0, 0);
+    Vecteur position_pomme(altitude, 0, 0);
     Vecteur vitesse_pomme(3);
     PointMateriel pomme(position_pomme, vitesse_pomme, masse_pomme);
     PointMateriel terre(position_terre, vitesse_terre, masse_terre);
@@ -36,19 +36,27 @@ void simulation(double temps, double interval_temps, unsigned int nb_affiche /*p
     sys.add_force_field(std::unique_ptr<ChampNewtonien>(new ChampNewtonien(PsurT)));
     sys.append_constraint(0, 0);
     sys.append_constraint(0, 1);
-    //TextViewer txt(std::cout);
+    TextViewer txt(std::cout);
     //sys.dessine_sur(txt);
     double iteration = temps / interval_temps;
     sys.append_force_field(0,0);
     sys.append_force_field(1,1);
     for(int t = 0; t < iteration; t++){
-        if(t%nb_affiche == 0){
-            std::cout << "t = " << sys.get_time() << std::endl;
-            // à faire la diff entre position de la (pomme + rayon_terre) - rayon terre pour avoir la distance
-        }
+        std::cout << "t = " << sys.get_time() << std::endl;
+        // à faire la diff entre position de la (pomme + rayon_terre) - rayon terre pour avoir la distance
+        //sys.dessine_sur(txt);
+        sys.affiche(std::cout);
         sys.evolve(interval_temps); 
+     
     }
 }
 
     
-int main(){}
+int main(){
+
+    double temps = 10; //temps de la simulation en secondes
+    double interval_temps = 0.01; //intervalle de temps entre chaque itération de la simulation
+    unsigned int nb_iter = 15; //nombre d'itérations de la simulation
+    simulation(temps, interval_temps, nb_iter);
+    return 0;
+}

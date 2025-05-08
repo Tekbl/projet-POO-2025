@@ -20,7 +20,7 @@ class ChampNewtonien: public ForceCentrale{
         return quadratique_inverse(obj)*((-G)*obj.get_masse()*centre.get_masse());
     }
     virtual void whoami(std::ostream& out) const override{
-        out << "Champ Newtonien : " ;
+        out << "Champ Newtonien";
     }
     virtual void affiche(std::ostream& out) const override{
         whoami(out);
