@@ -202,7 +202,7 @@ Vecteur Vecteur::unitaire() const{
             throw("division par zero");
         }
         for (unsigned int i(0); i<dim; i++){
-            B.augmente(vecteur[i]/n);
+            B.vecteur[i] = (vecteur[i]/n);
         }
     }
     
