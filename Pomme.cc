@@ -40,7 +40,11 @@ double dt = 0.2;
 
 for(double t(0); t<t_chute; t+=dt){
 euler.evolue(&pomme,t,dt);
-cout << pomme << endl;
+cout << "temps : "<< t << endl;
+cout << "hauteur : "<<pomme.get_E()-Vecteur(0,0,rayon);
+cout << "vitesse :" << pomme.get_E_pr().norme() << endl;
+cout << endl; 
+
 }
 
 
