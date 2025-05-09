@@ -19,7 +19,8 @@
                 ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o GravitationConstante.o \
                 SupportADessin.o affichage.o ##fill stuff with dependencies
 
-    Pomme : Pomme.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o PointMateriel.o Integrateurs.o GravitationConstante.o
+    Pomme : Pomme.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
+            PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o
 
 
     # Ces lignes ont été recopiées de la commande g++ -MM *.cc
