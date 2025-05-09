@@ -53,9 +53,14 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     Vecteur r = pomme.get_E() - terre.get_E();
     double norme = r.norme();
 
+    Vecteur y = terre.get_E() - pomme.get_E();
+
     Vecteur x = (~r) * (1/ (norme * norme));
     std::cout << r;
     std::cout << x;
+    std::cout << (~r);
+    std::cout << y;
+    std::cout << (~y);
 }
 
     

@@ -242,8 +242,7 @@ void Vecteur::operator+=(const Vecteur& B){
 }
 
 void Vecteur::operator-=(const Vecteur& B){
-    Vecteur C(B);
-    C.oppose();
+    Vecteur C(B.oppose());
     *this += C;
 }
 
