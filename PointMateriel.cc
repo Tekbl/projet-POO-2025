@@ -57,8 +57,8 @@
 
 //===============================A_CHANGER==================================
 Vecteur PointMateriel::evolution(double t){
-    //on initialise un vecteur de dim 1 à valeur 0 qui sera modifié par les calculs de force
-    Vecteur x(1);
+    //on initialise un vecteur de dim 3 à valeur 0 qui sera modifié par les calculs de force
+    Vecteur x(3);
     for(auto chp : champ){
         x += force(chp,t) ;
     } 

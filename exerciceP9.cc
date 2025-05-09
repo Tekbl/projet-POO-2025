@@ -9,14 +9,14 @@
 
 void simulation(double temps, double interval_temps, unsigned int nb_iter){    
     Systeme sys;
-    double rayon_terre = 6371e3;
+    double rayon_terre = -6371e3;
     double altitude = 10;
     double masse_terre = 5.972e24;
     double masse_pomme = 0.1;
     //si on veut comparer aux valeurs théoriques
     //double g = (G * masse_terre) / (rayon_terre * rayon_terre);
     //double altitude_initiale = altitude;
-    Vecteur position_terre(-rayon_terre, 0, 0);
+    Vecteur position_terre(rayon_terre, 0, 0);
     Vecteur vitesse_terre(3);
     Vecteur position_pomme(altitude, 0, 0);
     Vecteur vitesse_pomme(3);
@@ -41,14 +41,21 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     double iteration = temps / interval_temps;
     sys.append_force_field(0,0);
     sys.append_force_field(1,1);
-    for(int t = 0; t < iteration; t++){
+    /*for(int t = 0; t < 10; t++){
         std::cout << "t = " << sys.get_time() << std::endl;
         // à faire la diff entre position de la (pomme + rayon_terre) - rayon terre pour avoir la distance
         //sys.dessine_sur(txt);
         sys.affiche(std::cout);
         sys.evolve(interval_temps); 
+
      
-    }
+    }*/
+    Vecteur r = pomme.get_E() - terre.get_E();
+    double norme = r.norme();
+
+    Vecteur x = (~r) * (1/ (norme * norme));
+    std::cout << r;
+    std::cout << x;
 }
 
     
