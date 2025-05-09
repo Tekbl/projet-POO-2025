@@ -62,7 +62,7 @@ Vecteur PointMateriel::evolution(double t){
     for(auto chp : champ){
         x += force(chp,t) ;
     } 
-    x*=(1/this->get_masse());
+    x=x*(1/this->get_masse());
     return x;
 }
 
@@ -84,6 +84,7 @@ void PointMateriel::affiche(std::ostream& out) const{
 
 PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, unsigned int dim, const std::vector<ChampForces*>& c,
     const std::vector<Contrainte*>& ctr):ObjetPhysique(E,E_pr,masse,dim){
+        /*
         if(c.empty()){
             champ.push_back(new GravitationConstante());
         }else{ 
@@ -95,6 +96,7 @@ PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, unsigned int
         }else{
             contr = ctr;
         }
+        */
     }
 
 

@@ -10,9 +10,10 @@
 #include "PointMateriel.h"
 #include "GravitationConstante.h"
 #include "Integrateurs.h"
+#include "ForceCentrale.h"
 using namespace std;
 
-//VecteurV.o ObjetIntegrable.o constantes.o Champforces.o affichage.o PointMateriel.o Integrateurs.o GravitationConstante.o
+//VecteurV.o ObjetIntegrable.o constantes.o Champforces.o affichage.o PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o
 int main(){
     
 
@@ -22,8 +23,8 @@ double h(10);
 double masse_pomme(0.1);
 double masse_terre(5.972e24);
 
-Vecteur pos_terre(0,0,0);
-Vecteur pos_pomme(0,0,rayon+h);
+Vecteur pos_terre(0,0,-rayon);
+Vecteur pos_pomme(0,0,h);
 Vecteur vit_terre(0,0,0);
 Vecteur vit_pomme(0,0,0);
 
@@ -33,18 +34,25 @@ integrateurEulerCromer euler;
 PointMateriel pomme(pos_pomme,vit_pomme,masse_pomme);
 PointMateriel terre(pos_terre,vit_terre,masse_terre);
 
-double t_chute = 10.0;
+ChampNewtonien champ_pomme(pomme);
+ChampNewtonien champ_terre(terre);
+
+pomme.add_champ(&champ_terre);
+terre.add_champ(&champ_pomme);
+
+double t_chute = 120.0;
 double dt = 0.2;
 
 
 
 for(double t(0); t<t_chute; t+=dt){
 euler.evolue(&pomme,t,dt);
+/*
 cout << "temps : "<< t << endl;
-cout << "hauteur : "<<pomme.get_E()-Vecteur(0,0,rayon);
+cout << pomme.get_E() << endl;
 cout << "vitesse :" << pomme.get_E_pr().norme() << endl;
+*/
 cout << endl; 
-
 }
 
 
