@@ -41,7 +41,7 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     double iteration = temps / interval_temps;
     sys.append_force_field(0,0);
     sys.append_force_field(1,1);
-    /*for(int t = 0; t < 10; t++){
+    for(int t = 0; t < 10; t++){
         std::cout << "t = " << sys.get_time() << std::endl;
         // à faire la diff entre position de la (pomme + rayon_terre) - rayon terre pour avoir la distance
         //sys.dessine_sur(txt);
@@ -49,18 +49,7 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
         sys.evolve(interval_temps); 
 
      
-    }*/
-    Vecteur r = pomme.get_E() - terre.get_E();
-    double norme = r.norme();
-
-    Vecteur y = terre.get_E() - pomme.get_E();
-
-    Vecteur x = (~r) * (1/ (norme * norme));
-    std::cout << r;
-    std::cout << x;
-    std::cout << (~r);
-    std::cout << y;
-    std::cout << (~y);
+    }
 }
 
     
