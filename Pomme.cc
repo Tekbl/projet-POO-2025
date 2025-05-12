@@ -40,19 +40,19 @@ ChampNewtonien champ_terre(terre);
 pomme.add_champ(&champ_terre);
 terre.add_champ(&champ_pomme);
 
-double t_chute = 120.0;
+double t_chute = 30.0;
 double dt = 0.2;
 
 
 
 for(double t(0); t<t_chute; t+=dt){
-euler.evolue(&pomme,t,dt);
-/*
+//cout << pomme.get_E() << endl;
+//cout << "vitesse :" << pomme.get_E_pr().norme() << endl;
+
 cout << "temps : "<< t << endl;
-cout << pomme.get_E() << endl;
-cout << "vitesse :" << pomme.get_E_pr().norme() << endl;
-*/
-cout << endl; 
+cout << pomme << endl;
+euler.evolue(&pomme,t,dt);
+
 }
 
 
