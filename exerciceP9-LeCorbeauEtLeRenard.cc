@@ -8,7 +8,9 @@
 #include "PointMateriel.h"
 #include "ObjetDessinable.h"
 
-void corbeaurenard(double pas, unsigned int nb_iter){
+#define M_PI 3.14159265358979323846
+
+void corbeaurenard(double temps, double pas, unsigned int nb_iter, double precision = 1e-20){
     //Création du système
     Systeme sys;
 
@@ -21,10 +23,11 @@ void corbeaurenard(double pas, unsigned int nb_iter){
     double masse_fromage = 1;
     double masse_pierre = 1;
     double t_coll = sqrt(pow(distance, 2) + pow(hauteur, 2)) / vitesse_initiale; //comme trouvé dans l'exercice
-    Vecteur fromage({distance, hauteur});
-    Vecteur pierre({0, 0});
-    Vecteur vitesse_pierre({vitesse_initiale*cos(angle), vitesse_initiale*sin(angle)});
-    Vecteur vitesse_fromage({0, 0});
+    // on mets les vecteurs à 3 dimensions car gravitation constante est faite pour avoir la gravité en z 
+    Vecteur fromage(std::vector<double>{0, distance, hauteur});
+    Vecteur pierre(3);
+    Vecteur vitesse_pierre(std::vector<double>{0, vitesse_initiale*cos(angle), vitesse_initiale*sin(angle)});
+    Vecteur vitesse_fromage(3);
     PointMateriel fromage_objet(fromage, vitesse_fromage, masse_fromage);
     PointMateriel pierre_objet(pierre, vitesse_pierre, masse_pierre);
 
@@ -47,11 +50,19 @@ void corbeaurenard(double pas, unsigned int nb_iter){
     sys.append_force_field(0, 0);
     sys.append_force_field(0, 1);
 
-    for(int i = 0; i < t_coll; i++){
+    double iteration = temps / pas;
+
+    for(int i = 0; i < iteration; i ++){
         if(i % nb_iter == 0){
             std::cout << "t = " << sys.get_time() << std::endl;
             sys.dessine_sur(txt);
             //sys.affiche(std::cout); 
+        }
+        
+        if(abs(sys.get_time()-t_coll) < precision){
+            std::cout << "Collision entre le fromage et la pierre à t = " << sys.get_time() << std::endl;
+            sys.dessine_sur(txt);
+            break; //on arrête la simulation à la collision
         }
         sys.evolve(pas);
     }
@@ -60,10 +71,11 @@ void corbeaurenard(double pas, unsigned int nb_iter){
 }
 
 int main(){
-    double pas = 0.01; //pas de temps
+    double temps = 5; //temps de la simulation en secondes
+    double pas = 0.001; //pas de temps
     unsigned int nb_iter = 100; //limite le nombre d'affichage
 
-    corbeaurenard(pas, nb_iter);
+    corbeaurenard(temps, pas, nb_iter);
 
     return 0;
 }
