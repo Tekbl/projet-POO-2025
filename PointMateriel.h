@@ -11,7 +11,7 @@
  
 class PointMateriel: public ObjetPhysique, public Dessinable{
     public: 
-        PointMateriel(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
+        PointMateriel(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, double charge=0 ,unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
             const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{});
         /*double get_pos(int i) const {return vecteur_position.get_coord(i);};
         double get_vit(int i) const {return vecteur_vitesse.get_coord(i);};
@@ -34,3 +34,23 @@ class PointMateriel: public ObjetPhysique, public Dessinable{
        
 };
 
+
+/*===========   INUTILISE ========== 
+
+particule_chargee est inutilisee parce que la méthode force() des ChampForces, prend un objetphysique en argument 
+et donc pour calculer la force (F=q*E), je dois faire ObjetPhysique.charge*champElec, 
+ce qui marche pas si charge est définie en dehors de ObjetPhysique :'(
+
+*/
+
+class particule_chargee : public PointMateriel{
+    public:
+        particule_chargee(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, double charge_ = 0,
+            unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
+            const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{});
+        virtual Vecteur evolution(double t) override;
+        virtual void affiche(std::ostream& sortie)const override;
+        virtual void whoami(std::ostream& out)const override{out << "particule chargee" ;};
+    private:
+        double charge;
+};

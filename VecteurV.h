@@ -40,7 +40,7 @@ public:
     void operator+=(const Vecteur& B);
     void operator-=(const Vecteur& B);
     void operator*=(double d);
-    Vecteur operator*(double d);
+    Vecteur operator*(double d)const;
     Vecteur operator^(const Vecteur& B);
     friend const Vecteur operator+(Vecteur A, const Vecteur& B);
     friend const Vecteur operator-(Vecteur A, const Vecteur& B);

@@ -70,8 +70,8 @@ class ObjetPhysique:public ObjetMobile{
 };
 */
 
-ObjetPhysique::ObjetPhysique(Vecteur E, Vecteur E_pr, double masse, unsigned int dim)
-    : ObjetMobile(E, E_pr), masse_(std::abs(masse)), dim_evo(dim) {}
+ObjetPhysique::ObjetPhysique(Vecteur E, Vecteur E_pr, double masse,double charge ,unsigned int dim)
+    : ObjetMobile(E, E_pr), masse_(std::abs(masse)),charge_(charge) ,dim_evo(dim) {}
 
 double ObjetPhysique::get_masse() const{
     return masse_;
@@ -90,6 +90,7 @@ Vecteur ObjetPhysique::force(ChampForces *c ,double t) const{
     return c->force(*this,t);
 }
 
+double ObjetPhysique::get_charge()const{return charge_;}
 
 vector<Contrainte*> ObjetPhysique::get_contr(){return contr;}
 vector<ChampForces*> ObjetPhysique::get_champ(){return champ;}

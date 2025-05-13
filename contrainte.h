@@ -13,7 +13,7 @@ class Contrainte : public Printable{
         virtual Vecteur vitesse(const ObjetPhysique& obj) = 0;
         virtual void affiche(std::ostream& out)const override = 0;//blank for now since we have no use for it
 
-};
+};  
 
 class Libre:public Contrainte{
     virtual Vecteur applique_force(const ObjetPhysique& obj, Vecteur force, double t) override;

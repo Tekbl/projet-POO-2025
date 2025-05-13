@@ -25,11 +25,12 @@ class ObjetMobile: public Printable{
 
 class ObjetPhysique:public ObjetMobile{
     public: 
-        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3);
+        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0,double charge=0, unsigned int dim = 3);
         Vecteur force(ChampForces *c ,double t) const;
         Vecteur position(Contrainte *c) const;
         Vecteur vitesse(Contrainte *c) const;
         double get_masse() const;
+        double get_charge() const;
         virtual void affiche(std::ostream& out) const override;
 
         std::vector<Contrainte*> get_contr();
@@ -44,4 +45,5 @@ class ObjetPhysique:public ObjetMobile{
     private:
         unsigned int dim_evo;
         double masse_;
+        double charge_;
 };

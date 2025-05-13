@@ -85,8 +85,8 @@ void PointMateriel::affiche(std::ostream& out) const{
     out << "vitesse " << this->get_E_pr() << std::endl;
 }
 
-PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, unsigned int dim, const std::vector<ChampForces*>& c,
-    const std::vector<Contrainte*>& ctr):ObjetPhysique(E,E_pr,masse,dim){
+PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, double charge ,unsigned int dim, const std::vector<ChampForces*>& c,
+    const std::vector<Contrainte*>& ctr):ObjetPhysique(E,E_pr,masse, charge,dim){
         /*
         if(c.empty()){
             champ.push_back(new GravitationConstante());
@@ -104,4 +104,23 @@ PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, unsigned int
 
 
 
+/*=================== INUTILISE (VOIR .h) =================================0
+particule_chargee::particule_chargee(Vecteur E, Vecteur E_pr, double masse, double charge_, unsigned int dim, const std::vector<ChampForces*>& c,
+    const std::vector<Contrainte*>& ctr):PointMateriel(E,E_pr,masse,dim,c,ctr),charge(charge_){
+       
+       /*======== Mettre new Champmagnetique à la place de GravitationConstante une fois implementé 
+        if(c.empty()){
+            champ.push_back(new GravitationConstante());
+        }else{ 
+            champ = c;
+        }
+        
 
+        if(ctr.empty()){
+            contr.push_back(new Libre());
+        }else{
+            contr = ctr;
+        }
+    }
+
+*/
