@@ -41,7 +41,7 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     double iteration = temps / interval_temps;
     sys.append_force_field(0,0);
     sys.append_force_field(1,1);
-    for(int t = 0; t < iteration; t++){
+    for(int t = 0; t <= iteration; t++){
             if(t % nb_iter == 0){
             std::cout << "t = " << sys.get_time() << std::endl;
             // à faire la diff entre position de la (pomme + rayon_terre) - rayon terre pour avoir la distance
