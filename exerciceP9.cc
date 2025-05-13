@@ -41,22 +41,21 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     double iteration = temps / interval_temps;
     sys.append_force_field(0,0);
     sys.append_force_field(1,1);
-    for(int t = 0; t < 10; t++){
-        std::cout << "t = " << sys.get_time() << std::endl;
-        // à faire la diff entre position de la (pomme + rayon_terre) - rayon terre pour avoir la distance
-        //sys.dessine_sur(txt);
-        sys.affiche(std::cout);
-        sys.evolve(interval_temps); 
-
-     
+    for(int t = 0; t <= iteration; t++){
+            if(t % nb_iter == 0){
+                std::cout << "t = " << sys.get_time() << std::endl;
+                sys.dessine_sur(txt);
+                //sys.affiche(std::cout); 
+            } 
+        sys.evolve(interval_temps);
     }
 }
 
     
 int main(){
 
-    double temps = 10; //temps de la simulation en secondes
-    double interval_temps = 0.01; //intervalle de temps entre chaque itération de la simulation
+    double temps = 0.1; //temps de la simulation en secondes
+    double interval_temps = 0.001; //intervalle de temps entre chaque itération de la simulation
     unsigned int nb_iter = 15; //nombre d'itérations de la simulation
     simulation(temps, interval_temps, nb_iter);
     return 0;

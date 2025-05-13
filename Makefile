@@ -3,7 +3,7 @@
 
 
     #all = la première cible
-    all: exerciceP9 Pomme
+    all: exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard
 
 
     #include <vector>
@@ -22,6 +22,10 @@
     Pomme : Pomme.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
             PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o
 
+    exerciceP9-LeCorbeauEtLeRenard: exerciceP9-LeCorbeauEtLeRenard.o VecteurV.o ChampForces.o \
+                GravitationConstante.o Systeme.o PointMateriel.o ObjetDessinable.o \
+                ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o \
+                SupportADessin.o affichage.o ##fill stuff with dependencies
 
     # Ces lignes ont été recopiées de la commande g++ -MM *.cc
     # Ces lignes sont les dépendances de compilation 
@@ -34,6 +38,10 @@ contenu.o: contenu.cc ObjetDessinable.h SupportADessin.h \
  contenu.h
 contrainte.o: contrainte.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h
+exerciceP9-LeCorbeauEtLeRenard.o: exerciceP9-LeCorbeauEtLeRenard.cc \
+ VecteurV.h affichage.h ChampForces.h GravitationConstante.h constantes.h \
+ ObjetIntegrable.h contrainte.h Systeme.h Integrateurs.h \
+ ObjetDessinable.h SupportADessin.h PointMateriel.h
 exerciceP9.o: exerciceP9.cc VecteurV.h affichage.h ChampForces.h \
  ForceCentrale.h constantes.h ObjetIntegrable.h contrainte.h Systeme.h \
  Integrateurs.h ObjetDessinable.h SupportADessin.h PointMateriel.h
@@ -53,7 +61,7 @@ PointMateriel.o: PointMateriel.cc VecteurV.h affichage.h constantes.h \
  ObjetDessinable.h SupportADessin.h PointMateriel.h
 Pomme.o: Pomme.cc VecteurV.h affichage.h ObjetIntegrable.h constantes.h \
  contrainte.h Champforces.h PointMateriel.h ObjetDessinable.h \
- SupportADessin.h Integrateurs.h
+ SupportADessin.h GravitationConstante.h Integrateurs.h ForceCentrale.h
 SupportADessin.o: SupportADessin.cc SupportADessin.h ObjetIntegrable.h \
  VecteurV.h affichage.h constantes.h contrainte.h PointMateriel.h \
  ObjetDessinable.h Systeme.h Integrateurs.h Champforces.h
