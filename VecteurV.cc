@@ -173,7 +173,10 @@ Vecteur Vecteur::prod_vect(Vecteur B) const{
             B.vecteur.push_back(0);
         }
     }while(dim != 3 && B.vecteur.size() != 3);
-    Vecteur Produit((vect_temp[2]*B.vecteur[3])-(vect_temp[3]*B.vecteur[2]),(vect_temp[3]*B.vecteur[1])-(vect_temp[1]*B.vecteur[3]),(vect_temp[1]*B.vecteur[2])-(vect_temp[2]*B.vecteur[1]));
+    double x = (vect_temp[1]*B.vecteur[2])-(vect_temp[2]*B.vecteur[1]);
+    double y = (vect_temp[2]*B.vecteur[0])-(vect_temp[0]*B.vecteur[2]);
+    double z = (vect_temp[0]*B.vecteur[1])-(vect_temp[1]*B.vecteur[0]);
+    Vecteur Produit(x,y,z);
     return Produit;
 }
 
@@ -247,7 +250,7 @@ void Vecteur::operator-=(const Vecteur& B){
 }
 
 Vecteur Vecteur::operator^(const Vecteur& B){
-    return this->prod_scalaire(B);
+    return this->prod_vect(B);
 }
 
 const Vecteur operator+(Vecteur A, const Vecteur& B){
