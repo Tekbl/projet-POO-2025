@@ -24,6 +24,16 @@ void ChampCompose::affiche(std::ostream& sortie)const{
 }
 
 
+Vecteur ChampFrottements::force(const ObjetPhysique& obj, double t)const{
+    Vecteur v = obj.get_E_pr();
+    Vecteur Ff = v*(-coeff_frottement);
+    return Ff;
+}
+
+void ChampFrottements::affiche(std::ostream& sortie)const{
+    sortie << "Coeff frottement : " << coeff_frottement;
+}
+
 Vecteur ChampElectroMagnetique::force(const ObjetPhysique& obj, double t)const{
     double q = obj.get_charge();
     Vecteur V_cross_B = obj.get_E_pr().prod_vect(champMag);
@@ -34,6 +44,7 @@ void ChampElectroMagnetique::affiche(std::ostream& sortie)const{
     sortie << "Champ Electrique : " << champElec;
     sortie << "Champ Magnetique : " << champMag; 
 }
+
 
 
 /*

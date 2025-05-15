@@ -39,12 +39,14 @@ class Systeme: public Printable, public Dessinable{
         void add_constraint(std::unique_ptr<Contrainte> c);
         void add_force_field(std::unique_ptr<ChampForces> f);
         void change_integrator(std::unique_ptr<integrateur> new_f);
-
         void append_constraint(unsigned int i, unsigned int j);
         void append_force_field(unsigned int i, unsigned int j);
         double get_time();
 
+        ObjetPhysique* get_obj(int i)const;
+
         void evolve(double dt);
         virtual void whoami(std::ostream& out) const override;
         virtual void affiche(std::ostream& sortie)const override;
+
 };

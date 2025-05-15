@@ -3,41 +3,45 @@
 
 
     #all = la première cible
-    all: exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard
+    all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard 
 
-
-    #include <vector>
-    #include <iostream>
-    #include "VecteurV.h"
-    #include "ChampForces.h"
-    #include "ForceCentrale.h"
-    #include "Systeme.h"
-    #include "PointMateriel.h"
-    #include "ObjetDessinable.h"
 
     exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
                 ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o GravitationConstante.o \
                 SupportADessin.o affichage.o ##fill stuff with dependencies
 
     Pomme : Pomme.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
-            PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o
+            PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o ##fill stuff with dependencies
 
     exerciceP9-LeCorbeauEtLeRenard: exerciceP9-LeCorbeauEtLeRenard.o VecteurV.o ChampForces.o \
                 GravitationConstante.o Systeme.o PointMateriel.o ObjetDessinable.o \
                 ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o \
                 SupportADessin.o affichage.o ##fill stuff with dependencies
 
+    exerciceP11-magnetique : VecteurV.o affichage.o ObjetIntegrable.o ChampForces.o ForceCentrale.o Integrateurs.o Systeme.o PointMateriel.o \
+                              SupportADessin.o ObjetDessinable.o ChampSupplementaires.o contrainte.o ##fill stuff with dependencies
+
+
     # Ces lignes ont été recopiées de la commande g++ -MM *.cc
     # Ces lignes sont les dépendances de compilation 
+
 affichage.o: affichage.cc affichage.h
 ChampForces.o: ChampForces.cc Champforces.h VecteurV.h affichage.h \
  ObjetIntegrable.h constantes.h contrainte.h
+ChampSupplementaires.o: ChampSupplementaires.cc VecteurV.h affichage.h \
+ Champforces.h ObjetIntegrable.h constantes.h contrainte.h \
+ PointMateriel.h ObjetDessinable.h SupportADessin.h ForceCentrale.h \
+ ChampSupplementaires.h
 constantes.o: constantes.cc VecteurV.h affichage.h
 contenu.o: contenu.cc ObjetDessinable.h SupportADessin.h \
  ObjetIntegrable.h VecteurV.h affichage.h constantes.h contrainte.h \
  contenu.h
 contrainte.o: contrainte.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h
+exerciceP11-magnetique.o: exerciceP11-magnetique.cc VecteurV.h \
+ affichage.h ChampForces.h ObjetIntegrable.h constantes.h contrainte.h \
+ ForceCentrale.h Integrateurs.h Systeme.h ObjetDessinable.h \
+ SupportADessin.h PointMateriel.h ChampSupplementaires.h
 exerciceP9-LeCorbeauEtLeRenard.o: exerciceP9-LeCorbeauEtLeRenard.cc \
  VecteurV.h affichage.h ChampForces.h GravitationConstante.h constantes.h \
  ObjetIntegrable.h contrainte.h Systeme.h Integrateurs.h \

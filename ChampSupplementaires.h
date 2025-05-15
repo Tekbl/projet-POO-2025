@@ -19,6 +19,7 @@ class ChampCompose : public ChampForces{
 };
 
 
+
 class ChampElectroMagnetique: public ChampForces{
     public:
         ChampElectroMagnetique(Vecteur elec = 0, Vecteur mag = 0):champElec(elec),champMag(mag){};
