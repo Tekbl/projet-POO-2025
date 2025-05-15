@@ -264,7 +264,7 @@ const Vecteur operator-(Vecteur A, const Vecteur& B){
 }
 
 void Vecteur::operator*=(double d){
-    this->mult(d);
+    *this = this->mult(d);
 }
 
 Vecteur Vecteur::operator*(double d)const{
