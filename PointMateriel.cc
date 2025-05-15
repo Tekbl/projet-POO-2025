@@ -62,6 +62,7 @@ Vecteur PointMateriel::evolution(double t){
     for(auto chp : champ){
         x += force(chp,t) ;
     } 
+    
     x=x*(1/this->get_masse());
     return x;
 }

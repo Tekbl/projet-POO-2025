@@ -43,7 +43,10 @@ class Systeme: public Printable, public Dessinable{
         void append_force_field(unsigned int i, unsigned int j);
         double get_time();
 
+        
         ObjetPhysique* get_obj(int i)const;
+        ChampForces* get_champ(int i)const;
+        
 
         void evolve(double dt);
         virtual void whoami(std::ostream& out) const override;

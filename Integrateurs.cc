@@ -15,14 +15,15 @@ void integrateurEulerCromer::evolue(ObjetMobile *obj, double t, double dt) {
     obj->set_E_pr(vit + vit_dt); //évolue E_pr
     Vecteur new_vit = obj->get_E_pr();
 
-    //std::cout << "new vit : " << new_vit << std::endl;
+    //std::cout << "EULER new vit : " << new_vit << std::endl;
 
     Vecteur pos = obj->get_E();
     Vecteur pos_dt = new_vit *dt;
 
     obj->set_E(pos + pos_dt); //évolue E
+
     //Vecteur new_pos = obj->get_E(); 
-    //std::cout << "new pos : " << new_pos << std::endl;
+    //std::cout << "EULER new pos : " << new_pos << std::endl;
     
 
     //======avant on avait ça mais ça ne marchait pas==========================

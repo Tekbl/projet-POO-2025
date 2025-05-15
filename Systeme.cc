@@ -30,6 +30,10 @@ ObjetPhysique* Systeme::get_obj(int i) const {
     return sys_objects[i].get();
 };
 
+ChampForces* Systeme::get_champ(int i) const {
+    return sys_force_field[i].get();
+};
+
 
 void Systeme::evolve(double dt){
     for(int i(0);i<sys_objects.size();i++){
