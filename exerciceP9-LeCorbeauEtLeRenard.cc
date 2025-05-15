@@ -10,19 +10,24 @@
 
 #define M_PI 3.14159265358979323846
 
-void corbeaurenard(double temps, double pas, unsigned int nb_iter, double precision = 1e-20){
+void corbeaurenard(double temps, double pas, unsigned int nb_iter, double precision = 1e-3){
     //Création du système
     Systeme sys;
 
     //paramètres
     double hauteur = 10;
     double distance = 10;
-    double vitesse_initiale = 5;
-    double angle = 30.0 * M_PI / 180.0; //en radians
+    double L2D2 = pow(distance, 2) + pow(hauteur, 2);
+    //vitesse minimale pour avoir une collision d'après la formule trouvé dans l'exercice, v>sqrt(g*(distance^2 + hauteur^2/(2*hauteur)))
+    double vitesse_initiale = sqrt(9.81 * (L2D2 / (2 * hauteur))) + 1e-3; //on rajoute une petite valeur pour être sûr d'avoir une collision
+    //double vitesse_initiale = 10; //pour mettre une vitesse initiale arbitraire
+    double tanangle = hauteur/distance;
+    double angle = atan(tanangle); //déjà en radians
     //les masses n'influent pas sur le mouvement, mais on les met quand même
     double masse_fromage = 1;
     double masse_pierre = 1;
-    double t_coll = sqrt(pow(distance, 2) + pow(hauteur, 2)) / vitesse_initiale; //comme trouvé dans l'exercice
+    double t_coll = sqrt(L2D2) / vitesse_initiale; //comme trouvé dans l'exercice
+    
     // on mets les vecteurs à 3 dimensions car gravitation constante est faite pour avoir la gravité en z 
     Vecteur fromage(std::vector<double>{0, distance, hauteur});
     Vecteur pierre(3);
@@ -59,7 +64,7 @@ void corbeaurenard(double temps, double pas, unsigned int nb_iter, double precis
             //sys.affiche(std::cout); 
         }
         
-        if(abs(sys.get_time()-t_coll) < precision){
+        if(std::abs(t_coll-sys.get_time()) < precision){
             std::cout << "Collision entre le fromage et la pierre à t = " << sys.get_time() << std::endl;
             sys.dessine_sur(txt);
             break; //on arrête la simulation à la collision
