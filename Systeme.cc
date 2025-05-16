@@ -25,6 +25,7 @@ void Systeme::append_constraint(unsigned int i, unsigned int j){sys_objects[j]->
 void Systeme::append_force_field(unsigned int i, unsigned int j){sys_objects[j]->add_champ(sys_force_field[i].get());}
 double Systeme::get_time(){return time;}
 void Systeme::whoami(std::ostream& out) const{out << "systeme";}
+void Systeme::display_integrator(std::ostream& out) const{integrator->whoami(out);}
 
 ObjetPhysique* Systeme::get_obj(int i) const {
     return sys_objects[i].get();

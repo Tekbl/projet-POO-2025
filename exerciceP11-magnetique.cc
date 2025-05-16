@@ -34,6 +34,8 @@ int iter = t_simu/dt;
 
 TextViewer txt(std::cout);
 integrateurEulerCromer euler;
+RungeKutta4 Rk4;
+Newmark New;
 
 
 ChampElectroMagnetique ElectroMag(Electro,Mag);
@@ -64,8 +66,13 @@ particule.add_contr(&libre);
 systeme.add_object(std::unique_ptr<ObjetPhysique>(new PointMateriel(particule)));
 systeme.add_constraint(std::unique_ptr<Contrainte> (new Libre(libre)));
 //systeme.add_force_field(std::unique_ptr<ChampForces> (new ChampCompose(un_champ_de_ble)));
+systeme.change_integrator(std::unique_ptr<integrateur>(new RungeKutta4(Rk4)));
+//systeme.change_integrator(std::unique_ptr<integrateur>(new Newmark(New)));
 
 //systeme.get_champ(0)->force(*(systeme.get_obj(0)), 2);
+std::cout << "Methode d'integration : " ;
+systeme.display_integrator(std::cout);
+std::cout << std::endl;
 std::cout << "t \t x \t y \t z" <<std::endl;
 
 for(int i(0); i<iter; i++){
@@ -79,6 +86,5 @@ systeme.dessine_sur(txt);
 
 return 0;    
 }
-//and yes i would like a gnuplot script to visualize the trajectory please
 
 

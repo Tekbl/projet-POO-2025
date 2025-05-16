@@ -42,8 +42,7 @@ class Systeme: public Printable, public Dessinable{
         void append_constraint(unsigned int i, unsigned int j);
         void append_force_field(unsigned int i, unsigned int j);
         double get_time();
-
-        
+        void display_integrator(std::ostream& out) const;
         ObjetPhysique* get_obj(int i)const;
         ChampForces* get_champ(int i)const;
         
