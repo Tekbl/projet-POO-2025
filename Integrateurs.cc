@@ -109,8 +109,8 @@ Vecteur k4_ = obj->evolution(t+dt);
 obj->set_E_pr(old_vit);
 obj->set_E(old_pos);
 
-Vecteur new_vit = old_vit +(k1_ + k2_ + k3_ + k4_)*(dt/6);
-Vecteur new_pos = old_pos + (k1 + k2 + k3 + k4)*(dt/6);
+Vecteur new_vit = old_vit +(k1_ + k2_*2 + k3_*2 + k4_)*(dt/6);
+Vecteur new_pos = old_pos + (k1 + k2*2 + k3*2 + k4)*(dt/6);
 
 //std::cout<<  "new_pos : " << new_pos << std::endl;
 //std::cout<<  "new_vit : " << new_vit << std::endl;

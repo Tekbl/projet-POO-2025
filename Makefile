@@ -3,7 +3,7 @@
 
 
     #all = la première cible
-    all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard 
+    all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1
 
 
     exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
@@ -20,6 +20,9 @@
 
     exerciceP11-magnetique : VecteurV.o affichage.o ObjetIntegrable.o ChampForces.o ForceCentrale.o Integrateurs.o Systeme.o PointMateriel.o \
                               SupportADessin.o ObjetDessinable.o ChampSupplementaires.o contrainte.o ##fill stuff with dependencies
+
+    testIntegrateur1 : testIntegrateur1.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
+            PointMateriel.o Integrateurs.o GravitationConstante.o ##fill stuff with dependencies
 
 
     # Ces lignes ont été recopiées de la commande g++ -MM *.cc
@@ -72,5 +75,9 @@ SupportADessin.o: SupportADessin.cc SupportADessin.h ObjetIntegrable.h \
 Systeme.o: Systeme.cc Systeme.h ObjetIntegrable.h VecteurV.h affichage.h \
  constantes.h contrainte.h Integrateurs.h ObjetDessinable.h \
  SupportADessin.h Champforces.h
+testIntegrateur1.o: testIntegrateur1.cc VecteurV.h affichage.h \
+ ObjetIntegrable.h constantes.h contrainte.h Champforces.h \
+ PointMateriel.h ObjetDessinable.h SupportADessin.h \
+ GravitationConstante.h Integrateurs.h
 VecteurTestV.o: VecteurTestV.cc VecteurV.h affichage.h
 VecteurV.o: VecteurV.cc VecteurV.h affichage.h

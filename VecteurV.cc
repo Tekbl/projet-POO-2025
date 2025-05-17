@@ -58,7 +58,7 @@ void Vecteur::affiche(ostream& out) const{
             out << " ";
         }
     }
-    out << endl;
+    //out << endl;
 }
 
 void Vecteur::whoami(ostream& out) const{
