@@ -82,8 +82,8 @@ void PointMateriel::set_vit(std::vector<double> a){
 void PointMateriel::affiche(std::ostream& out) const{
     //out << this->position(contr[0]) << " #position" << "\n" << this->vitesse(contr[0]) << " #vitesse" << std::endl;
     out << "masse : " << this->get_masse() <<" Kg" << std::endl;
-    out << "position " << this->get_E();
-    out << "vitesse " << this->get_E_pr() << std::endl;
+    out << "position : " << this->get_E();
+    out << "\nvitesse : " << this->get_E_pr() << std::endl;
 }
 
 PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, double charge ,unsigned int dim, const std::vector<ChampForces*>& c,

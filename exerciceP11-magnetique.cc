@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <iomanip>
 #include "VecteurV.h"
 #include "affichage.h"
 #include "ChampForces.h"
@@ -73,15 +74,35 @@ systeme.change_integrator(std::unique_ptr<integrateur>(new RungeKutta4(Rk4)));
 std::cout << "Methode d'integration : " ;
 systeme.display_integrator(std::cout);
 std::cout << std::endl;
-std::cout << "t \t x \t y \t z" <<std::endl;
+
+/*
+std::cout << std::setw(0) << "t" << 
+std::setw(8) << "x"<<
+std::setw(17) << "y" <<
+std::setw(19) << "z" <<std::endl;
+*/
+
+ 
+std::cout << std::left << std::setw(10) << "t"
+<< std::left << std::setw(15) << "x"
+<< std::left <<std::setw(15) << "y"
+<< "z" << "\n";
 
 for(int i(0); i<iter; i++){
-    std::cout << systeme.get_time() <<"\t" << systeme.get_obj(0)->get_E().get_coord(0);
-    std::cout << "\t" << systeme.get_obj(0)->get_E().get_coord(1) << "\t";
-    std::cout << systeme.get_obj(0)->get_E().get_coord(2) << std::endl;
+    std::cout 
+    << std::left << std::setw(5) <<std::setprecision(5) <<systeme.get_time() << "     " 
+
+    << std::left << std::setw(10)<< systeme.get_obj(0)->get_E().get_coord(0) << "     ";
+
+    std::cout  
+    << std::left << std::setw(12) << systeme.get_obj(0)->get_E().get_coord(1) << "   ";
+    std::cout 
+    << std::left << std::setw(5) << systeme.get_obj(0)->get_E().get_coord(2) << std::endl;
+
     systeme.evolve(dt);
 }
 
+std::cout << std::endl;
 systeme.dessine_sur(txt);
 
 return 0;    

@@ -49,7 +49,7 @@ void Systeme::affiche(std::ostream& sortie)const {
         sortie << "Objet no " << i << " : " <<std::endl;
         sys_objects[i]->whoami(sortie);
         sortie << std::endl;
-        sortie << *sys_objects[i].get() << std::endl;
+        sortie <<*sys_objects[i].get() << std::endl;
         sortie << "" << std::endl;
         //contrainte relative à l'objet est gérée par l'affichage de l'objet
     }
