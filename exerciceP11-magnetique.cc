@@ -127,7 +127,6 @@ fichier_test.close();
 
 
 ofstream graphe("graphe3D_exerciceP11_magnetique.gp");
-//graphe.open("graphe3D_testIntegrateur1.gp",ios::out);
 graphe << " set title \"Trajectoire 3D du point materiel dans un champ electromagnetique avec frottements\" \n";
 graphe << "set xlabel \"X\" \n";
 graphe << "set ylabel \"Y\" \n";
