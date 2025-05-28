@@ -3,7 +3,7 @@
 
 
     #all = la première cible
-    all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1
+    all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test
 
 
     exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
@@ -24,6 +24,7 @@
     testIntegrateur1 : testIntegrateur1.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
             PointMateriel.o Integrateurs.o GravitationConstante.o ##fill stuff with dependencies
 
+    gnuplot_test : VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o Integrateurs.o
 
     # Ces lignes ont été recopiées de la commande g++ -MM *.cc
     # Ces lignes sont les dépendances de compilation 
@@ -41,6 +42,8 @@ contenu.o: contenu.cc ObjetDessinable.h SupportADessin.h \
  contenu.h
 contrainte.o: contrainte.cc VecteurV.h affichage.h ObjetIntegrable.h \
  constantes.h contrainte.h
+ContrainteSpherique.o: ContrainteSpherique.cc contrainte.h VecteurV.h \
+ affichage.h ContrainteSpherique.h ObjetIntegrable.h constantes.h
 exerciceP11-magnetique.o: exerciceP11-magnetique.cc VecteurV.h \
  affichage.h ChampForces.h ObjetIntegrable.h constantes.h contrainte.h \
  ForceCentrale.h Integrateurs.h Systeme.h ObjetDessinable.h \
@@ -54,6 +57,9 @@ exerciceP9.o: exerciceP9.cc VecteurV.h affichage.h ChampForces.h \
  Integrateurs.h ObjetDessinable.h SupportADessin.h PointMateriel.h
 ForceCentrale.o: ForceCentrale.cc ChampForces.h VecteurV.h affichage.h \
  constantes.h ObjetIntegrable.h contrainte.h ForceCentrale.h
+gnuplot_test.o: gnuplot_test.cc VecteurV.h affichage.h ObjetIntegrable.h \
+ constantes.h contrainte.h Champforces.h PointMateriel.h \
+ ObjetDessinable.h SupportADessin.h GravitationConstante.h Integrateurs.h
 GravitationConstante.o: GravitationConstante.cc GravitationConstante.h \
  VecteurV.h affichage.h constantes.h ObjetIntegrable.h contrainte.h \
  Champforces.h

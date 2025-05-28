@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include "VecteurV.h"
 #include "affichage.h"
 #include "ChampForces.h"
@@ -13,10 +14,14 @@
 #include "ObjetDessinable.h"
 #include "ChampSupplementaires.h"
 #include "contrainte.h"
-
+using namespace std;
 //VecteurV.o affichage.o ObjetIntegrable.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o ChampSupplementaires.o contrainte.o
 
 int main(){
+vector<double> x_pos;
+vector<double> y_pos;
+vector<double> z_pos;
+
 
 Systeme systeme;
 
@@ -99,11 +104,42 @@ for(int i(0); i<iter; i++){
     std::cout 
     << std::left << std::setw(5) << systeme.get_obj(0)->get_E().get_coord(2) << std::endl;
 
+    x_pos.push_back(systeme.get_obj(0)->get_E().get_coord(0));
+    y_pos.push_back(systeme.get_obj(0)->get_E().get_coord(1));
+    z_pos.push_back(systeme.get_obj(0)->get_E().get_coord(2));
+
     systeme.evolve(dt);
 }
 
 std::cout << std::endl;
 systeme.dessine_sur(txt);
+
+ofstream fichier_test;
+fichier_test.open("exerciceP11_magnetique.dat",ios::out);
+
+for(int i(0); i<x_pos.size();i++){
+
+    fichier_test<< x_pos[i] << " " << y_pos[i] << " " << z_pos[i] << "\n" ;
+
+}
+
+fichier_test.close();
+
+
+ofstream graphe("graphe3D_exerciceP11_magnetique.gp");
+//graphe.open("graphe3D_testIntegrateur1.gp",ios::out);
+graphe << " set title \"Trajectoire 3D du point materiel dans un champ electromagnetique avec frottements\" \n";
+graphe << "set xlabel \"X\" \n";
+graphe << "set ylabel \"Y\" \n";
+graphe << "set zlabel \"Z\" \n";
+graphe << "set grid\n";
+graphe << "set ticslevel 0\n";
+graphe << "splot \"exerciceP11_magnetique.dat\" using 1:2:3 with lines title \"particule chargee\"\n";
+graphe << "pause -1\n";
+graphe.close();
+system("gnuplot graphe3D_exerciceP11_magnetique.gp");
+
+
 
 return 0;    
 }
