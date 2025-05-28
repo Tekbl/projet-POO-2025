@@ -10,6 +10,7 @@
 #include "PointMateriel.h"
 #include "GravitationConstante.h"
 #include "Integrateurs.h"
+#include <fstream>
 using namespace std;
  
 
@@ -42,12 +43,15 @@ cout << "Temps : " << t << endl;
 cout << point.position(point.get_contr()[0]) << " position " << endl;
 cout << point.vitesse(point.get_contr()[0]) << " vitesse " << endl;
 //Euler.evolue(&point,t,dt);
-//Rk4.evolue(&point,t,dt);
-New.evolue(&point,t,dt);
+Rk4.evolue(&point,t,dt);
 t+=dt;   
 
 cout << endl;
 }while(point.position(point.get_contr()[0]).get_coord(2)>0);
 
+
+ofstream fichier_test;
+fichier_test.open("test_integrateur_1",ios::in);
+fichier_test<<;
 return 0;
 }
