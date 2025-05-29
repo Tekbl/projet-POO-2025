@@ -48,7 +48,7 @@ void integrateurEulerCromer::evolue(ObjetMobile *obj, double t, double dt) {
 
 void Newmark::evolue(ObjetMobile *obj, double t, double dt){
     Vecteur new_pos = obj->get_E();
-    Vecteur new_vit = obj-> get_E_pr();
+    Vecteur new_vit = obj->get_E_pr();
     Vecteur s = obj->evolution(t);
     Vecteur q(0);
     Vecteur r(0);
@@ -57,23 +57,19 @@ void Newmark::evolue(ObjetMobile *obj, double t, double dt){
     Vecteur d(0);
     double e=1e-6;
     int i(0);
-
-
     do{
-
+        
         q = new_pos;
         temp_vit = new_vit;
         r = obj->evolution(t);
         new_vit = new_vit + (r+s)*(dt/2);
-        /*
-        std :: cout << "new pos " << new_pos << " + temp_vit* dt " << temp_vit << " * " << dt << " r/2+s " << r*(1/2) + s << " * dt^2 / 3 " << (dt*dt)/3 << std::endl;
-        */
+        /* std :: cout << "new pos " << new_pos << " + temp_vit* dt " << temp_vit << " * " << dt << " r/2+s " << r*(1/2) + s << " * dt^2 / 3 " << (dt*dt)/3 << std::endl;*/
        new_pos = new_pos + temp_vit*dt + (r*(1/2) + s)*((dt*dt)/3);
-        /*
-        std ::cout << "newpos : " << new_pos << std::endl;
-        */
+        /*std ::cout << "newpos : " << new_pos << std::endl; */
         d = new_pos-q;
         i++;
+        obj->set_E(new_pos);
+        obj->set_E_pr(new_vit);
         if (i>100){throw("Newark overload");}// a remischer
     }while(d.norme()<e);
     

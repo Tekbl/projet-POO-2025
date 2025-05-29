@@ -1,33 +1,39 @@
-    CC = $(CXX)
-    CXXFLAGS = -std=c++11 -pedantic -Wall
+CC = $(CXX)
+CXXFLAGS = -std=c++11 -pedantic -Wall
 
 
-    #all = la première cible
-    all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test
+#all = mettre tout les fichiers cibles qu'on veut compiler / executer
+all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test testIntegrateur2
+
+exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
+        ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o GravitationConstante.o \
+        SupportADessin.o affichage.o ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de exercice P9
+
+Pomme : Pomme.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
+        PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de Pomme
+
+exerciceP9-LeCorbeauEtLeRenard: exerciceP9-LeCorbeauEtLeRenard.o VecteurV.o ChampForces.o \
+        GravitationConstante.o Systeme.o PointMateriel.o ObjetDessinable.o \
+        ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o \
+        SupportADessin.o affichage.o ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de exercice P9 le corbeau et le renard
 
 
-    exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
-                ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o GravitationConstante.o \
-                SupportADessin.o affichage.o ##fill stuff with dependencies
+exerciceP11-magnetique : VecteurV.o affichage.o ObjetIntegrable.o ChampForces.o ForceCentrale.o Integrateurs.o Systeme.o PointMateriel.o \
+                        SupportADessin.o ObjetDessinable.o ChampSupplementaires.o contrainte.o ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de exercice P11 magnétique
 
-    Pomme : Pomme.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
-            PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o ##fill stuff with dependencies
 
-    exerciceP9-LeCorbeauEtLeRenard: exerciceP9-LeCorbeauEtLeRenard.o VecteurV.o ChampForces.o \
-                GravitationConstante.o Systeme.o PointMateriel.o ObjetDessinable.o \
-                ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o \
-                SupportADessin.o affichage.o ##fill stuff with dependencies
+testIntegrateur1 : testIntegrateur1.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
+        PointMateriel.o Integrateurs.o GravitationConstante.o ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de testIntegrateur1
 
-    exerciceP11-magnetique : VecteurV.o affichage.o ObjetIntegrable.o ChampForces.o ForceCentrale.o Integrateurs.o Systeme.o PointMateriel.o \
-                              SupportADessin.o ObjetDessinable.o ChampSupplementaires.o contrainte.o ##fill stuff with dependencies
+gnuplot_test : VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o Integrateurs.o
+                        ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de gnuplot_test
 
-    testIntegrateur1 : testIntegrateur1.o VecteurV.o ObjetIntegrable.o contrainte.o constantes.o Champforces.o affichage.o \
-            PointMateriel.o Integrateurs.o GravitationConstante.o ##fill stuff with dependencies
+testIntegrateur2 : VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o Integrateurs.o
+                        ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de testIntegrateur2
 
-    gnuplot_test : VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o Integrateurs.o
-
-    # Ces lignes ont été recopiées de la commande g++ -MM *.cc
-    # Ces lignes sont les dépendances de compilation 
+   
+# \/ Ces lignes ont été recopiées de la commande g++ -MM *.cc \/ 
+# ce sont les dépendances de compilation de chaque fichier .o mentionnés ci dessus
 
 affichage.o: affichage.cc affichage.h
 ChampForces.o: ChampForces.cc Champforces.h VecteurV.h affichage.h \
@@ -82,6 +88,10 @@ Systeme.o: Systeme.cc Systeme.h ObjetIntegrable.h VecteurV.h affichage.h \
  constantes.h contrainte.h Integrateurs.h ObjetDessinable.h \
  SupportADessin.h Champforces.h
 testIntegrateur1.o: testIntegrateur1.cc VecteurV.h affichage.h \
+ ObjetIntegrable.h constantes.h contrainte.h Champforces.h \
+ PointMateriel.h ObjetDessinable.h SupportADessin.h \
+ GravitationConstante.h Integrateurs.h
+testIntegrateur2.o: testIntegrateur2.cc VecteurV.h affichage.h \
  ObjetIntegrable.h constantes.h contrainte.h Champforces.h \
  PointMateriel.h ObjetDessinable.h SupportADessin.h \
  GravitationConstante.h Integrateurs.h

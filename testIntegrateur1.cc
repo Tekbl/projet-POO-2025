@@ -41,9 +41,9 @@ do{
 cout << "Temps : " << t << endl;
 cout << point.position(point.get_contr()[0]) << " position " << endl;
 cout << point.vitesse(point.get_contr()[0]) << " vitesse " << endl;
-//Euler.evolue(&point,t,dt);
+Euler.evolue(&point,t,dt);
 //Rk4.evolue(&point,t,dt);
-New.evolue(&point,t,dt);
+//New.evolue(&point,t,dt);
 t+=dt;   
 
 cout << endl;
