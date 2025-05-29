@@ -1,10 +1,8 @@
-======================================================================
-# SUIVI
-
 ## Semaine 1 (17-23 Février):
 
 - Binôme créé
 - inscription du binôme sur Moodle
+--------------------------------------------------
 
 ## Semaine 2 (24 Février - 2 Mars) :
 
@@ -15,6 +13,7 @@ Mise en place des heure de travail en groupe:
     Mardi 10h-12h à l'épicure
     Jeudi 9h-12h en CO021
 
+--------------------------------------------------
 
 ## Semaine 3 (3 - 9 Mars):
 
