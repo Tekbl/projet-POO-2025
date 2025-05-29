@@ -105,8 +105,21 @@ PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, double charg
         */
     }
 
+PointMateriel_angulaire::PointMateriel_angulaire(Vecteur E, Vecteur E_pr, double masse, double charge ,unsigned int dim, const std::vector<ChampForces*>& c,
+    const std::vector<Contrainte*>& ctr):PointMateriel(E,E_pr,masse,charge,dim,c,ctr){
+        for(int i = 0; i < E.get_dimension(); i++){
+            E.set_coord(i, angle_max(E.get_coord(i)));
+        }
+    }
 
 
+Vecteur PointMateriel_angulaire::evolution(double t){
+    Vecteur contrainte = PointMateriel::evolution(t);
+    for(int i = 0; i < contrainte.get_dimension(); i++){
+        contrainte.set_coord(i, angle_max(contrainte.get_coord(i)));
+    }
+    return contrainte;
+}
 /*=================== INUTILISE (VOIR .h) =================================0
 particule_chargee::particule_chargee(Vecteur E, Vecteur E_pr, double masse, double charge_, unsigned int dim, const std::vector<ChampForces*>& c,
     const std::vector<Contrainte*>& ctr):PointMateriel(E,E_pr,masse,dim,c,ctr),charge(charge_){
