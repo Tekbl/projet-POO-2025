@@ -99,6 +99,6 @@ void ObjetPhysique::add_champ(ChampForces* c){champ.push_back(c);}
 
 void ObjetPhysique::affiche(ostream& out) const{
     out << "Objet physique de masse " << masse_ << ", de degré de liberté " << dim_evo << endl;
-    out << "Position : " << E_ << endl;
-    out << "Vitesse : " << E_pr_ << endl;
+    out << "Position : " << position(contr[0]) << endl;
+    out << "Vitesse : " << vitesse(contr[0]) << endl;
 }
