@@ -18,9 +18,9 @@
 void simul_spherique(double temps, double pas, unsigned int nb_iter){
     Systeme systeme;
 
-    RungeKutta4 Rk4;
+    //RungeKutta4 Rk4;
 
-    systeme.change_integrator(std::unique_ptr<integrateur>(new RungeKutta4(Rk4)));
+    //systeme.change_integrator(std::unique_ptr<integrateur>(new RungeKutta4(Rk4)));
     double longueur = 2.2; 
 
     //initialisation du pendule 
@@ -37,6 +37,8 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
 
     // mode d'affichage
     TextViewer txt(std::cout);
+
+    ContrainteSpherique* ptc = &contrainte;
 
     systeme.add_object(std::unique_ptr<PointMateriel>(new PointMateriel(pendule)));
     systeme.add_constraint(std::unique_ptr<Contrainte>(new ContrainteSpherique(contrainte)));
@@ -55,22 +57,39 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
     //std::cout << systeme.get_obj(0)->evolution(temps) << std::endl; //affichage de l'évolution du pendule à t=0
     //std::cout << systeme << std::endl; //affichage de l'état du système
     //systeme.dessine_sur(txt); //affichage du pendule
-    for(int i = 0; i < iteration; i++){
+    std::cout << "Methode d'integration : " ;
+    systeme.display_integrator(std::cout);
+    std::cout << std::endl;
+
+    std::cout << std::left << std::setw(10) << "t" << std::left << std::setw(22) << "x" << std::left <<std::setw(22) << "y" << "z" << "\n";
+    for(int i = 0; i <= iteration; i++){
         if(i % nb_iter == 0){
-                std::cout << systeme.get_obj(0)->get_E() << std::endl; //affichage de l'état du pendule
+                /*std::cout << systeme.get_obj(0)->get_E() << std::endl; //affichage de l'état du pendule
+                std::cout << systeme.get_obj(0)->get_E_pr() << std::endl; //affichage de la vitesse du pendule
                 std::cout << "t = " << systeme.get_time() << std::endl;
-                systeme.dessine_sur(txt);
-                //sys.affiche(std::cout); 
+                systeme.dessine_sur(txt);*/
+                std::cout 
+                << std::left << std::setw(5) << std::setprecision(5) <<systeme.get_time() << "     " 
+
+                << std::left << std::setw(17)<< std::setprecision(16) << systeme.get_obj(0)->position(ptc).get_coord(0) << "     ";
+
+                std::cout  
+                << std::left << std::setw(19) << std::setprecision(16) << systeme.get_obj(0)->position(ptc).get_coord(1) << "   ";
+                std::cout 
+                << std::left << std::setw(5) << std::setprecision(16) << systeme.get_obj(0)->position(ptc).get_coord(2) << std::endl;
             } 
         systeme.evolve(pas);
     }
+    std::cout << std::setprecision(4) << std::endl;
+    systeme.dessine_sur(txt); //affichage du pendule à la fin de la simulation
 
+    delete ptc; //on supprime le pointeur pour éviter les fuites de mémoire
 }
 
 int main(){
     double temps = 0.1; //temps de la simulation en secondes
-    double pas = 0.01; //pas de temps
-    unsigned int nb_iter = 1; //limite le nombre d'affichage
+    double pas = 0.001; //pas de temps
+    unsigned int nb_iter = 10; //limite le nombre d'affichage
 
     simul_spherique(temps, pas, nb_iter);
 

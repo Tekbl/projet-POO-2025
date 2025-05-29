@@ -5,52 +5,6 @@
 #include "affichage.h"
 using namespace std;
 
-
-/*class Vecteur: public Printable{
-
-public:
-
-    //constructeurs
-    Vecteur(unsigned int dimension):vecteur(dimension,0.0){}
-    Vecteur(double x, double y, double z):vecteur{x,y,z}{}
-    //initialise vecteur avec un vector de double de dimension quelconque,on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
-    Vecteur(const vector<double>& liste_dinit):vecteur(liste_dinit){}
-    
-    //mise en place et affichage des vecteurs
-    virtual void affiche(ostream& out) const override;
-    void set_coord(int i,double v);
-    double get_coord(int i) const;
-    void augmente(double v);
-    virtual void whoami(ostream& out)const override;
-
-    //opérations sur les vecteurs
-    bool compare(const Vecteur& B, double precision=1e-10) const; //la precision est par défaut 1e-10 mais je laisse l'opportunité de la modifier
-    Vecteur addition(const Vecteur& X) const;
-    Vecteur soustraction(const Vecteur& X) const;
-    Vecteur oppose() const;
-    Vecteur mult(double scalaire) const;
-    double prod_scalaire(const Vecteur& B) const;
-    Vecteur prod_vect(Vecteur B) const;
-    double norme() const;
-    double norme2() const;
-    Vecteur unitaire() const;
-    
-    //opérateurs
-    bool operator==(const Vecteur& B) const;
-    bool operator!=(const Vecteur& B) const;
-    void operator+=(const Vecteur& B);
-    void operator-=(const Vecteur& B);
-    void operator*=(double d);
-    Vecteur operator*(double d);
-    Vecteur operator^(const Vecteur& B);
-    friend const Vecteur operator+(Vecteur A, const Vecteur& B);
-    friend const Vecteur operator-(Vecteur A, const Vecteur& B);
-    Vecteur operator~() const;
-
-private:
-    vector<double> vecteur; //on utilise un vector car on peut modifier leur taille (dimension) contrairement aux array
-};*/
-
 void Vecteur::affiche(ostream& out) const{
     for(int i = 0;i < vecteur.size(); i++){
         out << vecteur[i];
@@ -58,7 +12,7 @@ void Vecteur::affiche(ostream& out) const{
             out << " ";
         }
     }
-    //out << endl;
+    out << endl;
 }
 
 void Vecteur::whoami(ostream& out) const{
@@ -74,6 +28,7 @@ void Vecteur::augmente(double v){
 }
 
 void Vecteur::set_coord(int i,double v){
+    //permet de définir la coordonnée i du vecteur à v
     int dim = vecteur.size();
     if(i>dim){
         //éviter d'avoir un vecteur avec un "trou" i.e {1,2,3,NAN (ou un nombre aléatoire créé par le compilateur),4}
@@ -83,6 +38,8 @@ void Vecteur::set_coord(int i,double v){
 }
 
 bool Vecteur::compare(const Vecteur& B,double precision) const{ 
+    //compare 2 à 2 les coordonnées de chaque vecteur avec un certaine précision
+    //si chaque coordonnée est égale à la coordonnée du vecteur B avec une précision donnée, on retourne vrai, sinon faux
     int dim = vecteur.size();
     if (dim==B.vecteur.size()){
         for (unsigned int i(0); i<dim ; i++){
@@ -124,6 +81,7 @@ Vecteur Vecteur::soustraction(const Vecteur& X) const{
 }
 
 Vecteur Vecteur::oppose() const{
+    //renvoie le vecteur opposé, i.e. le vecteur dont les coordonnées sont les opposées de celles du vecteur de cette classe
     int dim = vecteur.size();
     vector <double> coord_oppose = vecteur;
     for(unsigned int i(0); i<dim;i++){
@@ -134,6 +92,7 @@ Vecteur Vecteur::oppose() const{
 }
 
 Vecteur Vecteur::mult(double scalaire) const{
+    //multiplie chauque coordonnée du vecteur de cette classe par un scalaire donné et renvoie le vecteur résultant
     int dim = vecteur.size();
     Vecteur multiplie(vecteur);
     for(unsigned int i = 0; i < dim;i++){
@@ -143,6 +102,7 @@ Vecteur Vecteur::mult(double scalaire) const{
 }
 
 double Vecteur::prod_scalaire(const Vecteur& B) const{
+    //calcul le produit scalaire entre le vecteur de cette classe et le vecteur B
     Vecteur copie_B = B;
     int dim = vecteur.size();
     //création d'un vecteur temporaire pour ne pas modifier les coords du vecteur de cette classe
@@ -162,6 +122,7 @@ double Vecteur::prod_scalaire(const Vecteur& B) const{
 }
 
 Vecteur Vecteur::prod_vect(Vecteur B) const{
+    //calcul le produit vectoriel entre le vecteur de cette classe et le vecteur B
     int dim = vecteur.size();
     // si les vecteurs sont de dimension 2 ou moins on les complètes en vecteurs de dimension trois avec des 0 
     //dans les coords manquantes. Si les dimension sont > 3 ont ne prends que les 3 premières coords
@@ -181,11 +142,14 @@ Vecteur Vecteur::prod_vect(Vecteur B) const{
 }
 
 double Vecteur::norme() const{
+    //calcul la norme du vecteur de cette classe
+    //on utilise la méthode norme2 pour ne pas avoir à faire le calcul de la racine carrée dans cette méthode
     Vecteur B(vecteur);
     return sqrt(B.norme2());
 }
 
 double Vecteur::norme2() const{
+    //calcul la norme au carré du vecteur de cette classe i.e la somme des carrés de ses coordonnées
     int dim = vecteur.size();
     double norme(0);
     for(unsigned int i = 0; i < dim;i++){
@@ -196,6 +160,7 @@ double Vecteur::norme2() const{
 
     
 Vecteur Vecteur::unitaire() const{
+    //renvoie le vecteur unitaire i.e. le vecteur de cette classe divisé par sa norme
     int dim = vecteur.size();
     Vecteur A(vecteur);
     Vecteur B(dim);
