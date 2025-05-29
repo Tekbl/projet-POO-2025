@@ -8,6 +8,8 @@
 #include "affichage.h"
 #include "ObjetDessinable.h"
 #include "SupportADessin.h"
+
+#define M_PI 3.14159265358979323846
  
 class PointMateriel: public ObjetPhysique, public Dessinable{
     public: 
@@ -53,4 +55,24 @@ class particule_chargee : public PointMateriel{
         virtual void whoami(std::ostream& out)const override{out << "particule chargee" ;};
     private:
         double charge;
+};
+
+class PointMateriel_angulaire : public PointMateriel{
+    public:
+        PointMateriel_angulaire(Vecteur E = Vecteur(2), Vecteur E_pr = Vecteur(2), double masse = 0, double charge=0 ,unsigned int dim = 2, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
+            const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{});
+        virtual Vecteur evolution(double t) override;
+        virtual void whoami(std::ostream& out)const override{out << "point materiel angulaire" ;};
+    private:
+        const double Lim = 2 * M_PI; //limite de l'angle, pour éviter les problèmes de dépassement de la valeur de l'angle
+
+        double angle_max(double angle){
+                while(angle > Lim){
+                    angle -= Lim;
+                } 
+                while(angle < -Lim){
+                    angle += Lim;
+                }
+                return angle;
+        }
 };

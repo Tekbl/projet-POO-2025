@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <cmath>
 #include "VecteurV.h"
@@ -20,16 +21,16 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
     RungeKutta4 Rk4;
 
     systeme.change_integrator(std::unique_ptr<integrateur>(new RungeKutta4(Rk4)));
-    double rayon = 2.2; 
+    double longueur = 2.2; 
 
     //initialisation du pendule 
     std::vector<double> pos_init = {M_PI/6,0};//teta=M_PI/6, phi=0
-    std::vector<double> vit_init = {0,1};//teta*=0, phi*=1
+    std::vector<double> vit_init = {0,1};//teta'=0, phi'=1
     //on itnitialise le pendule avec une position initiale une vitesse initiale, une masse de 0.1, pas de charge éléctrique et un degré de liberté de 2 
-    PointMateriel pendule(Vecteur(pos_init), Vecteur(vit_init),0.1,0,2);
+    PointMateriel_angulaire pendule(Vecteur(pos_init), Vecteur(vit_init),0.1,0,2);
 
     //contrainte
-    ContrainteSpherique contrainte(rayon);
+    ContrainteSpherique contrainte(longueur);
 
     //champ de force
     GravitationConstante gravitation;
@@ -56,6 +57,7 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
     //systeme.dessine_sur(txt); //affichage du pendule
     for(int i = 0; i < iteration; i++){
         if(i % nb_iter == 0){
+                std::cout << systeme.get_obj(0)->get_E() << std::endl; //affichage de l'état du pendule
                 std::cout << "t = " << systeme.get_time() << std::endl;
                 systeme.dessine_sur(txt);
                 //sys.affiche(std::cout); 
@@ -67,8 +69,8 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
 
 int main(){
     double temps = 0.1; //temps de la simulation en secondes
-    double pas = 0.001; //pas de temps
-    unsigned int nb_iter = 10; //limite le nombre d'affichage
+    double pas = 0.01; //pas de temps
+    unsigned int nb_iter = 1; //limite le nombre d'affichage
 
     simul_spherique(temps, pas, nb_iter);
 
