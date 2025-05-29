@@ -30,16 +30,16 @@ Celà est du au temps perdu sur le débuggage. En effet nous avons pris la mauva
 Pour notre défense nous étions un peu perdu avec les instructions et à chaque étape il était indiqué que le code était incomplet et ne pouvait pas tourner en tant que tel. Nous nous sommes donc résolus à attendre les instructions des semaines suivantes pour pouvoir tester, sauf que cette instant était constemment repoussé par du nouveau code incomplet.
 Nous avons donc entrepris d'attendre les nouvelles instructions sans essayer de faire fonctionner un code incomplet en comblant les trous, se disant que c'était une perte de temps. Il se trouve que c'était une grave erreur nous retiendrons cette leçon.
 
-_ Note personnelle de Valentino : j'ai vraiment envie de faire le graphisme, je le ferais après les examens.
+_Note personnelle de Valentino : j'ai vraiment envie de faire le graphisme, je le ferais après les examens._
 
 
 ## QUESTION 3 
 
-Temps moyen estimé par personne par semaine : 5h30
-Semaine 1 : rien
-Semaines 2-3-4-5-6-7-8-9 : 4h/personnne
-Vacances de Pâques : 12h par personne
-Semaines 10-11-12-13-14 : 6h/personne
+Temps moyen estimé par personne par semaine : 5h30  
+Semaine 1 : rien  
+Semaines 2-3-4-5-6-7-8-9 : 4h/personnne  
+Vacances de Pâques : 12h par personne  
+Semaines 10-11-12-13-14 : 6h/personne  
 
 # Organisation du Projet 
 
@@ -53,10 +53,11 @@ Simulations :
 # Exécution des simulations 
 
 1. Ouvrir VM IC-CO-IN-SC
-2. Unzip le dossier du projet rendu.
-3. Ouvrir le terminal de commande dans le répertoire du dossier zip 
-
-4. Écrire et entrer la commande : make          /!\ Si une simulation utilisant un affichage gnuplot est ouvert, la commande make génère des erreurs. Pour régler ça, il faut fermer la fenêtre gnuplot et relancer la commande make.
+2. Unzip le dossier du projet rendu. 
+3. Ouvrir le terminal de commande dans le répertoire du dossier unzipped  
+ _vous pouvez également clone la repository github et delete tout les fichiers.o_
+4. Écrire et entrer la commande : make       
+/!\ Si une simulation utilisant un affichage gnuplot est ouvert, la commande make génère des erreurs. Pour régler ça, il faut fermer la fenêtre gnuplot et relancer la commande make.
 
 5. Pour tester les simulations et fichiers test, entrer la commande .\nom_de_la_simulation.exe dans le terminal pour l'executer
 Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal : 
@@ -70,7 +71,7 @@ Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal :
 
 6. Observer et admirer les résultats
 
-/!\ Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html
+>**/!\ :** Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html
 
 ```
 <3                                                          
