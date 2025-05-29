@@ -6,6 +6,7 @@ Binôme : Matthias Calatroni & Valentino Lekimpe
 ## QUESTION 1  
 
 Simulations et Tests effectués :
+- testPointMateriel
 - testIntegrateur1 (Euler)
 - ExerciceP9 (chute de pomme)
 - ExerciceP9-LeCorbeauEtLeRenard
@@ -19,6 +20,7 @@ Intégrateur ajouté à l'étape 8 : Runge Kutta 4
 Extensions effectuées :
 - Second Intégrateur -> Newmark (les résultats sont très proches des résultats attendus mais ne sont pas exacts)
 - Second exercice de physique avancé : ExerciceP11-pendule
+- Sauvegarde des données sur les deux exerciceP11, test_integrateur 1&2, Pomme et ExerciceP9 le corbeau et le Renard.
 - Ajout personnel : affichage gnuplot pour visualiser les trajectoires.
 
 ## QUESTION 2 
@@ -27,7 +29,7 @@ Nous n'avons malheureusement pas eu le temps d'adresser le graphisme dans notre 
 Pour palier à ça nous avons décidé de rajouter des graphes gnuplot aux simulations pour au moins avoir une manière de visualier les données simulées 
 
 Celà est du au temps perdu sur le débuggage. En effet nous avons pris la mauvaise approche concernant le projet en ne faisant aucun tests entre le moment où nous avons testé la classe vecteur et le moment ou nous devions commencer à simuler des exercices comme le P9.
-Pour notre défense nous étions un peu perdu avec les instructions et à chaque étape il était indiqué que le code était incomplet et ne pouvait pas tourner en tant que tel. Nous nous sommes donc résolus à attendre les instructions des semaines suivantes pour pouvoir tester, sauf que cette instant était constemment repoussé par du nouveau code incomplet.
+Pour notre défense nous étions un peu perdu avec les instructions et à chaque étape il était indiqué que le code était incomplet et ne pouvait pas tourner en tant que tel. Nous nous sommes donc résolus à attendre les instructions des semaines suivantes pour pouvoir tester, sauf que cette instant était constamment repoussé par du nouveau code incomplet.
 Nous avons donc entrepris d'attendre les nouvelles instructions sans essayer de faire fonctionner un code incomplet en comblant les trous, se disant que c'était une perte de temps. Il se trouve que c'était une grave erreur nous retiendrons cette leçon.
 
 _Note personnelle de Valentino : j'ai vraiment envie de faire le graphisme, je le ferais après les examens._
@@ -44,9 +46,16 @@ Semaines 10-11-12-13-14 : 6h/personne
 # Organisation du Projet 
 
 Fichiers :
+Tout les fichiers sont dans un seul dossier.
+- Le Makefile génère l'édition des liens et nous permet de créér les fichiers .o et .exe.
+- Les fichiers .cc et .h sont les fichiers de code c++ avec les définitions et déclarations.
+- Les fichiers .dat sont les enregistrement des données des exercices simulés.
+- Les fichiers .gp contiennent les données et les informations permettant d'afficher les simulations avec gnuplot.
 
+Simulations & Tests :
+- testIntegrateur1.cc
+- Pomme.cc
 
-Simulations :
 
 
 
@@ -61,6 +70,7 @@ Simulations :
 
 5. Pour tester les simulations et fichiers test, entrer la commande .\nom_de_la_simulation.exe dans le terminal pour l'executer
 Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal : 
+    .\testPointMateriel
     .\testIntegrateur1
     .\gnuplot_test
     .\ExerciceP9

@@ -17,7 +17,7 @@ using namespace std;
 
 int main(){
 vector<double> x_pos;
-vector<double> y_pos;
+vector<double> y_pos; //pour sauvegarder les données de la simulation
 vector<double> z_pos;
 
 
@@ -47,22 +47,22 @@ double dt(0.01);
 
 do{
 cout << "Temps : " << t << endl;
-cout << point.position(point.get_contr()[0]) << " position " << endl;
+cout << point.position(point.get_contr()[0]) << " position " << endl; //affichage sur le terminal
 cout << point.vitesse(point.get_contr()[0]) << " vitesse " << endl;
-//Euler.evolue(&point,t,dt);
 
 x_pos.push_back(point.get_E().get_coord(0));
-y_pos.push_back(point.get_E().get_coord(1));
+y_pos.push_back(point.get_E().get_coord(1)); //sauvegarde des données
 z_pos.push_back(point.get_E().get_coord(2));
 
-Rk4.evolue(&point,t,dt);
+//Euler.evolue(&point,t,dt); //pour utiliser Euler
+Rk4.evolue(&point,t,dt); //mettre en commentaire pour utiliser Euler
 t+=dt;   
 
 cout << endl;
-}while(point.position(point.get_contr()[0]).get_coord(2)>0);
+}while(point.position(point.get_contr()[0]).get_coord(2)>0); //on simule tant que le point est au dessus du sol
 
 
-ofstream fichier_test;
+ofstream fichier_test; //création du fichier de sauvegarde
 fichier_test.open("test_integrateur_1.dat",ios::out);
 
 for(int i(0); i<x_pos.size();i++){
@@ -71,7 +71,7 @@ for(int i(0); i<x_pos.size();i++){
 
 }
 
-fichier_test.close();
+fichier_test.close(); 
 
 
 ofstream graphe("graphe3D_testIntegrateur1.gp");

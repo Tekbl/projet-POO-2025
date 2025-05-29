@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++11 -pedantic -Wall
 
 
 #all = mettre tout les fichiers cibles qu'on veut compiler / executer
-all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test testIntegrateur2 exerciceP11-spherique
+all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test testIntegrateur2 exerciceP11-spherique testPointMateriel
 
 exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
         ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o GravitationConstante.o \
@@ -35,7 +35,8 @@ exerciceP11-spherique: VecteurV.o ChampForces.o ObjetIntegrable.o GravitationCon
         Integrateurs.o ObjetDessinable.o constantes.o affichage.o
                         ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de exercice P11 spherique
 
-   
+testPointMateriel : VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o
+
 # \/ Ces lignes ont été recopiées de la commande g++ -MM *.cc \/ 
 # ce sont les dépendances de compilation de chaque fichier .o mentionnés ci dessus
 
@@ -103,5 +104,9 @@ testIntegrateur2.o: testIntegrateur2.cc VecteurV.h affichage.h \
  ObjetIntegrable.h constantes.h contrainte.h Champforces.h \
  PointMateriel.h ObjetDessinable.h SupportADessin.h \
  GravitationConstante.h Integrateurs.h
+testPointMateriel.o: testPointMateriel.cc VecteurV.h affichage.h \
+ ObjetIntegrable.h constantes.h contrainte.h Champforces.h \
+ PointMateriel.h ObjetDessinable.h SupportADessin.h \
+ GravitationConstante.h
 VecteurTestV.o: VecteurTestV.cc VecteurV.h affichage.h
 VecteurV.o: VecteurV.cc VecteurV.h affichage.h

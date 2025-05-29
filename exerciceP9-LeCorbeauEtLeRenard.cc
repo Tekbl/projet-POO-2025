@@ -104,7 +104,6 @@ for(int i(0); i<x_fromage.size();i++){
 
 fichier_test.close();
 
-
 std::ofstream graphe("graphe3D_exerciceP9_corbeau_renard.gp");
 graphe << "set encoding utf8\n";   
 graphe << "set title \"Le Corbeau et le Renard\"\n";
