@@ -1,8 +1,9 @@
 # projet-POO-2025 PH BA2 | Assistant : Arthur Wurhmann | https://github.com/Tekbl/projet-POO-2025
 Binôme : Matthias Calatroni & Valentino Lekimpe 
 
+# Questions
 
-=========================== QUESTION 1 =========================== 
+## QUESTION 1  
 
 Simulations et Tests effectués :
 - testIntegrateur1 (Euler)
@@ -20,15 +21,19 @@ Extensions effectuées :
 - Second exercice de physique avancé : ExerciceP11-pendule
 - Ajout personnel : affichage gnuplot pour visualiser les trajectoires.
 
-=========================== QUESTION 2 ===========================
+## QUESTION 2 
 
 Nous n'avons malheureusement pas eu le temps d'adresser le graphisme dans notre projet. 
 Pour palier à ça nous avons décidé de rajouter des graphes gnuplot aux simulations pour au moins avoir une manière de visualier les données simulées 
 
-Note personnelle de Valentino : j'ai vraiment envie de faire le graphisme, je le ferais après les examens.
+Celà est du au temps perdu sur le débuggage. En effet nous avons pris la mauvaise approche concernant le projet en ne faisant aucun tests entre le moment où nous avons testé la classe vecteur et le moment ou nous devions commencer à simuler des exercices comme le P9.
+Pour notre défense nous étions un peu perdu avec les instructions et à chaque étape il était indiqué que le code était incomplet et ne pouvait pas tourner en tant que tel. Nous nous sommes donc résolus à attendre les instructions des semaines suivantes pour pouvoir tester, sauf que cette instant était constemment repoussé par du nouveau code incomplet.
+Nous avons donc entrepris d'attendre les nouvelles instructions sans essayer de faire fonctionner un code incomplet en comblant les trous, se disant que c'était une perte de temps. Il se trouve que c'était une grave erreur nous retiendrons cette leçon.
+
+_ Note personnelle de Valentino : j'ai vraiment envie de faire le graphisme, je le ferais après les examens.
 
 
-=========================== QUESTION 3 ===========================
+## QUESTION 3 
 
 Temps moyen estimé par personne par semaine : 5h30
 Semaine 1 : rien
@@ -36,15 +41,16 @@ Semaines 2-3-4-5-6-7-8-9 : 4h/personnne
 Vacances de Pâques : 12h par personne
 Semaines 10-11-12-13-14 : 6h/personne
 
-===========================  Organisation du Projet ===========================
+# Organisation du Projet 
 
 Fichiers :
+
 
 Simulations :
 
 
 
-=========================== Exécution des simulations ===========================
+# Exécution des simulations 
 
 1. Ouvrir VM IC-CO-IN-SC
 2. Unzip le dossier du projet rendu.
@@ -66,6 +72,7 @@ Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal :
 
 /!\ Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html
 
+```
 <3                                                          
                                                   :*@@@%#*: ..                                              
                                             :*@@@@@@@@@@@@@@@@@@@@@+                                        
