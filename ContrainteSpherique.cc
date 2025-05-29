@@ -12,7 +12,7 @@ Vecteur ContrainteSpherique::position(const ObjetPhysique& obj) {
     //on transforme les coordonnées sphérique en coordonnées cartésiennes avec z le long de g
     double x = rayon * sin(teta) * cos(phi);
     double y = rayon * sin(teta) * sin(phi);
-    double z = -rayon * cos(teta);// pour qu'il soit dans le sens de g, on met un signe moins en considérant teta comme dans la figure 3 du complément
+    double z = rayon * cos(teta);// pour qu'il soit dans le sens de g, on met un signe moins en considérant teta comme dans la figure 3 du complément
     return Vecteur(x, y, z);
 }
 
@@ -25,7 +25,7 @@ Vecteur ContrainteSpherique::vitesse(const ObjetPhysique& obj) {
     
     double x = rayon * (teta_pr * cos(teta) * cos(phi) - phi_pr * sin(teta) * sin(phi));
     double y = rayon * (teta_pr * cos(teta) * sin(phi) + phi_pr * sin(teta) * cos(phi));
-    double z = rayon * teta_pr * sin(teta); // pas de signe - car on est dans le sens de g
+    double z = -rayon * teta_pr * sin(teta); //on fait comme dans l'annexe, ou z est dans le sens de g
 
     return Vecteur(x, y, z);
 }

@@ -17,11 +17,14 @@
 void simul_spherique(double temps, double pas, unsigned int nb_iter){
     Systeme systeme;
 
+    RungeKutta4 Rk4;
+
+    systeme.change_integrator(std::unique_ptr<integrateur>(new RungeKutta4(Rk4)));
     double rayon = 2.2; 
 
     //initialisation du pendule 
-    std::vector<double> pos_init(M_PI/6,0);//teta=M_PI/6, phi=0
-    std::vector<double> vit_init(0,1);//teta*=0, phi*=1
+    std::vector<double> pos_init = {M_PI/6,0};//teta=M_PI/6, phi=0
+    std::vector<double> vit_init = {0,1};//teta*=0, phi*=1
     //on itnitialise le pendule avec une position initiale une vitesse initiale, une masse de 0.1, pas de charge éléctrique et un degré de liberté de 2 
     PointMateriel pendule(Vecteur(pos_init), Vecteur(vit_init),0.1,0,2);
 
@@ -43,6 +46,14 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
 
     double iteration = temps / pas;
 
+    //std::cout << systeme.get_obj(0)->get_E() << std::endl; //affichage de l'état initial du pendule
+
+    //std::cout << systeme.get_obj(0)->position(new ContrainteSpherique(contrainte)) << std::endl; //affichage de la position initiale du pendule
+    //std::cout << systeme.get_obj(0)->vitesse(new ContrainteSpherique(contrainte)) << std::endl; //affichage de la vitesse initiale du pendule
+    //std::cout << *systeme.get_obj(0) << std::endl;
+    //std::cout << systeme.get_obj(0)->evolution(temps) << std::endl; //affichage de l'évolution du pendule à t=0
+    //std::cout << systeme << std::endl; //affichage de l'état du système
+    //systeme.dessine_sur(txt); //affichage du pendule
     for(int i = 0; i < iteration; i++){
         if(i % nb_iter == 0){
                 std::cout << "t = " << systeme.get_time() << std::endl;
@@ -55,9 +66,9 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
 }
 
 int main(){
-    double temps = 5; //temps de la simulation en secondes
+    double temps = 0.1; //temps de la simulation en secondes
     double pas = 0.001; //pas de temps
-    unsigned int nb_iter = 100; //limite le nombre d'affichage
+    unsigned int nb_iter = 10; //limite le nombre d'affichage
 
     simul_spherique(temps, pas, nb_iter);
 
