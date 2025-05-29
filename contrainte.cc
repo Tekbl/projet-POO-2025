@@ -9,6 +9,7 @@ using namespace std;
 
 
 Vecteur Libre::applique_force(const ObjetPhysique& obj, Vecteur force, double t){
+    //F = m * a <=> a = F/m
     if(obj.get_masse()>0){
         return force * (1/obj.get_masse()); //a = f/m
     }else{
