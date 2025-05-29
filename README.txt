@@ -1,0 +1,120 @@
+# projet-POO-2025 PH BA2 | Assistant : Arthur Wurhmann | https://github.com/Tekbl/projet-POO-2025
+Binôme : Matthias Calatroni & Valentino Lekimpe 
+
+
+=========================== QUESTION 1 =========================== 
+
+Simulations et Tests effectués :
+- testIntegrateur1 (Euler)
+- ExerciceP9 (chute de pomme)
+- ExerciceP9-LeCorbeauEtLeRenard
+- gnuplot_test (testIntegrateur1 avec un graphe gnuplot)
+- TestIntegrateur2 (comparaison de Euler, Runge-Kutta 4 et Newmark en affichant les graphes sur gnuplot)
+- ExerciceP11-magnetique
+- ExerciceP11-pendule
+
+Intégrateur ajouté à l'étape 8 : Runge Kutta 4
+
+Extensions effectuées :
+- Second Intégrateur -> Newmark (les résultats sont très proches des résultats attendus mais ne sont pas exacts)
+- Second exercice de physique avancé : ExerciceP11-pendule
+- Ajout personnel : affichage gnuplot pour visualiser les trajectoires.
+
+=========================== QUESTION 2 ===========================
+
+Nous n'avons malheureusement pas eu le temps d'adresser le graphisme dans notre projet. 
+Pour palier à ça nous avons décidé de rajouter des graphes gnuplot aux simulations pour au moins avoir une manière de visualier les données simulées 
+
+Note personnelle de Valentino : j'ai vraiment envie de faire le graphisme, je le ferais après les examens.
+
+
+=========================== QUESTION 3 ===========================
+
+Temps moyen estimé par personne par semaine : 5h30
+Semaine 1 : rien
+Semaines 2-3-4-5-6-7-8-9 : 4h/personnne
+Vacances de Pâques : 12h par personne
+Semaines 10-11-12-13-14 : 6h/personne
+
+===========================  Organisation du Projet ===========================
+
+Fichiers :
+
+Simulations :
+
+
+
+=========================== Exécution des simulations ===========================
+
+1. Ouvrir VM IC-CO-IN-SC
+2. Unzip le dossier du projet rendu.
+3. Ouvrir le terminal de commande dans le répertoire du dossier zip 
+
+4. Écrire et entrer la commande : make          /!\ Si une simulation utilisant un affichage gnuplot est ouvert, la commande make génère des erreurs. Pour régler ça, il faut fermer la fenêtre gnuplot et relancer la commande make.
+
+5. Pour tester les simulations et fichiers test, entrer la commande .\nom_de_la_simulation.exe dans le terminal pour l'executer
+Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal : 
+    .\testIntegrateur1
+    .\gnuplot_test
+    .\ExerciceP9
+    .\ExerciceP9-LeCorbeauEtLeRenard
+    .\TestIntegrateur2
+    .\ExerciceP11-magnetique
+    .\ExerciceP11-pendule
+
+6. Observer et admirer les résultats
+
+/!\ Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html
+
+<3                                                          
+                                                  :*@@@%#*: ..                                              
+                                            :*@@@@@@@@@@@@@@@@@@@@@+                                        
+                                        -%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-                                    
+                                   .+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*.                                
+                                -@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@+.                             
+                              =%@@@@@@@@@@@@@@%#**#%%#**####%#%@@@%%@@@@@@@@@@@%:                           
+                            -*##%@@@@%%%@@@@%#+=-=+++++=++****+*####%#@@@@@@@@@@@@=                         
+                           =+++###@%**++#%@@%*+-:::-=+====+++++++*##%@@@@@@@@@@@@@@@=                       
+                          -+=-=**%%**+==+***%#*+:...:-====++*****+*%%@@@@@@@@@@@@@@@@*                      
+                         :*++-=**%#+*=::------=*##=:...:-==-==+***###%%@@@@@@@@@@@@@@@=                     
+                         ++++-=*#%#**+-:::::::......::::.::::--==++*###%@@@@@@@@@@@@@@*                     
+                         **#*=*%%%#+*+-:.....  .............:::--====+*#%@@@%@@@@@@@@@+                     
+                         =##*+#%%%#++==++++++-::.  ..:.....:-=+*##%%%%#*#%@@###**##%%%*                     
+                          +#**#%%@*++#%#%%%%#*==-:------=-=+**#%@@@%%@@@@%@@@****####%=                     
+                           *+*#@@@=+***+=--=+****+++=---+#%@%#**++++*##%@@@@@%+######*                      
+                           +#*#@@%***+=+@@@@@@@@%%%+-.:+@@@%##%@@@@@%*#%@@@@@%*%%%*##=                      
+                           +###@@++#*+#*=-:-=++++-*+-::-#%=-=+==+++**%#%@@%@@@%@%%#%%.                      
+                            =#%@@*+**==------=====#=:::-+@@#*++==+++***#%%%@@@@@@%@@=                       
+                             :-*@#+=++=-:......:-*=--::=*%@#+--------=+#*#%@@@@@@@%                         
+                              :--**+--=*+-:::-=*+----::-+*###*++=---=+++*%%@@@@@@*                          
+                               :-+*+=-:.......::-----:.-+###*-:::--==++*#%@@%@@@*                           
+                               :-=++==-::::--==:-*%#+==*%@@@%*=-::--==+*#%@@@@@+                            
+                                .:-**+++++#*=-:::-==+#@@@@@@@#*+*#****#%%@@@@%+                             
+                                   +*+=-+*=----------==++*###*****#%###@@@@:                                
+                                   =+++=--+###++==--====+*###%%@@@@+-+#@%@*                                 
+                                   .+==+=-=----=++*#%%%@@@@@@@@%##=-=*%@%@-                                 
+                                     =+===-------===+++***#####**+=+*%@@@@-                                 
+                                      -++==-----------==++++++++++*#%@@@@@-                                 
+                                       ####+=----:::::---=====++#%%@@@@@@@#-                                
+                                     :+**#%@@%*====-====+++***#%@@@@@@@@@@@@@%.                             
+                                  .+##%+++*#%%@@%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@%-                            
+                                 +*#@@*+++=+*****#%@@@@@@@@@@@@@@@@@@@@@@@@@@%%%*                           
+                               -**#@%+*++====*+++++#%%@%%%@@@@@@@@@@@@@@@@@@%%%%%%=                         
+                          .=******%%==++=+===+++==++*#%%%%%@@@@@@@@@@@@@@@%###%%%%%%##*:                    
+                    :=************#*--==========-=++**####%%%@@%%%@@@%%@%####%%###%#######*=.               
+             .-+*************#******---===========-===+++*########%%%%%####################****=.           
+        .-+******************##*****=::-===---===-----==+++++++*##%%%################*##***********=:       
+     -+**********************####****=::--==---===++++++=====++*#%%#**#########*##**********************=-. 
+  -+**************************#####***=:::-==--===+========++*###****#######****#***************************
++********************************###***+:.::----------------=+++***######******##***************************
+************************************##***+:..::::------------=+***#####*******##****************************
+********************************************+-:--::::::::::=*****#####*******%******************************
+**************************************##%@@@@@#***#=:::::=*%%%########*****#%*******************************
+##*******************************##%%%%%%#####%%#####=-=**#@@%%%%%%%##****##******************************#*
+##******************************#%##***#****#@@@#******##%@@%%#############******************************##*
+###******************************************@@@%**##%@@@@@@@%###***************************************###*
+###******************************************#@%%%%@@@@@%%%%%###***************************************####*
+##*******************************************#%%%%%###########***************************************######*
+##******************************************##%###************************************************#########*
+##*****************************************####***************************************************########**
+#******************************************##**#************************************************##########**
