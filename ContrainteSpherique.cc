@@ -36,11 +36,13 @@ Vecteur ContrainteSpherique::applique_force(const ObjetPhysique& obj, Vecteur fo
     double teta_pr = obj.get_E_pr().get_coord(0);
     double phi_pr = obj.get_E_pr().get_coord(1);
 
+    double ulm = 1/(rayon*obj.get_masse());
+    double coteta = cos(teta)/sin(teta);
 
-    double teta_pr_pr = sin(teta)*cos(teta)*phi_pr*phi_pr + (1/(rayon*obj.get_masse()))*(force.get_coord(0) * cos(teta) * cos(phi) + force.get_coord(1) * cos(teta) * sin(phi) + force.get_coord(2) * sin(teta));
+    double teta_pr_pr = sin(teta)*cos(teta)*phi_pr*phi_pr + ulm*(force.get_coord(0) * cos(teta) * cos(phi) + force.get_coord(1) * cos(teta) * sin(phi) + force.get_coord(2) * sin(teta));
     double phi_pr_pr = 0;
     if(abs(teta) > 1e-10){
-        phi_pr_pr = -2*(cos(teta)/sin(teta))*teta_pr*phi_pr + (1/(rayon*obj.get_masse()*sin(teta)))*(-force.get_coord(0)*sin(phi)+force.get_coord(1)*cos(phi));
+        phi_pr_pr = -2*coteta*teta_pr*phi_pr + (ulm * (1/sin(teta)))*(-force.get_coord(0)*sin(phi)+force.get_coord(1)*cos(phi));
     }
     std::vector<double> force_appliquee = {teta_pr_pr, phi_pr_pr};
     return Vecteur(force_appliquee);
