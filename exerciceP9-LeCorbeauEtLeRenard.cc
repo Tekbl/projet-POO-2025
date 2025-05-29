@@ -50,10 +50,10 @@ void corbeaurenard(double temps, double pas, unsigned int nb_iter, double precis
     sys.add_object(std::unique_ptr<PointMateriel>(new PointMateriel(pierre_objet)));
     sys.add_constraint(std::unique_ptr<Libre>(new Libre(libre)));
     sys.add_force_field(std::unique_ptr<GravitationConstante>(new GravitationConstante(gravitation)));
-    sys.append_constraint(0, 0);
-    sys.append_constraint(0, 1);
-    sys.append_force_field(0, 0);
-    sys.append_force_field(0, 1);
+    sys.append_constraint(0, 0);//on ajoute la contrainte libre au fromage
+    sys.append_constraint(0, 1);//on ajoute la contrainte libre à la pierre
+    sys.append_force_field(0, 0);//on ajoute le champ de force gravitationnel au fromage
+    sys.append_force_field(0, 1);//on ajoute le champ de force gravitationnel à la pierre
 
     double iteration = temps / pas;
 

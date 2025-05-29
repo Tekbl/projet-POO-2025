@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++11 -pedantic -Wall
 
 
 #all = mettre tout les fichiers cibles qu'on veut compiler / executer
-all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test testIntegrateur2
+all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test testIntegrateur2 exerciceP11-spherique
 
 exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
         ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o GravitationConstante.o \
@@ -31,6 +31,10 @@ gnuplot_test : VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforce
 testIntegrateur2 : VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o Integrateurs.o
                         ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de testIntegrateur2
 
+exerciceP11-spherique: VecteurV.o ChampForces.o ObjetIntegrable.o GravitationConstante.o ContrainteSpherique.o Systeme.o PointMateriel.o SupportADessin.o \
+        Integrateurs.o ObjetDessinable.o constantes.o affichage.o
+                        ##Remplir ça avec les dépendances (#include "fichier.h" --> fichier.o) de exercice P11 spherique
+
    
 # \/ Ces lignes ont été recopiées de la commande g++ -MM *.cc \/ 
 # ce sont les dépendances de compilation de chaque fichier .o mentionnés ci dessus
@@ -54,6 +58,10 @@ exerciceP11-magnetique.o: exerciceP11-magnetique.cc VecteurV.h \
  affichage.h ChampForces.h ObjetIntegrable.h constantes.h contrainte.h \
  ForceCentrale.h Integrateurs.h Systeme.h ObjetDessinable.h \
  SupportADessin.h PointMateriel.h ChampSupplementaires.h
+exerciceP11-spherique.o: exerciceP11-spherique.cc VecteurV.h affichage.h \
+ ChampForces.h ObjetIntegrable.h constantes.h contrainte.h \
+ GravitationConstante.h ContrainteSpherique.h systeme.h Integrateurs.h \
+ ObjetDessinable.h SupportADessin.h PointMateriel.h
 exerciceP9-LeCorbeauEtLeRenard.o: exerciceP9-LeCorbeauEtLeRenard.cc \
  VecteurV.h affichage.h ChampForces.h GravitationConstante.h constantes.h \
  ObjetIntegrable.h contrainte.h Systeme.h Integrateurs.h \
