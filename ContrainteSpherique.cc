@@ -37,7 +37,7 @@ Vecteur ContrainteSpherique::applique_force(const ObjetPhysique& obj, Vecteur fo
     double phi_pr = obj.get_E_pr().get_coord(1);
 
 
-    double teta_pr_pr = sin(teta)*cos(phi)*pow(teta_pr,2) + (1/(rayon*obj.get_masse()))*(force.get_coord(0) * cos(teta) * cos(phi) + force.get_coord(1) * sin(teta) * sin(phi));
+    double teta_pr_pr = sin(teta)*cos(phi)*pow(teta_pr,2) + (1/(rayon*obj.get_masse()))*(force.get_coord(0) * cos(teta) * cos(phi) + force.get_coord(1) * sin(teta) * sin(phi) - force.get_coord(2) * sin(teta));
     double phi_pr_pr = 0;
     if(abs(teta) > 1e-10){
         double phi_pr_pr = -2*(cos(teta)/sin(teta))*teta_pr*phi_pr + (1/(rayon*obj.get_masse()*sin(teta)))*(-force.get_coord(0)*sin(phi)+force.get_coord(1)*cos(phi));

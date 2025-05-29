@@ -34,13 +34,13 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     sys.add_constraint(std::unique_ptr<Libre>(new Libre(libre)));
     sys.add_force_field(std::unique_ptr<ChampNewtonien>(new ChampNewtonien(TsurP)));
     sys.add_force_field(std::unique_ptr<ChampNewtonien>(new ChampNewtonien(PsurT)));
-    sys.append_constraint(0, 0);
-    sys.append_constraint(0, 1);
+    sys.append_constraint(0, 0);//on ajoute la contrainte libre à la pomme
+    sys.append_constraint(0, 1);//on ajoute la contrainte libre à la terre
     TextViewer txt(std::cout);
     //sys.dessine_sur(txt);
     double iteration = temps / interval_temps;
-    sys.append_force_field(0,0);
-    sys.append_force_field(1,1);
+    sys.append_force_field(0,0);//on ajoute la force de la terre sur la pomme à la pomme
+    sys.append_force_field(1,1);//on ajoute la force de la pomme sur la terre à la terre
     for(int t = 0; t <= iteration; t++){
             if(t % nb_iter == 0){
                 std::cout << "t = " << sys.get_time() << std::endl;

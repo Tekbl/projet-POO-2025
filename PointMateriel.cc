@@ -57,14 +57,16 @@
 
 //===============================A_CHANGER==================================
 Vecteur PointMateriel::evolution(double t){
-    //on initialise un vecteur de dim 3 à valeur 0 qui sera modifié par les calculs de force
-    Vecteur x(3);
+    //on initialise un vecteur de dim 1 à valeur 0 qui sera modifié par les calculs de force, sa dimension augmentera en fonction des champs de force appliqués
+    Vecteur force_(1);
     for(auto chp : champ){
-        x += force(chp,t) ;
+        force_ += force(chp,t) ;
     } 
-    
-    x=x*(1/this->get_masse());
-    return x;
+    Vecteur contraint(1);
+    for(auto c : contr){
+        contraint += c->applique_force(*this, force_, t);
+    }
+    return contraint;
 }
 
 /*void PointMateriel::set_pos(std::vector<double> a){
@@ -82,8 +84,8 @@ void PointMateriel::set_vit(std::vector<double> a){
 void PointMateriel::affiche(std::ostream& out) const{
     //out << this->position(contr[0]) << " #position" << "\n" << this->vitesse(contr[0]) << " #vitesse" << std::endl;
     out << "masse : " << this->get_masse() <<" Kg" << std::endl;
-    out << "position : " << this->get_E();
-    out << "\nvitesse : " << this->get_E_pr() << std::endl;
+    out << "position : " << this->position(contr[0]) << std::endl;
+    out << "\nvitesse : " << this->vitesse(contr[0]) << std::endl;
 }
 
 PointMateriel::PointMateriel(Vecteur E, Vecteur E_pr, double masse, double charge ,unsigned int dim, const std::vector<ChampForces*>& c,
