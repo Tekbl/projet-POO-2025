@@ -62,6 +62,7 @@ class PointMateriel_angulaire : public PointMateriel{
         PointMateriel_angulaire(Vecteur E = Vecteur(2), Vecteur E_pr = Vecteur(2), double masse = 0, double charge=0 ,unsigned int dim = 2, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
             const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{});
         virtual Vecteur evolution(double t) override;
+        using PointMateriel::affiche; //pour utiliser la méthode affiche de PointMateriel
         virtual void whoami(std::ostream& out)const override{out << "point materiel angulaire" ;};
     private:
         const double Lim = 2 * M_PI; //limite de l'angle, pour éviter les problèmes de dépassement de la valeur de l'angle
