@@ -54,8 +54,15 @@ x_pos.push_back(point.get_E().get_coord(0));
 y_pos.push_back(point.get_E().get_coord(1)); //sauvegarde des données
 z_pos.push_back(point.get_E().get_coord(2));
 
-//Euler.evolue(&point,t,dt); //pour utiliser Euler
-Rk4.evolue(&point,t,dt); //mettre en commentaire pour utiliser Euler
+//====================CHANGER INTEGRATREUR====================================================
+
+//Euler.evolue(&point,t,dt); //enlever les commentaires pour utiliser Euler
+//New.evolue(&point,t,dt); //enlever les commentaires pour utiliser NewMark
+Rk4.evolue(&point,t,dt); //mettre cette ligne en commentaire pour utiliser Euler ou Newmark
+
+//==========================================================================================
+
+
 t+=dt;   
 
 cout << endl;
@@ -68,14 +75,13 @@ fichier_test.open("test_integrateur_1.dat",ios::out);
 for(int i(0); i<x_pos.size();i++){
 
     fichier_test<< x_pos[i] << " " << y_pos[i] << " " << z_pos[i] << "\n" ;
-
+    //on écrit les positions dans le fichier de sauvegarde
 }
 
 fichier_test.close(); 
 
 
 ofstream graphe("graphe3D_testIntegrateur1.gp");
-//graphe.open("graphe3D_testIntegrateur1.gp",ios::out);
 graphe << " set title \"Trajectoire 3D du point materiel\" \n";
 graphe << "set xlabel \"X\" \n";
 graphe << "set ylabel \"Y\" \n";

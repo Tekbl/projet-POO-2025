@@ -58,7 +58,7 @@ particule.add_champ(&un_champ_de_ble); //on lui attribue les champsforces
 particule.add_contr(&libre); //on lui ajoute la contrainte libre 
 
 systeme.add_object(std::unique_ptr<ObjetPhysique>(new PointMateriel(particule)));
-systeme.add_constraint(std::unique_ptr<Contrainte> (new Libre(libre))); //on ajoute tout les objets au système
+systeme.add_constraint(std::unique_ptr<Contrainte> (new Libre(libre))); //on ajoute tous les objets au système
 systeme.add_force_field(std::unique_ptr<ChampForces> (new ChampCompose(un_champ_de_ble)));
 
 //=========================CHANGER_INTEGRATEUR=============================================

@@ -11,7 +11,7 @@
 void simulation(double temps, double interval_temps, unsigned int nb_iter){   
     
     std::vector<double> x_pos;
-    std::vector<double> y_pos;
+    std::vector<double> y_pos; 
     std::vector<double> z_pos;
 
     Systeme sys;
@@ -19,9 +19,11 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     double altitude = 10;
     double masse_terre = 5.972e24;
     double masse_pomme = 0.1;
+
     //si on veut comparer aux valeurs théoriques
     //double g = (G * masse_terre) / (rayon_terre * rayon_terre);
     //double altitude_initiale = altitude;
+
     Vecteur position_terre(0, 0, rayon_terre);
     Vecteur vitesse_terre(3);
     Vecteur position_pomme(0, 0, altitude);
@@ -31,10 +33,7 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     ChampNewtonien TsurP(terre);
     ChampNewtonien PsurT(pomme);
     Libre libre;
-    //Systeme sys({std::make_unique<PointMateriel>(pomme), std::make_unique<PointMateriel>(terre)},{std::make_unique<Libre>(libre)}, {std::make_unique<ChampNewtonien>(champ)});
-    /*sys.affiche(std::cout);
-    sys.evolve(1e-3);
-    sys.affiche(std::cout);*/
+   
     sys.add_object(std::unique_ptr<PointMateriel>(new PointMateriel(pomme)));
     sys.add_object(std::unique_ptr<PointMateriel>(new PointMateriel(terre)));
     sys.add_constraint(std::unique_ptr<Libre>(new Libre(libre)));
