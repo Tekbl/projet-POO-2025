@@ -34,11 +34,14 @@ class Systeme: public Printable, public Dessinable{
     
         virtual void dessine_sur(SupportADessin& support)override; //a copier coller dans toutes les sous classes de dessinable
 
-
+        //ajout d'un objet physique, d'une contrainte ou d'un champ de force au système
         void add_object(std::unique_ptr<ObjetPhysique> o);
         void add_constraint(std::unique_ptr<Contrainte> c);
         void add_force_field(std::unique_ptr<ChampForces> f);
+
         void change_integrator(std::unique_ptr<integrateur> new_f);
+        
+        //ajout de contrainte ou de champ de force à un objet physique
         void append_constraint(unsigned int i, unsigned int j);
         void append_force_field(unsigned int i, unsigned int j);
         double get_time();

@@ -16,7 +16,7 @@ using namespace std;
 //VecteurV.o ObjetIntegrable.o constantes.o Champforces.o affichage.o PointMateriel.o Integrateurs.o GravitationConstante.o ForceCentrale.o
 int main(){
     
-
+//initialisation des constantes et des objets
 double rayon(6371e3);
 double h(10);
 

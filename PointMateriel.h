@@ -56,7 +56,7 @@ ce qui rend la classe particule_chargee inutile.
 
 */
 
-class particule_chargee : public PointMateriel{
+/*class particule_chargee : public PointMateriel{
     public:
         particule_chargee(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, double charge_ = 0,
             unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
@@ -66,5 +66,5 @@ class particule_chargee : public PointMateriel{
         virtual void whoami(std::ostream& out)const override{out << "particule chargee" ;};
     private:
         double charge;
-};
+};*/
 

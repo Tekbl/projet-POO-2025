@@ -17,7 +17,9 @@ using namespace std;
 
 
 int main(){
+//test chute de la trajectoire d'un point materiel sous l'effet de la gravité avec trois intégrateurs différents : Euler-Cromer, Runge-Kutta 4 et Newmark
 
+//initialisation des vecteurs pour stocker les positions pour chaque intégrateur
 vector<double> x1,y1,z1;
 vector<double> x2,y2,z2;
 vector<double> x3,y3,z3;

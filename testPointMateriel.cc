@@ -20,14 +20,16 @@ Vecteur pos2(2,3,10);
 Vecteur vit_nulle(0,0,0);
 Vecteur vit2(1,-10,0.2);
 
+//initialisation des points matériels
 PointMateriel p1(pos1, vit_nulle, 1, 0, 3);
 PointMateriel p2(pos1,vit2,1,0,3);
+//ajout des champs de force et des contraintes
 p1.add_champ(&g_terre);
 p1.add_contr(&libre);
 p2.add_champ(&g_terre);
 p2.add_contr(&libre);
 
-
+//test de l'affichage
 p1.affiche(std::cout);
 std::cout << "force :" << p1.force(&g_terre, 0) << std::endl;
 std::cout << "\n" << std::endl;
