@@ -16,6 +16,8 @@ class PointMateriel: public ObjetPhysique, public Dessinable{
         PointMateriel(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, double charge=0 ,unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
             const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{});
 
+        virtual ~PointMateriel() = default; //destructeur virtuel par défaut pour éviter les fuites de mémoire
+
         virtual Vecteur evolution(double t) override;
 
         virtual void affiche(std::ostream& sortie)const override;
@@ -32,6 +34,7 @@ class PointMateriel_angulaire : public PointMateriel{
         PointMateriel_angulaire(Vecteur E = Vecteur(2), Vecteur E_pr = Vecteur(2), double masse = 0, double charge=0 ,unsigned int dim = 2, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
             const std::vector<Contrainte*>& ctr = std::vector<Contrainte*>{});
         virtual Vecteur evolution(double t) override;
+        virtual ~PointMateriel_angulaire() = default; //destructeur virtuel par défaut pour éviter les fuites de mémoire
         using PointMateriel::affiche; //pour utiliser la méthode affiche de PointMateriel
         virtual void whoami(std::ostream& out)const override{out << "point materiel angulaire" ;};
     private:
@@ -56,7 +59,7 @@ ce qui rend la classe particule_chargee inutile.
 
 */
 
-class particule_chargee : public PointMateriel{
+/*class particule_chargee : public PointMateriel{
     public:
         particule_chargee(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, double charge_ = 0,
             unsigned int dim = 3, const std::vector<ChampForces*>& c = std::vector<ChampForces*>{},
@@ -66,5 +69,5 @@ class particule_chargee : public PointMateriel{
         virtual void whoami(std::ostream& out)const override{out << "particule chargee" ;};
     private:
         double charge;
-};
+};*/
 

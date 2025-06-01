@@ -9,22 +9,6 @@
 
 using namespace std;
 
-/*
-class ObjetMobile: public Printable{
-    public:
-        ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
-        virtual Vecteur evolution(double t) = 0;
-        Vecteur get_E() const;
-        Vecteur get_E_pr() const;
-        void set_E(Vecteur nE);
-        void set_E_pr(Vecteur nE_pr);
-    protected:
-        Vecteur E_;
-        Vecteur E_pr_;
-
-};
-*/
-
 ObjetMobile::ObjetMobile(Vecteur E, Vecteur E_pr):E_(E),E_pr_(E_pr){};
 
 Vecteur ObjetMobile::get_E() const{
@@ -43,33 +27,6 @@ void ObjetMobile::set_E_pr(Vecteur nE_pr){
 }
 
 
-/*
-class ObjetPhysique:public ObjetMobile{
-    public: 
-        ObjetPhysique(Vecteur E = {0,0,0}, Vecteur E_pr = {0,0,0}, double masse = 0, unsigned int dim = 3)
-            :ObjetMobile(E,E_pr),masse_(abs(masse)),dim_evo(dim){};
-        Vecteur force(ChampForces *c, double t) const;
-        Vecteur position(Contrainte *c) const;
-        Vecteur vitesse(Contrainte *c) const;
-        double get_masse() const;
-        virtual void affiche(ostream& out) const override;
-
-        vector<Contrainte*> get_contr(){return contr;}
-        vector<ChampForces*> get_champ(){return champ;}
-
-        void add_contr(Contrainte* c){contr.push_back(c);}
-        void add_champ(ChampForces* c){champ.push_back(c);}
-        
-    protected: 
-        vector<Contrainte*> contr;
-        vector<ChampForces*> champ;
-    private:
-        unsigned int dim_evo;
-        double masse_;
-        //possibilité de rajouter setter et getter pour dim et masse si besoin
-};
-*/
-
 ObjetPhysique::ObjetPhysique(Vecteur E, Vecteur E_pr, double masse,double charge ,unsigned int dim)
     : ObjetMobile(E, E_pr), masse_(std::abs(masse)),charge_(charge) ,dim_evo(dim) {}
 
@@ -79,15 +36,15 @@ double ObjetPhysique::get_masse() const{
 
 
 Vecteur ObjetPhysique::position(Contrainte *c) const{
-    return c->position(*this);
+    return c->position(*this);//applique la méthode position de la contrainte c à l'objet physique
 }
 
 Vecteur ObjetPhysique::vitesse(Contrainte *c) const{
-    return c->vitesse(*this);
+    return c->vitesse(*this);//applique la méthode vitesse de la contrainte c à l'objet physique
 }
 
 Vecteur ObjetPhysique::force(ChampForces *c ,double t) const{
-    return c->force(*this,t);
+    return c->force(*this,t);//applique la méthode force du champ de force c à l'objet physique
 }
 
 double ObjetPhysique::get_charge()const{return charge_;}

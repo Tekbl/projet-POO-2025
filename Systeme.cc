@@ -17,12 +17,17 @@ sys_objects(std::move(object_list)),sys_constraints(std::move(constraints_)),sys
 
 void Systeme::dessine_sur(SupportADessin& support) { support.dessine(*this); } //a copier coller dans toutes les sous classes de dessinable
 
+//ajout d'un objet physique, d'une contrainte ou d'un champ de force au système
 void Systeme::add_object(std::unique_ptr<ObjetPhysique> o){sys_objects.push_back(std::move(o));}
 void Systeme::add_constraint(std::unique_ptr<Contrainte> c){sys_constraints.push_back(std::move(c));}
 void Systeme::add_force_field(std::unique_ptr<ChampForces> f){sys_force_field.push_back(std::move(f));}
+
 void Systeme::change_integrator(std::unique_ptr<integrateur> new_f){integrator = move(new_f);}
+
+//ajout de contrainte ou de champ de force à un objet physique
 void Systeme::append_constraint(unsigned int i, unsigned int j){sys_objects[j]->add_contr(sys_constraints[i].get());}
 void Systeme::append_force_field(unsigned int i, unsigned int j){sys_objects[j]->add_champ(sys_force_field[i].get());}
+
 double Systeme::get_time(){return time;}
 void Systeme::whoami(std::ostream& out) const{out << "systeme";}
 void Systeme::display_integrator(std::ostream& out) const{integrator->whoami(out);}
@@ -35,13 +40,18 @@ ChampForces* Systeme::get_champ(int i) const {
     return sys_force_field[i].get();
 };
 
+Contrainte* Systeme::get_contr(int i) const {
+    return sys_constraints[i].get();
+};
+
 
 void Systeme::evolve(double dt){
+    //fait évoluer chaque objet du système en utilisant l'intégrateur choisi
     for(int i(0);i<sys_objects.size();i++){
         integrator->evolue(sys_objects[i].get(),time,dt);
     }
     time += dt;
-    }
+}
 
 void Systeme::affiche(std::ostream& sortie)const {
     sortie << "Systeme : à t = " << time <<" :" << std::endl;

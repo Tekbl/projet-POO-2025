@@ -80,7 +80,6 @@ void corbeaurenard(double temps, double pas, unsigned int nb_iter, double precis
         if(i % nb_iter == 0){
             std::cout << "t = " << sys.get_time() << std::endl;
             sys.dessine_sur(txt);
-            //sys.affiche(std::cout); 
         }
         
         if(std::abs(t_coll-sys.get_time()) < precision){

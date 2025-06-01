@@ -10,5 +10,5 @@ class Printable{
 
 };
 
-
+//surcharge de l'opérateur << pour afficher les objets de type Printable
 std::ostream& operator<<(std::ostream& out, const Printable& print);

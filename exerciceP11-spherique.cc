@@ -20,12 +20,15 @@ std::vector<double> x1,y1,z1;
 void simul_spherique(double temps, double pas, unsigned int nb_iter){
     Systeme systeme;
 
+    //définition de l'intégrateur à utiliser, par défaut on utilise celui d'Euler-Cromer
+    //décommenter les lignes de l'intégrateur et de sont ajout au système pour l'utiliser
     //RungeKutta4 Rk4;
-
+    //Newmark New;
     //systeme.change_integrator(std::unique_ptr<integrateur>(new RungeKutta4(Rk4)));
-    double longueur = 2.2; 
+    //systeme.change_integrator(std::unique_ptr<integrateur>(new Newmark(New)));
 
     //initialisation du pendule 
+    double longueur = 2.2; 
     std::vector<double> pos_init = {M_PI/6,0};//teta=M_PI/6, phi=0
     std::vector<double> vit_init = {0,1};//teta'=0, phi'=1
     //on itnitialise le pendule avec une position initiale une vitesse initiale, une masse de 0.1, pas de charge éléctrique et un degré de liberté de 2 
@@ -51,25 +54,17 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
 
     double iteration = temps / pas;
 
-    //std::cout << systeme.get_obj(0)->get_E() << std::endl; //affichage de l'état initial du pendule
-
-    //std::cout << systeme.get_obj(0)->position(new ContrainteSpherique(contrainte)) << std::endl; //affichage de la position initiale du pendule
-    //std::cout << systeme.get_obj(0)->vitesse(new ContrainteSpherique(contrainte)) << std::endl; //affichage de la vitesse initiale du pendule
-    //std::cout << *systeme.get_obj(0) << std::endl;
-    //std::cout << systeme.get_obj(0)->evolution(temps) << std::endl; //affichage de l'évolution du pendule à t=0
-    //std::cout << systeme << std::endl; //affichage de l'état du système
-    //systeme.dessine_sur(txt); //affichage du pendule
+    //on affiche la méthode d'intégration utilisée
     std::cout << "Methode d'integration : " ;
     systeme.display_integrator(std::cout);
     std::cout << std::endl;
 
+
+    //on utilise setw et left comme dans exercieP11-magnetique pour faire un affichage propre
+    //setprecision permet de définir le nombre de chiffres après la virgule
     std::cout << std::left << std::setw(10) << "t" << std::left << std::setw(22) << "x" << std::left <<std::setw(22) << "y" << "z" << "\n";
     for(int i = 0; i <= iteration; i++){
         if(i % nb_iter == 0){
-                /*std::cout << systeme.get_obj(0)->get_E() << std::endl; //affichage de l'état du pendule
-                std::cout << systeme.get_obj(0)->get_E_pr() << std::endl; //affichage de la vitesse du pendule
-                std::cout << "t = " << systeme.get_time() << std::endl;
-                systeme.dessine_sur(txt);*/
                 std::cout 
                 << std::left << std::setw(5) << std::setprecision(5) <<systeme.get_time() << "     " 
 

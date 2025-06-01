@@ -16,6 +16,7 @@ using namespace std;
 //VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o Integrateurs.o
 
 
+//initialisation des vecteurs pour stocker les positions pour chaque intégrateur
 vector<double> x1,y1,z1;
 vector<double> x2,y2,z2;
 vector<double> x3,y3,z3;

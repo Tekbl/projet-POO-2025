@@ -24,7 +24,3 @@ Vecteur Libre::position(const ObjetPhysique& obj){ //la contrainte libre ne fait
 Vecteur Libre::vitesse(const ObjetPhysique& obj){ //la contrainte libre ne fait rien
     return obj.get_E_pr();
 }
-
-void Libre::whoami(ostream& out)const{
-    out << "contrainte libre" ;
-}

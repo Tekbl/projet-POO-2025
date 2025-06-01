@@ -24,6 +24,8 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     //double g = (G * masse_terre) / (rayon_terre * rayon_terre);
     //double altitude_initiale = altitude;
 
+
+    //initialisation des objets
     Vecteur position_terre(0, 0, rayon_terre);
     Vecteur vitesse_terre(3);
     Vecteur position_pomme(0, 0, altitude);
@@ -34,6 +36,7 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     ChampNewtonien PsurT(pomme);
     Libre libre;
    
+    //ajouts des objets au système
     sys.add_object(std::unique_ptr<PointMateriel>(new PointMateriel(pomme)));
     sys.add_object(std::unique_ptr<PointMateriel>(new PointMateriel(terre)));
     sys.add_constraint(std::unique_ptr<Libre>(new Libre(libre)));
@@ -42,7 +45,6 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
     sys.append_constraint(0, 0);//on ajoute la contrainte libre à la pomme
     sys.append_constraint(0, 1);//on ajoute la contrainte libre à la terre
     TextViewer txt(std::cout);
-    //sys.dessine_sur(txt);
     double iteration = temps / interval_temps;
     sys.append_force_field(0,0);//on ajoute la force de la terre sur la pomme à la pomme
     sys.append_force_field(1,1);//on ajoute la force de la pomme sur la terre à la terre
@@ -50,7 +52,6 @@ void simulation(double temps, double interval_temps, unsigned int nb_iter){
             if(t % nb_iter == 0){
                 std::cout << "t = " << sys.get_time() << std::endl;
                 sys.dessine_sur(txt);
-                //sys.affiche(std::cout); 
             } 
         x_pos.push_back(sys.get_obj(0)->get_E().get_coord(0));
         y_pos.push_back(sys.get_obj(0)->get_E().get_coord(1));
