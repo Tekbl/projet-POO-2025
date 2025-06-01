@@ -48,7 +48,7 @@ class Systeme: public Printable, public Dessinable{
         void display_integrator(std::ostream& out) const;
         ObjetPhysique* get_obj(int i)const;
         ChampForces* get_champ(int i)const;
-        
+        Contrainte* get_contr(int i) const;
 
         void evolve(double dt);
         virtual void whoami(std::ostream& out) const override;

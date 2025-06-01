@@ -40,6 +40,10 @@ ChampForces* Systeme::get_champ(int i) const {
     return sys_force_field[i].get();
 };
 
+Contrainte* Systeme::get_contr(int i) const {
+    return sys_constraints[i].get();
+};
+
 
 void Systeme::evolve(double dt){
     //fait évoluer chaque objet du système en utilisant l'intégrateur choisi
