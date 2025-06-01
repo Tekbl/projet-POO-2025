@@ -17,6 +17,8 @@ class ObjetMobile: public Printable{
         Vecteur get_E_pr() const;
         void set_E(Vecteur nE);
         void set_E_pr(Vecteur nE_pr);
+
+        virtual ~ObjetMobile() = default; //destructeur virtuel par défaut pour éviter les fuites de mémoire
     protected:
         Vecteur E_;
         Vecteur E_pr_;
@@ -38,6 +40,15 @@ class ObjetPhysique:public ObjetMobile{
 
         void add_contr(Contrainte* c);
         void add_champ(ChampForces* c);
+
+        virtual ~ObjetPhysique(){
+            for(auto& c : contr) {
+                delete c; // Suppression des contraintes
+            }
+            for(auto& f : champ) {
+                delete f; // Suppression des champs de force
+            }
+        }
         
     protected: 
         std::vector<Contrainte*> contr;
