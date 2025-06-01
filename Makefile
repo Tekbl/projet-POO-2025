@@ -3,7 +3,10 @@ CXXFLAGS = -std=c++11 -pedantic -Wall
 
 
 #all = mettre tout les fichiers cibles qu'on veut compiler / executer
-all: exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test testIntegrateur2 exerciceP11-spherique testPointMateriel
+all: VecteurTestV exerciceP11-magnetique exerciceP9 Pomme exerciceP9-LeCorbeauEtLeRenard testIntegrateur1 gnuplot_test testIntegrateur2 exerciceP11-spherique testPointMateriel
+
+
+VecteurTestV : VecteurV.o affichage.o
 
 exerciceP9: exerciceP9.o VecteurV.o ChampForces.o ForceCentrale.o Systeme.o PointMateriel.o ObjetDessinable.o \
         ObjetIntegrable.o contrainte.o Integrateurs.o constantes.o GravitationConstante.o \

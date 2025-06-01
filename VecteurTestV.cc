@@ -1,5 +1,6 @@
 #include <iostream>
 #include "VecteurV.h"
+#include "affichage.h"
 using namespace std;
 
 
