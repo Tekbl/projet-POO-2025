@@ -6,6 +6,7 @@ Binôme : Matthias Calatroni & Valentino Lekimpe
 ## QUESTION 1  
 
 Simulations et Tests effectués :
+- VecteurTestV
 - testPointMateriel
 - testIntegrateur1 (Euler)
 - ExerciceP9 (chute de pomme)
@@ -66,6 +67,7 @@ la logique derrière l'assemblage des différentes classes est quand à elle exp
 
 5. Pour tester les simulations et fichiers test, entrer la commande **.\nom_de_la_simulation.exe** dans le terminal pour l'executer  
 Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal :   
+    .\VecteurTestV  
     .\testPointMateriel  
     .\testIntegrateur1  
     .\gnuplot_test  
