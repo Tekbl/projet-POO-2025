@@ -56,40 +56,4 @@ euler.evolue(&pomme,t,dt);
 }
 
 
-/*
-
-===============Constructeur Point Materiel================
-
-PointMateriel::PointMateriel(
-Vecteur E, 
-
-Vecteur E_pr, 
-double masse, 
-unsigned int dim, 
-const std::vector<ChampForces*>& c,
-const std::vector<Contrainte*>& ctr)
-:ObjetPhysique(E,E_pr,masse,dim)
-{
-        if(c.empty()){
-            champ.push_back(new GravitationConstante());
-        }else{ 
-            champ = c;
-        }
-
-        if(ctr.empty()){
-            contr.push_back(new Libre());
-        }else{
-            contr = ctr;
-        }
-    }
-
-===============Constructeurs Vecteur======================
-Vecteur(unsigned int dimension):vecteur(dimension,0.0){}
-Vecteur(double x, double y, double z):vecteur{x,y,z}{}
-    //initialise vecteur avec un vector de double de dimension quelconque,on le passe par référence constant pour ne pas créér de copies et ne pas faire de modifications sur le vector entré
-    Vecteur(const std::vector<double>& liste_dinit):vecteur(liste_dinit){}
-
-*/
-
-
 }
