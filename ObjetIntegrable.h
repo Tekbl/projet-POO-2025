@@ -42,15 +42,6 @@ class ObjetPhysique:public ObjetMobile{
 
         void add_contr(Contrainte* c);
         void add_champ(ChampForces* c);
-
-        virtual ~ObjetPhysique(){
-            for(auto& c : contr) {
-                delete c; // Suppression des contraintes
-            }
-            for(auto& f : champ) {
-                delete f; // Suppression des champs de force
-            }
-        }
         
     protected: 
         std::vector<Contrainte*> contr;
