@@ -75,9 +75,9 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
                 std::cout 
                 << std::left << std::setw(5) << std::setprecision(16) << systeme.get_obj(0)->position(ptc).get_coord(2) << std::endl;
             } 
-        x1.push_back(systeme.get_obj(0)->position(ptc).get_coord(0));
-        y1.push_back(systeme.get_obj(0)->position(ptc).get_coord(1));
-        z1.push_back(systeme.get_obj(0)->position(ptc).get_coord(2));
+        x1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(0));
+        y1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(1));
+        z1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(2));
 
         systeme.evolve(pas);
     }

@@ -79,7 +79,7 @@ graphe << "set ylabel \"Y\" \n";
 graphe << "set zlabel \"Z\" \n";
 graphe << "set grid\n";
 graphe << "set ticslevel 0\n";
-graphe << "splot \"exerciceP9_pomme.dat\" using 1:2:3 with linespoints lt rgb \"red\" pt 9 ps 0.8 lw 1.2 title \"particule chargee\"\n";
+graphe << "splot \"exerciceP9_pomme.dat\" using 1:2:3 with linespoints lt rgb \"red\" pt 9 ps 0.8 lw 1.2 title \"pomme\"\n";
 graphe << "pause -1\n";
 graphe.close();
 system("gnuplot graphe3D_exerciceP9_pomme.gp");

@@ -70,7 +70,7 @@ void Newmark::evolue(ObjetMobile *obj, double t, double dt){
         i++;
         obj->set_E(new_pos);
         obj->set_E_pr(new_vit);
-        if (i>100){throw("Newark overload");}// a remischer
+        if (i>100){throw("Newark overload");}
     }while(d.norme()<e);
     
     obj->set_E_pr(new_vit);
