@@ -1,6 +1,6 @@
 #pragma once
 #include "VecteurV.h"
-#include "Champforces.h"
+#include "ChampForces.h"
 #include "ObjetIntegrable.h"
 #include "PointMateriel.h"
 #include "ObjetDessinable.h"

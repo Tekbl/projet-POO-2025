@@ -4,7 +4,7 @@
 #include "GravitationConstante.h"
 #include "constantes.h"
 #include "ObjetIntegrable.h"
-#include "Champforces.h"
+#include "ChampForces.h"
 #include "VecteurV.h"
 
 

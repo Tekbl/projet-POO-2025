@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include "Champforces.h"
+#include "ChampForces.h"
 #include "VecteurV.h"
 #include "ObjetIntegrable.h"
 #include "affichage.h"

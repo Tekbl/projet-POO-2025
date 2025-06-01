@@ -47,7 +47,7 @@ affichage.o: affichage.cc affichage.h
 ChampForces.o: ChampForces.cc ChampForces.h VecteurV.h affichage.h \
  ObjetIntegrable.h constantes.h contrainte.h
 ChampSupplementaires.o: ChampSupplementaires.cc VecteurV.h affichage.h \
- Champforces.h ObjetIntegrable.h constantes.h contrainte.h \
+ ChampForces.h ObjetIntegrable.h constantes.h contrainte.h \
  PointMateriel.h ObjetDessinable.h SupportADessin.h ForceCentrale.h \
  ChampSupplementaires.h
 constantes.o: constantes.cc VecteurV.h affichage.h
@@ -64,7 +64,7 @@ exerciceP11-magnetique.o: exerciceP11-magnetique.cc VecteurV.h \
  SupportADessin.h PointMateriel.h ChampSupplementaires.h
 exerciceP11-spherique.o: exerciceP11-spherique.cc VecteurV.h affichage.h \
  ChampForces.h ObjetIntegrable.h constantes.h contrainte.h \
- GravitationConstante.h ContrainteSpherique.h systeme.h Integrateurs.h \
+ GravitationConstante.h ContrainteSpherique.h Systeme.h Integrateurs.h \
  ObjetDessinable.h SupportADessin.h PointMateriel.h
 exerciceP9-LeCorbeauEtLeRenard.o: exerciceP9-LeCorbeauEtLeRenard.cc \
  VecteurV.h affichage.h ChampForces.h GravitationConstante.h constantes.h \
@@ -83,6 +83,8 @@ GravitationConstante.o: GravitationConstante.cc GravitationConstante.h \
  ChampForces.h
 Integrateurs.o: Integrateurs.cc Integrateurs.h VecteurV.h affichage.h \
  ObjetIntegrable.h constantes.h contrainte.h
+ObjetDessinable.o: ObjetDessinable.cc ObjetDessinable.h SupportADessin.h \
+ ObjetIntegrable.h VecteurV.h affichage.h constantes.h contrainte.h
 ObjetIntegrable.o: ObjetIntegrable.cc ObjetIntegrable.h VecteurV.h \
  affichage.h constantes.h contrainte.h ChampForces.h
 PointMateriel.o: PointMateriel.cc VecteurV.h affichage.h constantes.h \

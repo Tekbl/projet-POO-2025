@@ -68,20 +68,21 @@ la logique derrière l'assemblage des différentes classes est quand à elle exp
 
 5. Pour tester les simulations et fichiers test, entrer la commande **.\nom_de_la_simulation.exe** dans le terminal pour l'executer  
 Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal :   
-    .\VecteurTestV  
-    .\testPointMateriel  
-    .\testIntegrateur1  
-    .\pomme
-    .\gnuplot_test  
-    .\ExerciceP9  
-    .\ExerciceP9-LeCorbeauEtLeRenard _**je vous conseille de mettre la fenetre gnuplot en plein écran pour celui la**_  
-    .\TestIntegrateur2  
-    .\ExerciceP11-magnetique  
-    .\ExerciceP11-pendule  
+    ./VecteurTestV 
+    ./testPointMateriel  
+    ./testIntegrateur1  
+    ./Pomme
+    ./gnuplot_test  
+    ./ExerciceP9  
+    ./ExerciceP9-LeCorbeauEtLeRenard _**je vous conseille de mettre la fenetre gnuplot en plein écran pour celui la**_  
+    ./TestIntegrateur2  
+    ./ExerciceP11-magnetique  
+    ./ExerciceP11-pendule  
 
 6. Observer et admirer les résultats
 
 >**/!\ :** Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html
+>**/!\ :** Remarque concernant Pomme,TestIntegrateur1,testPointMateriel,VecteurTestV. Sur les VM linux le code tourne mais donne une erreur de segfault après que le code ait tourné, sur nos machines windows on a pas cette erreur.
 
 
 7. Apprécier ce portrait de M.Chappelier 

@@ -6,7 +6,7 @@
 #include "ObjetIntegrable.h"
 #include "constantes.h"
 #include "contrainte.h"
-#include "Champforces.h"
+#include "ChampForces.h"
 #include "affichage.h"
 #include "PointMateriel.h"
 #include "GravitationConstante.h"

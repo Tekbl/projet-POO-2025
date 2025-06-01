@@ -7,7 +7,7 @@
 #include "affichage.h"
 #include "ObjetDessinable.h"
 #include "SupportADessin.h"
-#include "Champforces.h"
+#include "ChampForces.h"
 
 
 class Systeme: public Printable, public Dessinable{

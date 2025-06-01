@@ -8,7 +8,7 @@
 #include "ObjetIntegrable.h"
 #include "GravitationConstante.h"
 #include "ContrainteSpherique.h"
-#include "systeme.h"
+#include "Systeme.h"
 #include "PointMateriel.h"
 #include "SupportADessin.h"
 #include "Integrateurs.h"

@@ -4,7 +4,7 @@
 #include "VecteurV.h"
 #include "constantes.h"
 #include "contrainte.h"
-#include "Champforces.h"
+#include "ChampForces.h"
 #include "affichage.h"
 
 using namespace std;

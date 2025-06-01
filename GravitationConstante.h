@@ -5,7 +5,7 @@
 #include "VecteurV.h"
 #include "constantes.h"
 #include "ObjetIntegrable.h"
-#include "Champforces.h"
+#include "ChampForces.h"
 
 class GravitationConstante : public ChampForces{
 

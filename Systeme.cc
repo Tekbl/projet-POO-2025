@@ -6,7 +6,7 @@
 #include "Integrateurs.h"
 #include "affichage.h"
 #include "ObjetDessinable.h"
-#include "Champforces.h"
+#include "ChampForces.h"
 #include <memory>
 
 
