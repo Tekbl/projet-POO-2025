@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <vector>
 #include <cmath>
+#include <fstream>
 #include "VecteurV.h"
 #include "ChampForces.h"
 #include "ObjetIntegrable.h"
@@ -14,6 +15,7 @@
 #include "ObjetDessinable.h"
 
 #define M_PI 3.14159265358979323846
+std::vector<double> x1,y1,z1;
 
 void simul_spherique(double temps, double pas, unsigned int nb_iter){
     Systeme systeme;
@@ -78,10 +80,40 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
                 std::cout 
                 << std::left << std::setw(5) << std::setprecision(16) << systeme.get_obj(0)->position(ptc).get_coord(2) << std::endl;
             } 
+        x1.push_back(systeme.get_obj(0)->position(ptc).get_coord(0));
+        y1.push_back(systeme.get_obj(0)->position(ptc).get_coord(1));
+        z1.push_back(systeme.get_obj(0)->position(ptc).get_coord(2));
+
         systeme.evolve(pas);
     }
+
     std::cout << std::setprecision(4) << std::endl;
     systeme.dessine_sur(txt); //affichage du pendule à la fin de la simulation
+
+
+    //sauvegarde des données
+    std::ofstream fichier_test;
+    fichier_test.open("pendule.dat",std::ios::out);
+
+    for(int i(0); i<x1.size();i++){
+
+        fichier_test<< 
+        x1[i] << " " << y1[i] << " " << z1[i] << "\n";
+    }
+
+    fichier_test.close();
+    std::ofstream graphe("graphe3D_pendule.gp");
+    graphe << "set title \"ExerciceP11-spherique\"\n";
+    graphe << "set xlabel \"X\"\n";
+    graphe << "set ylabel \"Y\"\n";
+    graphe << "set zlabel \"Z\"\n";
+    graphe << "set grid\n";
+    graphe << "set ticslevel 0\n";
+    graphe << "splot \\\n";
+    graphe << "  \"pendule.dat\" using 1:2:3 with linespoints lt rgb \"red\" pt 9 ps 0.8 lw 1.2 title \"Pendule\", \n";
+    graphe << "pause mouse close\n";
+    graphe.close();
+    system("gnuplot graphe3D_pendule.gp");
 
     delete ptc; //on supprime le pointeur pour éviter les fuites de mémoire
 }

@@ -16,16 +16,24 @@ using namespace std;
 //VecteurV.o ObjetIntegrable.o constantes.o contrainte.o Champforces.o affichage.o PointMateriel.o GravitationConstante.o Integrateurs.o
 
 
-int main(){
-
 vector<double> x1,y1,z1;
 vector<double> x2,y2,z2;
 vector<double> x3,y3,z3;
-
+vector<double> x4,y4,z4;
 
 Vecteur position_initiale(0,0,1);
 Vecteur vitesse_initiale(0,1,2);
+
 double masse(5.0); //tout les objets chutent à la même vitesse donc j'ai mis une masse arbitraire
+
+void get_real_position(double t, vector<double>& x4, vector<double>& y4, vector<double>& z4, const Vecteur& position_initiale, const Vecteur& vitesse_initiale) {
+    x4.push_back(position_initiale.get_coord(0) + vitesse_initiale.get_coord(0) * t);
+    y4.push_back(position_initiale.get_coord(1) + vitesse_initiale.get_coord(1) * t);
+    z4.push_back(position_initiale.get_coord(2) + vitesse_initiale.get_coord(2) * t + g.get_coord(2) * ((t * t) / 2));
+}
+
+int main(){
+
 
 integrateurEulerCromer Euler;
 RungeKutta4 Rk4;
@@ -75,6 +83,9 @@ x3.push_back(point3.get_E().get_coord(0));
 y3.push_back(point3.get_E().get_coord(1));
 z3.push_back(point3.get_E().get_coord(2));
 
+
+get_real_position(t,x4,y4,z4,position_initiale,vitesse_initiale);
+
 t+=dt;   
 
 cout << endl;
@@ -90,27 +101,32 @@ for(int i(0); i<x1.size();i++){
     fichier_test<< 
     x1[i] << " " << y1[i] << " " << z1[i] << " " <<
     x2[i] << " " << y2[i] << " " << z2[i] << " " <<
-    x3[i] << " " << y3[i] << " " << z3[i] << "\n" ;
+    x3[i] << " " << y3[i] << " " << z3[i] << " " << 
+    x4[i] << " " << y4[i] << " " << z4[i] << "\n" ;
+
+
 
 }
 
 fichier_test.close();
 
-
 ofstream graphe("graphe3D_testIntegrateur2.gp");
-graphe << " set title \"Comparaison Euler, RungeKutta et Newmark pour un point materiel dans une trajectoire parabolique\" \n";
-graphe << "set xlabel \"X\" \n";
-graphe << "set ylabel \"Y\" \n";
-graphe << "set zlabel \"Z\" \n";
+graphe << "set title \"Comparaison Equations Horaires, Euler, RungeKutta et Newmark pour un point materiel dans une trajectoire parabolique\"\n";
+graphe << "set xlabel \"X\"\n";
+graphe << "set ylabel \"Y\"\n";
+graphe << "set zlabel \"Z\"\n";
 graphe << "set grid\n";
 graphe << "set ticslevel 0\n";
 graphe << "splot \\\n";
 graphe << "  \"test_integrateur_2.dat\" using 1:2:3 with linespoints lt rgb \"red\" pt 9 ps 0.8 lw 1.2 title \"Euler\", \\\n";
-graphe << "  \"test_integrateur_2.dat\" using 4:5:6 with linespoints lt rgb \"blue\" pt 9 ps 0.8 lw 1.2 title \"RungeKutta4\", \\\n";
-graphe << "  \"test_integrateur_2.dat\" using 7:8:9 with linespoints lt rgb \"green\" pt 9 ps 0.8 lw 1.2 title \"Newmark\"\n";
+graphe << "  \"test_integrateur_2.dat\" using 4:5:6 with linespoints lt rgb \"blue\" pt 9 ps 0.8 lw 1.4 title \"RungeKutta4\", \\\n";
+graphe << "  \"test_integrateur_2.dat\" using 7:8:9 with linespoints lt rgb \"green\" pt 9 ps 0.8 lw 1.2 title \"Newmark\", \\\n";
+graphe << "  \"test_integrateur_2.dat\" using 10:11:12 with linespoints lt rgb \"gray\" pt 9 ps 0.4 lw 0.6 title \"Equations Horaires\"\n";
 graphe << "pause -1\n";
 graphe.close();
 system("gnuplot graphe3D_testIntegrateur2.gp");
 
+
 return 0;
 }
+

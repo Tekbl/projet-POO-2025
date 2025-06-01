@@ -86,7 +86,7 @@ void corbeaurenard(double temps, double pas, unsigned int nb_iter, double precis
         if(std::abs(t_coll-sys.get_time()) < precision){
             std::cout << "Collision entre le fromage et la pierre à t = " << sys.get_time() << std::endl;
             sys.dessine_sur(txt);
-            break; //on arrête la simulation à la collision
+                break; //on arrête la simulation à la collision
         }
         sys.evolve(pas);
     }

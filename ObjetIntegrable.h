@@ -2,10 +2,12 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+
 #include "VecteurV.h"
 #include "affichage.h"
 #include "constantes.h"
 #include "contrainte.h"
+
 class Contrainte;
 class ChampForces;
 

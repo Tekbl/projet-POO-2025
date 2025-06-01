@@ -30,18 +30,18 @@ Pour palier à ça nous avons décidé de rajouter des graphes gnuplot aux simul
 
 Celà est du au temps perdu sur le débuggage. En effet nous avons pris la mauvaise approche concernant le projet en ne faisant aucun tests entre le moment où nous avons testé la classe vecteur et le moment ou nous devions commencer à simuler des exercices comme le P9.
 Pour notre défense nous étions un peu perdu avec les instructions et à chaque étape il était indiqué que le code était incomplet et ne pouvait pas tourner en tant que tel. Nous nous sommes donc résolus à attendre les instructions des semaines suivantes pour pouvoir tester, sauf que cette instant était constamment repoussé par du nouveau code incomplet.
-Nous avons donc entrepris d'attendre les nouvelles instructions sans essayer de faire fonctionner un code incomplet en comblant les trous, se disant que c'était une perte de temps. Il se trouve que c'était une grave erreur nous retiendrons cette leçon.
+Nous avons donc entrepris d'attendre les nouvelles instructions sans essayer de faire fonctionner un code incomplet en comblant les trous, se disant que c'était une perte de temps. Il se trouve que c'était une grave erreur nous retiendrons cette leçon.  
 
 _Note personnelle de Valentino : j'ai vraiment envie de faire le graphisme, je le ferais après les examens._
 
 
 ## QUESTION 3 
 
-Temps moyen estimé par personne par semaine : 5h30  
+Temps moyen estimé par personne par semaine : 6h  
 Semaine 1 : rien  
 Semaines 2-3-4-5-6-7-8-9 : 4h/personnne  
 Vacances de Pâques : 12h par personne  
-Semaines 10-11-12-13-14 : 6h/personne  
+Semaines 10-11-12-13-14 : 8h/personne  
 
 # Organisation du Projet 
 
@@ -52,12 +52,8 @@ Tout les fichiers sont dans un seul dossier.
 - Les fichiers .dat sont les enregistrement des données des exercices simulés.
 - Les fichiers .gp contiennent les données et les informations permettant d'afficher les simulations avec gnuplot.
 
-Simulations & Tests :
-- testIntegrateur1.cc
-- Pomme.cc
 
-
-
+la logique derrière l'assemblage des différentes classes est quand à elle expliquée dans le fichier CONCEPTION
 
 # Exécution des simulations 
 
@@ -68,21 +64,23 @@ Simulations & Tests :
 4. Écrire et entrer la commande : make       
 /!\ Si une simulation utilisant un affichage gnuplot est ouvert, la commande make génère des erreurs. Pour régler ça, il faut fermer la fenêtre gnuplot et relancer la commande make.
 
-5. Pour tester les simulations et fichiers test, entrer la commande .\nom_de_la_simulation.exe dans le terminal pour l'executer
-Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal : 
-    .\testPointMateriel
-    .\testIntegrateur1
-    .\gnuplot_test
-    .\ExerciceP9
-    .\ExerciceP9-LeCorbeauEtLeRenard
-    .\TestIntegrateur2
-    .\ExerciceP11-magnetique
-    .\ExerciceP11-pendule
+5. Pour tester les simulations et fichiers test, entrer la commande **.\nom_de_la_simulation.exe** dans le terminal pour l'executer  
+Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal :   
+    .\testPointMateriel  
+    .\testIntegrateur1  
+    .\gnuplot_test  
+    .\ExerciceP9  
+    .\ExerciceP9-LeCorbeauEtLeRenard _**je vous conseille de mettre la fenetre gnuplot en plein écran pour celui la**_  
+    .\TestIntegrateur2  
+    .\ExerciceP11-magnetique  
+    .\ExerciceP11-pendule  
 
 6. Observer et admirer les résultats
 
 >**/!\ :** Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html
 
+
+7. Apprécier ce portrait de M.Chappelier 
 ```
 <3                                                          
                                                   :*@@@%#*: ..                                              
