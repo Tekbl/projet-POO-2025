@@ -28,7 +28,7 @@ Vecteur pos_pomme(0,0,h);
 Vecteur vit_terre(0,0,0);
 Vecteur vit_pomme(0,0,0);
 
-//Contrainte libre();
+Libre libre;
 
 integrateurEulerCromer euler;
 PointMateriel pomme(pos_pomme,vit_pomme,masse_pomme);
@@ -37,6 +37,7 @@ PointMateriel terre(pos_terre,vit_terre,masse_terre);
 ChampNewtonien champ_pomme(pomme);
 ChampNewtonien champ_terre(terre);
 
+pomme.add_contr(&libre);
 pomme.add_champ(&champ_terre);
 terre.add_champ(&champ_pomme);
 
@@ -54,6 +55,9 @@ cout << pomme << endl;
 euler.evolue(&pomme,t,dt);
 
 }
+
+
+
 
 
 }

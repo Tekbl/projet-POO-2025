@@ -9,6 +9,7 @@ Simulations et Tests effectués :
 - VecteurTestV
 - testPointMateriel
 - testIntegrateur1 (Euler)
+- pomme (chute de pomme sans utiliser la classe systeme)
 - ExerciceP9 (chute de pomme)
 - ExerciceP9-LeCorbeauEtLeRenard
 - gnuplot_test (testIntegrateur1 avec un graphe gnuplot)
@@ -70,6 +71,7 @@ Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal :
     .\VecteurTestV  
     .\testPointMateriel  
     .\testIntegrateur1  
+    .\pomme
     .\gnuplot_test  
     .\ExerciceP9  
     .\ExerciceP9-LeCorbeauEtLeRenard _**je vous conseille de mettre la fenetre gnuplot en plein écran pour celui la**_  

@@ -83,8 +83,6 @@ GravitationConstante.o: GravitationConstante.cc GravitationConstante.h \
  Champforces.h
 Integrateurs.o: Integrateurs.cc Integrateurs.h VecteurV.h affichage.h \
  ObjetIntegrable.h constantes.h contrainte.h
-ObjetDessinable.o: ObjetDessinable.cc ObjetDessinable.h SupportADessin.h \
- ObjetIntegrable.h VecteurV.h affichage.h constantes.h contrainte.h
 ObjetIntegrable.o: ObjetIntegrable.cc ObjetIntegrable.h VecteurV.h \
  affichage.h constantes.h contrainte.h Champforces.h
 PointMateriel.o: PointMateriel.cc VecteurV.h affichage.h constantes.h \
