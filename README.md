@@ -81,9 +81,7 @@ Voici les commandes dans l'ordre à ctrl_C/ctrl_V dans le terminal :
 
 6. Observer et admirer les résultats
 
->**/!\ :** Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html
->**/!\ :** Sur les VM linux le code tourne parfaitement, mais donne une erreur de pointeur après que le code ait tourné correctement, on a pas eu le temps de le régler vu que sur nos machines windows on avait pas cette erreur.
-
+>**/!\ :** Normalement gnuplot est installé de base sur les VM, si ce n'est pas le cas sur votre VM, voici le lien d'installation http://www.gnuplot.info/download.html  
 
 7. Apprécier ce portrait de M.Chappelier 
 ```
