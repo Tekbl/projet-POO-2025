@@ -15,7 +15,7 @@
 #include "ObjetDessinable.h"
 
 #define M_PI 3.14159265358979323846
-std::vector<double> x1,y1,z1;
+std::vector<double> x_1,y_1,z_1;
 
 void simul_spherique(double temps, double pas, unsigned int nb_iter){
     Systeme systeme;
@@ -75,9 +75,9 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
                 std::cout 
                 << std::left << std::setw(5) << std::setprecision(16) << systeme.get_obj(0)->position(ptc).get_coord(2) << std::endl;
             } 
-        x1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(0));
-        y1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(1));
-        z1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(2));
+        x_1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(0));
+        y_1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(1));
+        z_1.push_back(-systeme.get_obj(0)->position(ptc).get_coord(2));
 
         systeme.evolve(pas);
     }
@@ -90,10 +90,10 @@ void simul_spherique(double temps, double pas, unsigned int nb_iter){
     std::ofstream fichier_test;
     fichier_test.open("pendule.dat",std::ios::out);
 
-    for(int i(0); i<x1.size();i++){
+    for(int i(0); i<x_1.size();i++){
 
         fichier_test<< 
-        x1[i] << " " << y1[i] << " " << z1[i] << "\n";
+        x_1[i] << " " << y_1[i] << " " << z_1[i] << "\n";
     }
 
     fichier_test.close();

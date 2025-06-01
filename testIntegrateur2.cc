@@ -17,10 +17,10 @@ using namespace std;
 
 
 //initialisation des vecteurs pour stocker les positions pour chaque intégrateur
-vector<double> x1,y1,z1;
-vector<double> x2,y2,z2;
-vector<double> x3,y3,z3;
-vector<double> x4,y4,z4;
+vector<double> x_1,y_1,z_1;
+vector<double> x_2,y_2,z_2;
+vector<double> x_3,y_3,z_3;
+vector<double> x_4,y_4,z_4;
 
 Vecteur position_initiale(0,0,1);
 Vecteur vitesse_initiale(0,1,2);
@@ -72,20 +72,20 @@ Rk4.evolue(&point2,t,dt);
 New.evolue(&point3,t,dt);
 
 
-x1.push_back(point1.get_E().get_coord(0));
-y1.push_back(point1.get_E().get_coord(1));
-z1.push_back(point1.get_E().get_coord(2));
+x_1.push_back(point1.get_E().get_coord(0));
+y_1.push_back(point1.get_E().get_coord(1));
+z_1.push_back(point1.get_E().get_coord(2));
 
-x2.push_back(point2.get_E().get_coord(0));
-y2.push_back(point2.get_E().get_coord(1));
-z2.push_back(point2.get_E().get_coord(2));
+x_2.push_back(point2.get_E().get_coord(0));
+y_2.push_back(point2.get_E().get_coord(1));
+z_2.push_back(point2.get_E().get_coord(2));
 
-x3.push_back(point3.get_E().get_coord(0));
-y3.push_back(point3.get_E().get_coord(1));
-z3.push_back(point3.get_E().get_coord(2));
+x_3.push_back(point3.get_E().get_coord(0));
+y_3.push_back(point3.get_E().get_coord(1));
+z_3.push_back(point3.get_E().get_coord(2));
 
 
-get_real_position(t,x4,y4,z4,position_initiale,vitesse_initiale);
+get_real_position(t,x_4,y_4,z_4,position_initiale,vitesse_initiale);
 
 t+=dt;   
 
@@ -97,13 +97,13 @@ cout << endl;
 ofstream fichier_test;
 fichier_test.open("test_integrateur_2.dat",ios::out);
 
-for(int i(0); i<x1.size();i++){
+for(int i(0); i<x_1.size();i++){
 
     fichier_test<< 
-    x1[i] << " " << y1[i] << " " << z1[i] << " " <<
-    x2[i] << " " << y2[i] << " " << z2[i] << " " <<
-    x3[i] << " " << y3[i] << " " << z3[i] << " " << 
-    x4[i] << " " << y4[i] << " " << z4[i] << "\n" ;
+    x_1[i] << " " << y_1[i] << " " << z_1[i] << " " <<
+    x_2[i] << " " << y_2[i] << " " << z_2[i] << " " <<
+    x_3[i] << " " << y_3[i] << " " << z_3[i] << " " << 
+    x_4[i] << " " << y_4[i] << " " << z_4[i] << "\n" ;
 
 
 
